@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://be8akubpq5co8"]
+[gd_scene load_steps=2 format=3 uid="uid://be8akubpq5co8"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8rdkd"]
+a = Vector2(0, 600)
+b = Vector2(10000, 600)
 
 [node name="ProofOfConcept-level1" type="Node2D"]
+
+[node name="Collision" type="Node" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Collision"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/Area2D"]
+shape = SubResource("SegmentShape2D_8rdkd")
