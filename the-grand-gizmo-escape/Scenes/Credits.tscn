@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1wyi3n7fw060"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_msqbs"]
+
+[node name="Credits" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("ViewportTexture_msqbs")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 1150.0
+offset_bottom = 938.0
+text = "Credits
+
+Art:
+
+Music:
+
+Programmers:
+
+"
