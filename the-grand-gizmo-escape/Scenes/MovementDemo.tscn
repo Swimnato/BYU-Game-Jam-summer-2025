@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgctqdkd8mh2"]
+
+[ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_johof"]
+[ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player.tscn" id="2_johof"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_johof"]
+size = Vector2(2050, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyap7"]
+size = Vector2(17.25, 1322.75)
+
+[node name="Game" type="Node2D"]
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Floor" type="Node2D" parent="Level"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor/StaticBody2D"]
+position = Vector2(1015, 21)
+shape = SubResource("RectangleShape2D_johof")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D"]
+position = Vector2(1015.88, 21.375)
+scale = Vector2(2052.25, 63.25)
+texture = ExtResource("1_johof")
+
+[node name="Walls" type="Node2D" parent="Level"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Walls/StaticBody2D"]
+position = Vector2(21.625, -688.625)
+shape = SubResource("RectangleShape2D_cyap7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Walls/StaticBody2D"]
+position = Vector2(20.125, -679.375)
+scale = Vector2(20.25, 1353.25)
+texture = ExtResource("1_johof")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Level/Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Walls/StaticBody2D2"]
+position = Vector2(376.125, -1108)
+shape = SubResource("RectangleShape2D_cyap7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Walls/StaticBody2D2"]
+position = Vector2(376.125, -1109.59)
+scale = Vector2(20.25, 1322.81)
+texture = ExtResource("1_johof")
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("2_johof")]
+position = Vector2(489, -421)
+scale = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="Entities/Player"]
+position_smoothing_enabled = true
