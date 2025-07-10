@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mw28t"]
 size = Vector2(80, 208)
 
-[node name="Door" type="Node2D"]
+[node name="Door" type="Node2D" groups=["resetable"]]
 script = ExtResource("1_mw28t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

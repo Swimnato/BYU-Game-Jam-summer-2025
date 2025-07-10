@@ -9,10 +9,16 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is RigidBody2D or body.name == "Player":
 		on = true
 		other_body = body
-		door.setState(on)
-
+		updateDoor()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == other_body:
 		on = false
-		door.setState(on)
+		updateDoor()
+
+func reset():
+	on = false
+	updateDoor()
+	
+func updateDoor():
+	door.setState(on)

@@ -20,6 +20,9 @@ var input_buffer : Timer
 var coyote_timer : Timer
 var coyote_jump_available : bool = true
 
+var spawn_point: Vector2
+
+signal player_death
 
 func _ready():
 	# Setup input buffer timer
@@ -86,3 +89,12 @@ func coyoteTimeout():
 	# reset coyote jump when you timeout
 	coyote_jump_available = false
 	
+	
+	
+func die():
+	self.position = spawn_point
+	player_death.emit()
+	print("TODO respawn gizmo logic")
+
+func setSpawnPoint(pos: Vector2):
+	spawn_point = pos

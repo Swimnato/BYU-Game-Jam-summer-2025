@@ -9,3 +9,6 @@ func setState(to):
 	open = to
 	collision.set_deferred("disabled", open)
 	sprite.visible = !open
+
+func reset():
+	setState(false)

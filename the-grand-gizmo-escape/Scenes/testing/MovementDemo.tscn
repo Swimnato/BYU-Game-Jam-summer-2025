@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgctqdkd8mh2"]
+[gd_scene load_steps=15 format=3 uid="uid://bgctqdkd8mh2"]
 
+[ext_resource type="Script" uid="uid://btlttwau8030" path="res://Scripts/level.gd" id="1_hjq4c"]
 [ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_y6kw6"]
 [ext_resource type="PackedScene" uid="uid://wf6f5r3s7d0m" path="res://Scenes/Level Building/Lever.tscn" id="2_8j1cn"]
 [ext_resource type="PackedScene" uid="uid://crpdu3punicwa" path="res://Scenes/Level Building/Door.tscn" id="3_dbbe8"]
 [ext_resource type="PackedScene" uid="uid://1ohhwcyk2hbh" path="res://Scenes/Level Building/Button.tscn" id="4_8j1cn"]
 [ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player/Player.tscn" id="4_fxb0a"]
 [ext_resource type="PackedScene" uid="uid://cdiko8cbd2dil" path="res://Scenes/Player/Gizmo.tscn" id="5_7qwkw"]
+[ext_resource type="PackedScene" uid="uid://4bu1ls540x04" path="res://Scenes/Level Building/Hurtboxes.tscn" id="5_dbbe8"]
+[ext_resource type="PackedScene" uid="uid://bs0ih0xn0g2jg" path="res://Scenes/Level Building/Hurtbox.tscn" id="8_fxb0a"]
+[ext_resource type="PackedScene" uid="uid://cdoia3ku05owb" path="res://Scenes/Level Building/SpawnPoint.tscn" id="9_7qwkw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_johof"]
 size = Vector2(2050, 62)
@@ -13,12 +17,21 @@ size = Vector2(2050, 62)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lgdx"]
 size = Vector2(360, 90)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxb0a"]
+size = Vector2(880, 50)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyap7"]
 size = Vector2(17.25, 1322.75)
 
 [node name="Game" type="Node2D"]
 
-[node name="Level" type="Node2D" parent="."]
+[node name="Level" type="Node2D" parent="." node_paths=PackedStringArray("player", "spawn_point")]
+script = ExtResource("1_hjq4c")
+player = NodePath("../Entities/Player")
+spawn_point = NodePath("SpawnPoint")
+
+[node name="SpawnPoint" parent="Level" instance=ExtResource("9_7qwkw")]
+position = Vector2(1528, -136)
 
 [node name="Floor" type="Node2D" parent="Level"]
 
@@ -57,6 +70,18 @@ shape = SubResource("RectangleShape2D_7lgdx")
 [node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D3"]
 position = Vector2(9.87498, -0.125006)
 scale = Vector2(364.25, 96.25)
+texture = ExtResource("1_y6kw6")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Level/Floor"]
+position = Vector2(-664, -1280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor/StaticBody2D4"]
+position = Vector2(232, -15)
+shape = SubResource("RectangleShape2D_fxb0a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D4"]
+position = Vector2(232, -16)
+scale = Vector2(880, 48)
 texture = ExtResource("1_y6kw6")
 
 [node name="Walls" type="Node2D" parent="Level"]
@@ -98,6 +123,20 @@ door = NodePath("../Door2")
 
 [node name="Door2" parent="Level/Interactables" instance=ExtResource("3_dbbe8")]
 position = Vector2(2536, -456)
+
+[node name="Hurtboxes" parent="Level" node_paths=PackedStringArray("player", "hurtboxes") instance=ExtResource("5_dbbe8")]
+position = Vector2(-288, 24)
+player = NodePath("../../Entities/Player")
+hurtboxes = [NodePath("Hurtbox"), NodePath("Hurtbox2"), NodePath("Hurtbox3")]
+
+[node name="Hurtbox" parent="Level/Hurtboxes" instance=ExtResource("8_fxb0a")]
+position = Vector2(-264, -1368)
+
+[node name="Hurtbox2" parent="Level/Hurtboxes" instance=ExtResource("8_fxb0a")]
+position = Vector2(-80, -1368)
+
+[node name="Hurtbox3" parent="Level/Hurtboxes" instance=ExtResource("8_fxb0a")]
+position = Vector2(72, -1368)
 
 [node name="Entities" type="Node2D" parent="."]
 
