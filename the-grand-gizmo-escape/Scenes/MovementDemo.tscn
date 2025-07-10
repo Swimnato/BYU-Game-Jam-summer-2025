@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgctqdkd8mh2"]
+[gd_scene load_steps=6 format=3 uid="uid://bgctqdkd8mh2"]
 
 [ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_johof"]
 [ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player.tscn" id="2_johof"]
+[ext_resource type="PackedScene" uid="uid://c0n1hee27sx7h" path="res://Scenes/Gizmo.tscn" id="3_6mka5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_johof"]
 size = Vector2(2050, 62)
@@ -70,4 +71,11 @@ texture = ExtResource("1_johof")
 position = Vector2(946, -509)
 scale = Vector2(0.5, 0.5)
 
-[node name="Camera2D" type="Camera2D" parent="Entities/Player"]
+[node name="Gizmo" parent="Entities" instance=ExtResource("3_6mka5")]
+position = Vector2(2063, -923)
+
+[node name="Camera2D" type="Camera2D" parent="Entities/Gizmo"]
+zoom = Vector2(0.6, 0.6)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0

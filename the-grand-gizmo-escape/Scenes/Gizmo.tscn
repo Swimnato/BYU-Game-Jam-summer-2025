@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0n1hee27sx7h"]
+
+[ext_resource type="Texture2D" uid="uid://cxg7i0o8q46o2" path="res://Textures/green.png" id="1_drug4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1ylc"]
+size = Vector2(18, 18)
+
+[node name="Gizmo" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_a1ylc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+scale = Vector2(17.75, 17.75)
+texture = ExtResource("1_drug4")
