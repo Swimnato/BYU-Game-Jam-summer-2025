@@ -34,6 +34,10 @@ folder_colors={
 "res://Scripts/": "blue"
 }
 
+[global_group]
+
+pickable="An object that can be picked up."
+
 [input]
 
 Left={

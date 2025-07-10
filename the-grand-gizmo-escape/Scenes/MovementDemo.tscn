@@ -70,6 +70,12 @@ texture = ExtResource("1_johof")
 [node name="Player" parent="Entities" instance=ExtResource("2_johof")]
 position = Vector2(946, -509)
 scale = Vector2(0.5, 0.5)
+SPEED = 1000.0
+FRICTION = 20000.0
+
+[node name="PickupController" parent="Entities/Player" index="3"]
+socket_path = NodePath("../HoldSocket")
+pickup_area_path = NodePath("../../Gizmo/PickupTrigger")
 
 [node name="Gizmo" parent="Entities" instance=ExtResource("3_6mka5")]
 position = Vector2(2063, -923)
@@ -77,5 +83,7 @@ position = Vector2(2063, -923)
 [node name="Camera2D" type="Camera2D" parent="Entities/Gizmo"]
 zoom = Vector2(0.6, 0.6)
 process_callback = 0
-position_smoothing_enabled = true
 position_smoothing_speed = 6.0
+
+[editable path="Entities/Player"]
+[editable path="Entities/Gizmo"]

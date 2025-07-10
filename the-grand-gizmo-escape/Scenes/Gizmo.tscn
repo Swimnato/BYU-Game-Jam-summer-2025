@@ -1,17 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0n1hee27sx7h"]
+[gd_scene load_steps=4 format=3 uid="uid://c0n1hee27sx7h"]
 
 [ext_resource type="Texture2D" uid="uid://cxg7i0o8q46o2" path="res://Textures/green.png" id="1_drug4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1ylc"]
-size = Vector2(18, 18)
+size = Vector2(36, 38)
 
-[node name="Gizmo" type="RigidBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drug4"]
+size = Vector2(156, 148)
+
+[node name="Gizmo" type="RigidBody2D" groups=["pickable"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_a1ylc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -9)
-scale = Vector2(17.75, 17.75)
+position = Vector2(0, -20)
+scale = Vector2(38, 38)
 texture = ExtResource("1_drug4")
+
+[node name="PickupTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupTrigger"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_drug4")
