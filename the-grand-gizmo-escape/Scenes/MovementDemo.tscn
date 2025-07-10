@@ -26,6 +26,20 @@ position = Vector2(1015.88, 21.375)
 scale = Vector2(2052.25, 63.25)
 texture = ExtResource("1_johof")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="Level/Floor"]
+position = Vector2(0.02, 29.285)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor/StaticBody2D2"]
+position = Vector2(2476.48, -325.911)
+rotation = -0.598648
+shape = SubResource("RectangleShape2D_johof")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D2"]
+position = Vector2(2475.48, -325.911)
+rotation = -0.598648
+scale = Vector2(2052.25, 63.25)
+texture = ExtResource("1_johof")
+
 [node name="Walls" type="Node2D" parent="Level"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/Walls"]
@@ -42,19 +56,18 @@ texture = ExtResource("1_johof")
 [node name="StaticBody2D2" type="StaticBody2D" parent="Level/Walls"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Walls/StaticBody2D2"]
-position = Vector2(376.125, -1108)
+position = Vector2(335.125, -901.005)
 shape = SubResource("RectangleShape2D_cyap7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Walls/StaticBody2D2"]
-position = Vector2(376.125, -1109.59)
+position = Vector2(335.125, -902.595)
 scale = Vector2(20.25, 1322.81)
 texture = ExtResource("1_johof")
 
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("2_johof")]
-position = Vector2(489, -421)
+position = Vector2(946, -509)
 scale = Vector2(0.5, 0.5)
 
 [node name="Camera2D" type="Camera2D" parent="Entities/Player"]
-position_smoothing_enabled = true

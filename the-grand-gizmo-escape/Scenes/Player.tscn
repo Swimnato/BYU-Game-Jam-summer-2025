@@ -13,6 +13,7 @@ radius = 99.0
 height = 300.0
 
 [node name="Player" type="CharacterBody2D"]
+floor_snap_length = 7.1
 script = ExtResource("1_kyqiw")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
