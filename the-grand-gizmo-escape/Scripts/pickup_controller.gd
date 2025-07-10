@@ -29,10 +29,12 @@ func _unhandled_input(event: InputEvent) -> void:
 ## PICKUP AREA SIGNALS
 func onBodyEntered(body: Node) -> void:
 	if (body is RigidBody2D and body.is_in_group('pickable')): # TODO: make group 'pickable'
+		print("added body to pickable")
 		candidates.append(body)
 
 func onBodyExited(body: Node) -> void:
 	if (body is RigidBody2D):
+		print("removed body to pickable")
 		candidates.erase(body)
 
 ## PICK-UP AND DROP LOGIC
@@ -56,9 +58,12 @@ func pickup(gizmo : RigidBody2D) -> void:
 	gizmo.linear_velocity = Vector2.ZERO
 	gizmo.angular_velocity = 0.0
 	
+	gizmo.get_node("Screen_Wrap").wrapEnabled = false;
+	
 	for child in gizmo.get_children():
 		if (child is CollisionShape2D):
 			child.disabled = true
+			
 	
 	# "tween" is a word I just learned. don't know how I feel about it
 	var tween := create_tween()
@@ -90,3 +95,5 @@ func drop() -> void:
 			child.disabled = false
 	
 	gizmo.apply_impulse(Vector2.ZERO, Vector2.DOWN * 400)
+	
+	gizmo.get_node("Screen_Wrap").wrapEnabled = true;

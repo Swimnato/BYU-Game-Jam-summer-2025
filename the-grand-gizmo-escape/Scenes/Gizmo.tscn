@@ -1,9 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bntuafboxip58"]
+[gd_scene load_steps=9 format=3 uid="uid://cdiko8cbd2dil"]
 
 [ext_resource type="Texture2D" uid="uid://cxg7i0o8q46o2" path="res://Textures/green.png" id="1_drug4"]
+[ext_resource type="Script" uid="uid://d2o8lr3hsw0h1" path="res://Scripts/screen_wrap.gd" id="2_a1ylc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1ylc"]
 size = Vector2(36, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drug4"]
+size = Vector2(156, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8ahd"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8cuf"]
+size = Vector2(1920, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8nvh"]
+size = Vector2(20, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88dxh"]
+size = Vector2(100, 100)
 
 [node name="Gizmo" type="RigidBody2D" groups=["pickable"]]
 
@@ -15,3 +31,74 @@ shape = SubResource("RectangleShape2D_a1ylc")
 position = Vector2(0, -20)
 scale = Vector2(38, 38)
 texture = ExtResource("1_drug4")
+
+[node name="PickupTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupTrigger"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_drug4")
+
+[node name="Screen_Wrap" type="Node2D" parent="."]
+script = ExtResource("2_a1ylc")
+
+[node name="In_Camera" type="Area2D" parent="Screen_Wrap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/In_Camera"]
+shape = SubResource("RectangleShape2D_b8ahd")
+debug_color = Color(0.0690648, 0.632764, 0.426529, 0.42)
+
+[node name="Top Hitbox" type="Area2D" parent="Screen_Wrap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/Top Hitbox"]
+position = Vector2(0, -550)
+shape = SubResource("RectangleShape2D_g8cuf")
+
+[node name="Bottom Hitbox" type="Area2D" parent="Screen_Wrap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/Bottom Hitbox"]
+position = Vector2(0, 550)
+shape = SubResource("RectangleShape2D_g8cuf")
+
+[node name="Left Hitbox" type="Area2D" parent="Screen_Wrap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/Left Hitbox"]
+position = Vector2(-970, 0)
+shape = SubResource("RectangleShape2D_g8nvh")
+
+[node name="Right Hitbox" type="Area2D" parent="Screen_Wrap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/Right Hitbox"]
+position = Vector2(970, 0)
+shape = SubResource("RectangleShape2D_g8nvh")
+
+[node name="BR Corner" type="StaticBody2D" parent="Screen_Wrap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/BR Corner"]
+position = Vector2(1010, 590)
+shape = SubResource("RectangleShape2D_88dxh")
+debug_color = Color(0.501961, 0.580392, 0.101961, 0.419608)
+
+[node name="BL Corner" type="StaticBody2D" parent="Screen_Wrap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/BL Corner"]
+position = Vector2(-1010, 590)
+shape = SubResource("RectangleShape2D_88dxh")
+debug_color = Color(0.501961, 0.580392, 0.101961, 0.419608)
+
+[node name="TR Corner" type="StaticBody2D" parent="Screen_Wrap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/TR Corner"]
+position = Vector2(1010, -590)
+shape = SubResource("RectangleShape2D_88dxh")
+debug_color = Color(0.502489, 0.579159, 0.102971, 0.42)
+
+[node name="TL Corner" type="StaticBody2D" parent="Screen_Wrap"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/TL Corner"]
+position = Vector2(-1010, -590)
+shape = SubResource("RectangleShape2D_88dxh")
+debug_color = Color(0.501961, 0.580392, 0.101961, 0.419608)
+
+[node name="GizmoCam" type="Camera2D" parent="."]
+
+[connection signal="body_exited" from="Screen_Wrap/In_Camera" to="Screen_Wrap" method="_on_in_camera_body_exited"]

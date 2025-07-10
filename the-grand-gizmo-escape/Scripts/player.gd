@@ -20,6 +20,7 @@ var input_buffer : Timer
 var coyote_timer : Timer
 var coyote_jump_available : bool = true
 
+
 func _ready():
 	# Setup input buffer timer
 	input_buffer = Timer.new()

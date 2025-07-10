@@ -1,21 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgctqdkd8mh2"]
+[gd_scene load_steps=9 format=3 uid="uid://v5ukptp155h7"]
 
-[ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_johof"]
-[ext_resource type="PackedScene" uid="uid://crpdu3punicwa" path="res://Scenes/Door.tscn" id="2_7lgdx"]
-[ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player.tscn" id="2_johof"]
-[ext_resource type="PackedScene" uid="uid://cdiko8cbd2dil" path="res://Scenes/Gizmo.tscn" id="3_6mka5"]
-[ext_resource type="PackedScene" uid="uid://wf6f5r3s7d0m" path="res://Scenes/Lever.tscn" id="4_saock"]
+[ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_o2duk"]
+[ext_resource type="PackedScene" uid="uid://wf6f5r3s7d0m" path="res://Scenes/Lever.tscn" id="2_ny5cp"]
+[ext_resource type="PackedScene" uid="uid://crpdu3punicwa" path="res://Scenes/Door.tscn" id="3_gddd6"]
+[ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player.tscn" id="4_44fs4"]
+[ext_resource type="PackedScene" uid="uid://bntuafboxip58" path="res://Scenes/Gizmo.tscn" id="5_av7s8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_johof"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o085r"]
 size = Vector2(2050, 62)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lgdx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xs21"]
 size = Vector2(360, 90)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyap7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibftu"]
 size = Vector2(17.25, 1322.75)
 
-[node name="Game" type="Node2D"]
+[node name="ScreenWrapTesting" type="Node2D"]
 
 [node name="Level" type="Node2D" parent="."]
 
@@ -25,12 +25,12 @@ size = Vector2(17.25, 1322.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor/StaticBody2D"]
 position = Vector2(1015, 21)
-shape = SubResource("RectangleShape2D_johof")
+shape = SubResource("RectangleShape2D_o085r")
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D"]
 position = Vector2(1015.88, 21.375)
 scale = Vector2(2052.25, 63.25)
-texture = ExtResource("1_johof")
+texture = ExtResource("1_o2duk")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Level/Floor"]
 position = Vector2(0.02, 29.285)
@@ -38,25 +38,25 @@ position = Vector2(0.02, 29.285)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor/StaticBody2D2"]
 position = Vector2(2476.48, -325.911)
 rotation = -0.598648
-shape = SubResource("RectangleShape2D_johof")
+shape = SubResource("RectangleShape2D_o085r")
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D2"]
 position = Vector2(2475.48, -325.911)
 rotation = -0.598648
 scale = Vector2(2052.25, 63.25)
-texture = ExtResource("1_johof")
+texture = ExtResource("1_o2duk")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Level/Floor"]
 position = Vector2(856, -363)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor/StaticBody2D3"]
 position = Vector2(8, 0)
-shape = SubResource("RectangleShape2D_7lgdx")
+shape = SubResource("RectangleShape2D_1xs21")
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D3"]
 position = Vector2(9.87498, -0.125006)
 scale = Vector2(364.25, 96.25)
-texture = ExtResource("1_johof")
+texture = ExtResource("1_o2duk")
 
 [node name="Walls" type="Node2D" parent="Level"]
 
@@ -64,49 +64,46 @@ texture = ExtResource("1_johof")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Walls/StaticBody2D"]
 position = Vector2(21.625, -688.625)
-shape = SubResource("RectangleShape2D_cyap7")
+shape = SubResource("RectangleShape2D_ibftu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Walls/StaticBody2D"]
 position = Vector2(20.125, -679.375)
 scale = Vector2(20.25, 1353.25)
-texture = ExtResource("1_johof")
+texture = ExtResource("1_o2duk")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Level/Walls"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Walls/StaticBody2D2"]
 position = Vector2(335.125, -901.005)
-shape = SubResource("RectangleShape2D_cyap7")
+shape = SubResource("RectangleShape2D_ibftu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Walls/StaticBody2D2"]
 position = Vector2(335.125, -902.595)
 scale = Vector2(20.25, 1322.81)
-texture = ExtResource("1_johof")
+texture = ExtResource("1_o2duk")
 
 [node name="Interactables" type="Node2D" parent="Level"]
 
-[node name="Lever" parent="Level/Interactables" node_paths=PackedStringArray("door") instance=ExtResource("4_saock")]
+[node name="Lever" parent="Level/Interactables" node_paths=PackedStringArray("door") instance=ExtResource("2_ny5cp")]
 position = Vector2(867, -472)
 door = NodePath("../Door")
 
-[node name="Door" parent="Level/Interactables" instance=ExtResource("2_7lgdx")]
+[node name="Door" parent="Level/Interactables" instance=ExtResource("3_gddd6")]
 position = Vector2(304, -128)
 
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="Player" parent="Entities" instance=ExtResource("2_johof")]
+[node name="Player" parent="Entities" instance=ExtResource("4_44fs4")]
 position = Vector2(1564, -401)
 scale = Vector2(0.5, 0.5)
 SPEED = 1000.0
 FRICTION = 20000.0
 
-[node name="HoldSocket" parent="Entities/Player" index="2"]
-visibility_layer = 4
-
 [node name="PickupController" parent="Entities/Player" index="3"]
 socket_path = NodePath("../HoldSocket")
-pickup_area_path = NodePath("../PickupTrigger")
+pickup_area_path = NodePath("../../Gizmo/PickupTrigger")
 
-[node name="Gizmo" parent="Entities" instance=ExtResource("3_6mka5")]
+[node name="Gizmo" parent="Entities" instance=ExtResource("5_av7s8")]
 position = Vector2(1913, -564)
 
 [editable path="Entities/Player"]

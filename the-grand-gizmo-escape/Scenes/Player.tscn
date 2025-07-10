@@ -29,6 +29,7 @@ scale = Vector2(199.25, 298.25)
 texture = ExtResource("1_rpqav")
 
 [node name="Area2D" type="Area2D" parent="Player"]
+collision_layer = 3
 
 [node name="Collision" type="CollisionShape2D" parent="Player/Area2D"]
 shape = SubResource("RectangleShape2D_qbkls")
