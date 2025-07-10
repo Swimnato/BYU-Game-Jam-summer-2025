@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgctqdkd8mh2"]
+[gd_scene load_steps=10 format=3 uid="uid://bgctqdkd8mh2"]
 
-[ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_johof"]
-[ext_resource type="PackedScene" uid="uid://crpdu3punicwa" path="res://Scenes/Door.tscn" id="2_7lgdx"]
-[ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player.tscn" id="2_johof"]
-[ext_resource type="PackedScene" uid="uid://cdiko8cbd2dil" path="res://Scenes/Gizmo.tscn" id="3_6mka5"]
-[ext_resource type="PackedScene" uid="uid://wf6f5r3s7d0m" path="res://Scenes/Lever.tscn" id="4_saock"]
+[ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_y6kw6"]
+[ext_resource type="PackedScene" uid="uid://wf6f5r3s7d0m" path="res://Scenes/Level Building/Lever.tscn" id="2_8j1cn"]
+[ext_resource type="PackedScene" uid="uid://crpdu3punicwa" path="res://Scenes/Level Building/Door.tscn" id="3_dbbe8"]
+[ext_resource type="PackedScene" uid="uid://1ohhwcyk2hbh" path="res://Scenes/Level Building/Button.tscn" id="4_8j1cn"]
+[ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player/Player.tscn" id="4_fxb0a"]
+[ext_resource type="PackedScene" uid="uid://cdiko8cbd2dil" path="res://Scenes/Player/Gizmo.tscn" id="5_7qwkw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_johof"]
 size = Vector2(2050, 62)
@@ -30,7 +31,7 @@ shape = SubResource("RectangleShape2D_johof")
 [node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D"]
 position = Vector2(1015.88, 21.375)
 scale = Vector2(2052.25, 63.25)
-texture = ExtResource("1_johof")
+texture = ExtResource("1_y6kw6")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Level/Floor"]
 position = Vector2(0.02, 29.285)
@@ -44,7 +45,7 @@ shape = SubResource("RectangleShape2D_johof")
 position = Vector2(2475.48, -325.911)
 rotation = -0.598648
 scale = Vector2(2052.25, 63.25)
-texture = ExtResource("1_johof")
+texture = ExtResource("1_y6kw6")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Level/Floor"]
 position = Vector2(856, -363)
@@ -56,7 +57,7 @@ shape = SubResource("RectangleShape2D_7lgdx")
 [node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D3"]
 position = Vector2(9.87498, -0.125006)
 scale = Vector2(364.25, 96.25)
-texture = ExtResource("1_johof")
+texture = ExtResource("1_y6kw6")
 
 [node name="Walls" type="Node2D" parent="Level"]
 
@@ -69,7 +70,7 @@ shape = SubResource("RectangleShape2D_cyap7")
 [node name="Sprite2D" type="Sprite2D" parent="Level/Walls/StaticBody2D"]
 position = Vector2(20.125, -679.375)
 scale = Vector2(20.25, 1353.25)
-texture = ExtResource("1_johof")
+texture = ExtResource("1_y6kw6")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Level/Walls"]
 
@@ -80,20 +81,27 @@ shape = SubResource("RectangleShape2D_cyap7")
 [node name="Sprite2D" type="Sprite2D" parent="Level/Walls/StaticBody2D2"]
 position = Vector2(335.125, -902.595)
 scale = Vector2(20.25, 1322.81)
-texture = ExtResource("1_johof")
+texture = ExtResource("1_y6kw6")
 
 [node name="Interactables" type="Node2D" parent="Level"]
 
-[node name="Lever" parent="Level/Interactables" node_paths=PackedStringArray("door") instance=ExtResource("4_saock")]
+[node name="Lever" parent="Level/Interactables" node_paths=PackedStringArray("door") instance=ExtResource("2_8j1cn")]
 position = Vector2(867, -472)
 door = NodePath("../Door")
 
-[node name="Door" parent="Level/Interactables" instance=ExtResource("2_7lgdx")]
+[node name="Door" parent="Level/Interactables" instance=ExtResource("3_dbbe8")]
 position = Vector2(304, -128)
+
+[node name="Button" parent="Level/Interactables" node_paths=PackedStringArray("door") instance=ExtResource("4_8j1cn")]
+position = Vector2(2288, -272)
+door = NodePath("../Door2")
+
+[node name="Door2" parent="Level/Interactables" instance=ExtResource("3_dbbe8")]
+position = Vector2(2536, -456)
 
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="Player" parent="Entities" instance=ExtResource("2_johof")]
+[node name="Player" parent="Entities" instance=ExtResource("4_fxb0a")]
 position = Vector2(1564, -401)
 scale = Vector2(0.5, 0.5)
 SPEED = 1000.0
@@ -106,7 +114,7 @@ visibility_layer = 4
 socket_path = NodePath("../HoldSocket")
 pickup_area_path = NodePath("../PickupTrigger")
 
-[node name="Gizmo" parent="Entities" instance=ExtResource("3_6mka5")]
+[node name="Gizmo" parent="Entities" instance=ExtResource("5_7qwkw")]
 position = Vector2(1913, -564)
 
 [editable path="Entities/Player"]

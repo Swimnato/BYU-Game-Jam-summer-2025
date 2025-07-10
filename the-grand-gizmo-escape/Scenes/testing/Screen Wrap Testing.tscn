@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://v5ukptp155h7"]
 
 [ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_o2duk"]
-[ext_resource type="PackedScene" uid="uid://wf6f5r3s7d0m" path="res://Scenes/Lever.tscn" id="2_ny5cp"]
-[ext_resource type="PackedScene" uid="uid://crpdu3punicwa" path="res://Scenes/Door.tscn" id="3_gddd6"]
-[ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player.tscn" id="4_44fs4"]
-[ext_resource type="PackedScene" uid="uid://bntuafboxip58" path="res://Scenes/Gizmo.tscn" id="5_av7s8"]
+[ext_resource type="PackedScene" uid="uid://wf6f5r3s7d0m" path="res://Scenes/Level Building/Lever.tscn" id="2_ny5cp"]
+[ext_resource type="PackedScene" uid="uid://crpdu3punicwa" path="res://Scenes/Level Building/Door.tscn" id="3_gddd6"]
+[ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player/Player.tscn" id="4_44fs4"]
+[ext_resource type="PackedScene" uid="uid://cdiko8cbd2dil" path="res://Scenes/Player/Gizmo.tscn" id="5_av7s8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o085r"]
 size = Vector2(2050, 62)
