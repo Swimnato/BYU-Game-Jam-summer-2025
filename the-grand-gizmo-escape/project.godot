@@ -37,7 +37,7 @@ folder_colors={
 [global_group]
 
 pickable="An object that can be picked up."
-resetable=""
+resettable=""
 
 [input]
 
