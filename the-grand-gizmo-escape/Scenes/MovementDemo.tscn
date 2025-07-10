@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://crpdu3punicwa" path="res://Scenes/Door.tscn" id="2_7lgdx"]
 [ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player.tscn" id="2_johof"]
 [ext_resource type="PackedScene" uid="uid://bntuafboxip58" path="res://Scenes/Gizmo.tscn" id="3_6mka5"]
-[ext_resource type="PackedScene" uid="uid://wf6f5r3s7d0m" path="res://Scenes/lever.tscn" id="4_saock"]
+[ext_resource type="PackedScene" uid="uid://wf6f5r3s7d0m" path="res://Scenes/Lever.tscn" id="4_saock"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_johof"]
 size = Vector2(2050, 62)
@@ -99,9 +99,12 @@ scale = Vector2(0.5, 0.5)
 SPEED = 1000.0
 FRICTION = 20000.0
 
+[node name="HoldSocket" parent="Entities/Player" index="2"]
+visibility_layer = 4
+
 [node name="PickupController" parent="Entities/Player" index="3"]
 socket_path = NodePath("../HoldSocket")
-pickup_area_path = NodePath("../../Gizmo/PickupTrigger")
+pickup_area_path = NodePath("../PickupTrigger")
 
 [node name="Gizmo" parent="Entities" instance=ExtResource("3_6mka5")]
 position = Vector2(1913, -564)
