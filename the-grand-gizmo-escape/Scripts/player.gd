@@ -1,17 +1,17 @@
 extends CharacterBody2D
 
-@export var SPEED = 600.0
-@export var ACCELERATION = 1200.0
+@export var SPEED = 300.0
+@export var ACCELERATION = 5000.0
 @export var FRICTION = 1400.0
 
-@export var GRAVITY = 2000.0
-@export var FALL_GRAVITY = 3000.0
+@export var GRAVITY = 3000.0
+@export var FALL_GRAVITY = 4000.0
 @export var FAST_FALL_GRAVITY = 5000.0
 @export var WALL_GRAVITY = 25.0
 
-@export var JUMP_VELOCITY = -700.0
-@export var WALL_JUMP_VELOCITY = -800.0
-@export var WALL_JUMP_PUSHBACK = 700.0 # 300.0
+@export var JUMP_VELOCITY = -1200.0
+@export var WALL_JUMP_VELOCITY = -1000.0
+@export var WALL_JUMP_PUSHBACK = 1600.0 # 300.0
 
 @export var INPUT_BUFFER_PATIENCE = 0.1
 @export var COYOTE_TIME = 0.08

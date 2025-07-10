@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dee4wjjgienl0" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://bic1i6nv2tabo" path="res://Textures/orange.png" id="1_rpqav"]
-[ext_resource type="Script" uid="uid://cly5owfacpraq" path="res://Scripts/pickup_controller.gd" id="3_gntrk"]
+[ext_resource type="Script" path="res://Scripts/pickup_controller.gd" id="3_gntrk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qbkls"]
 
