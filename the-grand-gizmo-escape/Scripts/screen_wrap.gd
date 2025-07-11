@@ -15,14 +15,33 @@ func _on_in_camera_body_exited(body: Node2D) -> void:
 		if(wrapEnabled):
 			body.removeCloneFurthestFromCamera(global_position);
 	else:
-		body.set_collision_layer_value(1, false);
-		body.set_collision_layer_value(8, true);
+		if body is TileMap:
+			handleTiles(body, enableCollision)
+		else:
+			disableCollision(body)
+		
 
 func _on_in_camera_body_entered(body: Node2D) -> void:
 	if(body.name != "Player"):
-		body.set_collision_layer_value(1, true);
-		body.set_collision_layer_value(8, false);
+		if body is TileMap:
+			handleTiles(body, enableCollision)
+		else:
+			enableCollision(body)
 
+func disableCollision(body: Node2D):
+	body.set_collision_layer_value(1, false);
+	body.set_collision_layer_value(8, true);
+
+func enableCollision(body: Node2D):
+	body.set_collision_layer_value(1, true);
+	body.set_collision_layer_value(8, false);
+	
+func handleTiles(body: Node2D, fn: Callable):
+	var pos = body.get_coords_for_body_rid(body)
+	var tile_data = body.get_cell_tile_data(0, pos)
+	if tile_data:
+		var physics_layer = tile_data.get_custom_data("physics_layer")
+		fn.call(physics_layer)
 
 func _on_sidebox_body_exited(body: Node2D) -> void:
 	if(body.name == "Player"):

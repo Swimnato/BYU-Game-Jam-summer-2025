@@ -24,8 +24,11 @@ var coyote_jump_available : bool = true
 var A_Side = true;
 
 @onready var pickupControllers = [$A_Side/PickupController_A, $B_Side/PickupController_B];
-@onready var collisions = [$Collision_A, $Collision_B];
+@onready var collisions: Array[CollisionShape2D] = [$Collision_A, $Collision_B];
 @onready var sides = [$A_Side, $B_Side];
+
+const LAYER_SPIKES = 1 << 2
+const LAYER_GIZMO = 1 << 1
 
 var spawn_point: Vector2
 
@@ -90,7 +93,7 @@ func _physics_process(delta: float) -> void:
 	if(velocitySquared > TERMINAL_VELOCITY_SQUARED):
 		velocity = velocity * (TERMINAL_VELOCITY_SQUARED / velocitySquared);
 	
-	move_and_slide()
+	move_and_slide()  
 	
 	# reset level
 	if(Input.is_action_just_released("ResetLvl")):
