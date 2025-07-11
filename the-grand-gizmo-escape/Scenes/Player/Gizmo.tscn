@@ -42,6 +42,8 @@ shape = SubResource("RectangleShape2D_drug4")
 script = ExtResource("2_a1ylc")
 
 [node name="In_Camera" type="Area2D" parent="Screen_Wrap"]
+collision_layer = 129
+collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/In_Camera"]
 shape = SubResource("RectangleShape2D_b8ahd")
@@ -50,55 +52,57 @@ debug_color = Color(0.0690648, 0.632764, 0.426529, 0.42)
 [node name="Top Hitbox" type="Area2D" parent="Screen_Wrap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/Top Hitbox"]
-position = Vector2(0, -550)
+position = Vector2(0, -552)
 shape = SubResource("RectangleShape2D_g8cuf")
 
 [node name="Bottom Hitbox" type="Area2D" parent="Screen_Wrap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/Bottom Hitbox"]
-position = Vector2(0, 550)
+position = Vector2(0, 552)
 shape = SubResource("RectangleShape2D_g8cuf")
 
 [node name="Left Hitbox" type="Area2D" parent="Screen_Wrap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/Left Hitbox"]
-position = Vector2(-970, 0)
+position = Vector2(-972, 0)
 shape = SubResource("RectangleShape2D_g8nvh")
 
 [node name="Right Hitbox" type="Area2D" parent="Screen_Wrap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/Right Hitbox"]
-position = Vector2(970, 0)
+position = Vector2(972, 0)
 shape = SubResource("RectangleShape2D_g8nvh")
 
 [node name="BR Corner" type="StaticBody2D" parent="Screen_Wrap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/BR Corner"]
-position = Vector2(1010, 590)
+position = Vector2(1011, 591)
 shape = SubResource("RectangleShape2D_88dxh")
 debug_color = Color(0.501961, 0.580392, 0.101961, 0.419608)
 
 [node name="BL Corner" type="StaticBody2D" parent="Screen_Wrap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/BL Corner"]
-position = Vector2(-1010, 590)
+position = Vector2(-1011, 591)
 shape = SubResource("RectangleShape2D_88dxh")
 debug_color = Color(0.501961, 0.580392, 0.101961, 0.419608)
 
 [node name="TR Corner" type="StaticBody2D" parent="Screen_Wrap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/TR Corner"]
-position = Vector2(1010, -590)
+position = Vector2(1011, -591)
 shape = SubResource("RectangleShape2D_88dxh")
 debug_color = Color(0.502489, 0.579159, 0.102971, 0.42)
 
 [node name="TL Corner" type="StaticBody2D" parent="Screen_Wrap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/TL Corner"]
-position = Vector2(-1010, -590)
+position = Vector2(-1011, -591)
 shape = SubResource("RectangleShape2D_88dxh")
 debug_color = Color(0.501961, 0.580392, 0.101961, 0.419608)
 
 [node name="GizmoCam" type="Camera2D" parent="."]
+zoom = Vector2(0.66, 0.66)
 
+[connection signal="body_entered" from="Screen_Wrap/In_Camera" to="Screen_Wrap" method="_on_in_camera_body_entered"]
 [connection signal="body_exited" from="Screen_Wrap/In_Camera" to="Screen_Wrap" method="_on_in_camera_body_exited"]
