@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kuia"]
 size = Vector2(80, 80)
 
-[node name="Button" type="Node2D" groups=["resetable"]]
+[node name="Button" type="Node2D" groups=["resettable"]]
 script = ExtResource("1_7fh8x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,7 +14,7 @@ position = Vector2(-5.96046e-06, 5.96046e-06)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_fhcb0")
 
-[node name="Area2D" type="Area2D" parent="." groups=["resetable"]]
+[node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_6kuia")
