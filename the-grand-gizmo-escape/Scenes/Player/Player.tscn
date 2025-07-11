@@ -21,22 +21,6 @@ shape = SubResource("CapsuleShape2D_h54ih")
 [node name="Collision_B" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_h54ih")
 
-[node name="PickupTrigger_A" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupTrigger_A"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_ude3g")
-
-[node name="PickupTrigger_B" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupTrigger_B"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_ude3g")
-
 [node name="A_Side" type="Node2D" parent="."]
 
 [node name="Texture_A" type="Sprite2D" parent="A_Side"]
@@ -50,7 +34,15 @@ position = Vector2(71, 21)
 [node name="PickupController_A" type="Node" parent="A_Side"]
 script = ExtResource("3_gntrk")
 socket_path = NodePath("../HoldSocket_A")
-pickup_area_path = NodePath("../../PickupTrigger_A")
+pickup_area_path = NodePath("../PickupTrigger_A")
+
+[node name="PickupTrigger_A" type="Area2D" parent="A_Side"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="A_Side/PickupTrigger_A"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_ude3g")
 
 [node name="B_Side" type="Node2D" parent="."]
 
@@ -64,4 +56,12 @@ position = Vector2(71, 21)
 [node name="PickupController_B" type="Node" parent="B_Side"]
 script = ExtResource("3_gntrk")
 socket_path = NodePath("../HoldSocket_B")
-pickup_area_path = NodePath("../../PickupTrigger_B")
+pickup_area_path = NodePath("../PickupTrigger_B")
+
+[node name="PickupTrigger_B" type="Area2D" parent="B_Side"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="B_Side/PickupTrigger_B"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_ude3g")
