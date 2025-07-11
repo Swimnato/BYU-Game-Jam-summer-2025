@@ -82,6 +82,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * floor_damping)
 		
 	move_and_slide()
+	
+	# reset level
+	if(Input.is_action_just_released("ResetLvl")):
+		get_tree().reload_current_scene()
 
 
 func getGravity(input_dir : float = 0) -> float:
