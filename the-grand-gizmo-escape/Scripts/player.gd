@@ -16,23 +16,28 @@ extends CharacterBody2D
 @export var INPUT_BUFFER_PATIENCE = 0.1
 @export var COYOTE_TIME = 0.08
 
+@export var TERMINAL_VELOCITY_SQUARED = 7500 ** 2;
+
 var input_buffer : Timer
 var coyote_timer : Timer
 var coyote_jump_available : bool = true
+var A_Side = true;
 
-@onready var pickupControllers = [$PickupController_A, $PickupController_B];
+@onready var pickupControllers = [$A_Side/PickupController_A, $B_Side/PickupController_B];
 @onready var collisions = [$Collision_A, $Collision_B];
-@onready var textures = [$Texture_A, $Texture_B];
+@onready var sides = [$A_Side, $B_Side];
 
 var spawn_point: Vector2
 
 signal player_death
 
+#func _unhandled_input(event: InputEvent) -> void:
+	#if (event.is_action_pressed("Use")):
+		#addClone(Vector2(500,0));
+
 func _ready():
 	# Setup input buffer timer
-	pickupControllers[1].enabled = false;
-	collisions[1].disabled = true;
-	textures[1].visible = false;
+	disableSide(1);
 	input_buffer = Timer.new()
 	input_buffer.wait_time = INPUT_BUFFER_PATIENCE
 	input_buffer.one_shot = true
@@ -80,7 +85,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * floor_damping)
-		
+	
+	var velocitySquared = velocity.length_squared();
+	if(velocitySquared > TERMINAL_VELOCITY_SQUARED):
+		velocity = velocity * (TERMINAL_VELOCITY_SQUARED / velocitySquared);
+	
 	move_and_slide()
 	
 	# reset level
@@ -94,14 +103,13 @@ func getGravity(input_dir : float = 0) -> float:
 	if is_on_wall_only() and velocity.y > 0 and input_dir != 0:
 		return WALL_GRAVITY
 	return GRAVITY if (velocity.y < 0) else FALL_GRAVITY
-	
+
 
 func coyoteTimeout():
 	# reset coyote jump when you timeout
 	coyote_jump_available = false
-	
-	
-	
+
+
 func die():
 	self.position = spawn_point
 	player_death.emit()
@@ -109,3 +117,37 @@ func die():
 
 func setSpawnPoint(pos: Vector2):
 	spawn_point = pos
+
+func addClone(offset : Vector2):
+	if(!sides[0].visible or !sides[1].visible):
+		if(A_Side):
+			enableSide(1);
+			var newCoords = sides[0].global_position + offset;
+			sides[1].global_position = newCoords;
+			collisions[1].global_position = newCoords;
+		else:
+			enableSide(0);
+			var newCoords = sides[1].global_position + offset;
+			sides[0].global_position = newCoords;
+			collisions[0].global_position = newCoords;
+
+func disableSide(side: int):
+	pickupControllers[side].enabled = false;
+	collisions[side].set_deferred("disabled", true);
+	sides[side].visible = false;
+
+func enableSide(side: int):
+	pickupControllers[side].enabled = true;
+	collisions[side].set_deferred("disabled", false);
+	sides[side].visible = true;
+
+func removeCloneFurthestFromCamera(cameraPos : Vector2):
+	if(sides[0].visible and sides[1].visible):
+		var aToCam = (sides[0].global_position - cameraPos).length_squared();
+		var bToCam = (sides[1].global_position - cameraPos).length_squared();
+		if(aToCam > bToCam):
+			A_Side = false;
+			disableSide(0);
+		else:
+			A_Side = true;
+			disableSide(1);

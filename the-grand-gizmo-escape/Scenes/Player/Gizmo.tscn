@@ -108,3 +108,11 @@ zoom = Vector2(0.66, 0.66)
 
 [connection signal="body_entered" from="Screen_Wrap/In_Camera" to="Screen_Wrap" method="_on_in_camera_body_entered"]
 [connection signal="body_exited" from="Screen_Wrap/In_Camera" to="Screen_Wrap" method="_on_in_camera_body_exited"]
+[connection signal="body_entered" from="Screen_Wrap/Top Hitbox" to="Screen_Wrap" method="_on_top_hitbox_body_entered"]
+[connection signal="body_exited" from="Screen_Wrap/Top Hitbox" to="Screen_Wrap" method="_on_sidebox_body_exited"]
+[connection signal="body_entered" from="Screen_Wrap/Bottom Hitbox" to="Screen_Wrap" method="_on_bottom_hitbox_body_entered"]
+[connection signal="body_exited" from="Screen_Wrap/Bottom Hitbox" to="Screen_Wrap" method="_on_sidebox_body_exited"]
+[connection signal="body_entered" from="Screen_Wrap/Left Hitbox" to="Screen_Wrap" method="_on_left_hitbox_body_entered"]
+[connection signal="body_exited" from="Screen_Wrap/Left Hitbox" to="Screen_Wrap" method="_on_sidebox_body_exited"]
+[connection signal="body_entered" from="Screen_Wrap/Right Hitbox" to="Screen_Wrap" method="_on_right_hitbox_body_entered"]
+[connection signal="body_exited" from="Screen_Wrap/Right Hitbox" to="Screen_Wrap" method="_on_sidebox_body_exited"]
