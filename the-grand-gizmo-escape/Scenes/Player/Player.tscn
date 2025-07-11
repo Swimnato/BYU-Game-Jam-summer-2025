@@ -1,50 +1,60 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvgvaxq4l543v"]
+[gd_scene load_steps=6 format=3 uid="uid://bvgvaxq4l543v"]
 
 [ext_resource type="Script" uid="uid://dee4wjjgienl0" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://bic1i6nv2tabo" path="res://Textures/orange.png" id="1_rpqav"]
 [ext_resource type="Script" uid="uid://cly5owfacpraq" path="res://Scripts/pickup_controller.gd" id="3_gntrk"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qbkls"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbkls"]
-size = Vector2(200, 300)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqiw"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h54ih"]
 radius = 99.0
 height = 300.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ude3g"]
 size = Vector2(481, 509)
 
 [node name="Player" type="CharacterBody2D"]
 floor_snap_length = 7.1
 script = ExtResource("1_kyqiw")
 
-[node name="Player" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_qbkls")
-
-[node name="Texture" type="Sprite2D" parent="Player"]
+[node name="Texture_A" type="Sprite2D" parent="."]
 position = Vector2(0.375001, -0.125004)
 scale = Vector2(199.25, 298.25)
 texture = ExtResource("1_rpqav")
 
-[node name="Area2D" type="Area2D" parent="Player"]
-collision_layer = 3
+[node name="Texture_B" type="Sprite2D" parent="."]
+position = Vector2(75.0939, -37.4074)
+scale = Vector2(39700.6, 88953.1)
+texture = ExtResource("1_rpqav")
 
-[node name="Collision" type="CollisionShape2D" parent="Player/Area2D"]
-shape = SubResource("RectangleShape2D_qbkls")
+[node name="Collision_A" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_h54ih")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_kyqiw")
+[node name="Collision_B" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_h54ih")
 
-[node name="HoldSocket" type="Marker2D" parent="."]
+[node name="HoldSocket_A" type="Marker2D" parent="."]
 position = Vector2(71, 21)
 
-[node name="PickupController" type="Node" parent="."]
-script = ExtResource("3_gntrk")
+[node name="HoldSocket_B" type="Marker2D" parent="."]
+position = Vector2(71, 21)
 
-[node name="PickupTrigger" type="Area2D" parent="."]
+[node name="PickupTrigger_A" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupTrigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupTrigger_A"]
 position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_gntrk")
+shape = SubResource("RectangleShape2D_ude3g")
+
+[node name="PickupTrigger_B" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupTrigger_B"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_ude3g")
+
+[node name="PickupController_A" type="Node" parent="."]
+script = ExtResource("3_gntrk")
+socket_path = NodePath("../HoldSocket_A")
+pickup_area_path = NodePath("../PickupTrigger_A")
+
+[node name="PickupController_B" type="Node" parent="."]
+script = ExtResource("3_gntrk")
+socket_path = NodePath("../HoldSocket_B")
+pickup_area_path = NodePath("../PickupTrigger_B")

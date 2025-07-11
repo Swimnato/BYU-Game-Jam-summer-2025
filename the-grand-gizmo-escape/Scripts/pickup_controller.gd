@@ -11,7 +11,8 @@ class_name PickupController
 var held : RigidBody2D = null
 var candidates : Array[RigidBody2D] = []
 
-@onready var player : CharacterBody2D = get_parent()
+var enabled = true;
+
 @onready var socket : Node2D = get_node(socket_path)
 @onready var area	: Area2D = get_node(pickup_area_path)
 
@@ -23,7 +24,7 @@ func _ready() -> void:
 
 ## HANDLE INPUT
 func _unhandled_input(event: InputEvent) -> void:
-	if (event.is_action_pressed(pickup_action)):
+	if (event.is_action_pressed(pickup_action) and enabled):
 		drop() if held else tryPickup()
 
 ## PICKUP AREA SIGNALS
@@ -45,8 +46,8 @@ func tryPickup() -> void:
 	pickup(candidates[0])
 
 func compareDistance(a, b) -> bool:
-	return	a.global_position.distance_to(player.global_position) \
-		  < b.global_position.distance_to(player.global_position)
+	return	a.global_position.distance_to(area.global_position) \
+		  < b.global_position.distance_to(area.global_position)
 
 func pickup(gizmo : RigidBody2D) -> void:
 	held = gizmo

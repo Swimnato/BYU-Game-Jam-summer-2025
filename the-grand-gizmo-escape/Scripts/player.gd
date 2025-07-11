@@ -20,12 +20,19 @@ var input_buffer : Timer
 var coyote_timer : Timer
 var coyote_jump_available : bool = true
 
+@onready var pickupControllers = [$PickupController_A, $PickupController_B];
+@onready var collisions = [$Collision_A, $Collision_B];
+@onready var textures = [$Texture_A, $Texture_B];
+
 var spawn_point: Vector2
 
 signal player_death
 
 func _ready():
 	# Setup input buffer timer
+	pickupControllers[1].enabled = false;
+	collisions[1].disabled = true;
+	textures[1].visible = false;
 	input_buffer = Timer.new()
 	input_buffer.wait_time = INPUT_BUFFER_PATIENCE
 	input_buffer.one_shot = true
