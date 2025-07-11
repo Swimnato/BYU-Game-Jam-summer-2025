@@ -515,6 +515,8 @@ position = Vector2(1528, -136)
 [node name="Floor" type="Node2D" parent="Level"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/Floor"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor/StaticBody2D"]
 position = Vector2(1015, 21)
@@ -527,6 +529,8 @@ texture = ExtResource("1_y6kw6")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Level/Floor"]
 position = Vector2(0.02, 29.285)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor/StaticBody2D2"]
 position = Vector2(2476.48, -325.911)
@@ -541,6 +545,8 @@ texture = ExtResource("1_y6kw6")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Level/Floor"]
 position = Vector2(856, -363)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor/StaticBody2D3"]
 position = Vector2(8, 0)
@@ -553,6 +559,8 @@ texture = ExtResource("1_y6kw6")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Level/Floor"]
 position = Vector2(-664, -1280)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor/StaticBody2D4"]
 position = Vector2(232, -15)
@@ -566,6 +574,8 @@ texture = ExtResource("1_y6kw6")
 [node name="Walls" type="Node2D" parent="Level"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/Walls"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Walls/StaticBody2D"]
 position = Vector2(21.625, -688.625)
@@ -577,6 +587,8 @@ scale = Vector2(20.25, 1353.25)
 texture = ExtResource("1_y6kw6")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Level/Walls"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Walls/StaticBody2D2"]
 position = Vector2(335.125, -901.005)

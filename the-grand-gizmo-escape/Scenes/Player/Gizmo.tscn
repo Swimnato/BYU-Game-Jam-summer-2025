@@ -22,6 +22,8 @@ size = Vector2(20, 1080)
 size = Vector2(100, 100)
 
 [node name="Gizmo" type="RigidBody2D" groups=["pickable"]]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -20)

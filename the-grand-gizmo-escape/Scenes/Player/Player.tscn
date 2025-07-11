@@ -38,12 +38,16 @@ position = Vector2(71, 21)
 position = Vector2(71, 21)
 
 [node name="PickupTrigger_A" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupTrigger_A"]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_ude3g")
 
 [node name="PickupTrigger_B" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupTrigger_B"]
 position = Vector2(-0.5, -0.5)
