@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bgctqdkd8mh2"]
+[gd_scene load_steps=20 format=3 uid="uid://bgctqdkd8mh2"]
 
 [ext_resource type="Script" uid="uid://btlttwau8030" path="res://Scripts/level.gd" id="1_hjq4c"]
 [ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_y6kw6"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bs0ih0xn0g2jg" path="res://Scenes/Level Building/Hurtbox.tscn" id="8_fxb0a"]
 [ext_resource type="PackedScene" uid="uid://cdoia3ku05owb" path="res://Scenes/Level Building/SpawnPoint.tscn" id="9_7qwkw"]
 [ext_resource type="Texture2D" uid="uid://ntxq8fud5h5e" path="res://Textures/Tilemap_AutoTile_128 (4).png" id="9_co7dl"]
+[ext_resource type="PackedScene" uid="uid://oecuyrjjcgxa" path="res://Scenes/UI/Pause-Menu.tscn" id="12_hddqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_johof"]
 size = Vector2(2050, 62)
@@ -591,6 +592,9 @@ FRICTION = 20000.0
 
 [node name="Gizmo" parent="Entities" instance=ExtResource("5_7qwkw")]
 position = Vector2(1913, -564)
+
+[node name="Menu Controller" parent="." node_paths=PackedStringArray("gizmo") instance=ExtResource("12_hddqy")]
+gizmo = NodePath("../Entities/Gizmo")
 
 [editable path="Entities/Player"]
 [editable path="Entities/Gizmo"]
