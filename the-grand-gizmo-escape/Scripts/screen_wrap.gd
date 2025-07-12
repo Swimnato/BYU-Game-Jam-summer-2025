@@ -2,10 +2,13 @@ extends Node2D
 
 var wrapEnabled : bool = true;
 
+@export var gizmoCam : Camera2D;
+
 const scaleFactor : Vector2 = Vector2(1920.0, 1080.0); #This is the native resolution of the scene
 
 func _ready() -> void:
 	scale = (Vector2(get_viewport().size) / scaleFactor) / $"../GizmoCam".zoom;
+	GlobalVars.gizmoCamPTR = gizmoCam;
 
 func _process(delta: float) -> void:
 	rotation = - $"..".rotation;

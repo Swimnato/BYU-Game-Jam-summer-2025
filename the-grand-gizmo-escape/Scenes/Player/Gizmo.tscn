@@ -40,8 +40,9 @@ texture = ExtResource("1_drug4")
 position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_drug4")
 
-[node name="Screen_Wrap" type="Node2D" parent="."]
+[node name="Screen_Wrap" type="Node2D" parent="." node_paths=PackedStringArray("gizmoCam")]
 script = ExtResource("2_a1ylc")
+gizmoCam = NodePath("../GizmoCam")
 
 [node name="In_Camera" type="Area2D" parent="Screen_Wrap"]
 collision_layer = 129

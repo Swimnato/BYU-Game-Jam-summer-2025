@@ -30,12 +30,10 @@ func _unhandled_input(event: InputEvent) -> void:
 ## PICKUP AREA SIGNALS
 func onBodyEntered(body: Node) -> void:
 	if (body is RigidBody2D and body.is_in_group('pickable')): # TODO: make group 'pickable'
-		print("added body to pickable")
 		candidates.append(body)
 
 func onBodyExited(body: Node) -> void:
 	if (body is RigidBody2D):
-		print("removed body to pickable")
 		candidates.erase(body)
 
 ## PICK-UP AND DROP LOGIC
