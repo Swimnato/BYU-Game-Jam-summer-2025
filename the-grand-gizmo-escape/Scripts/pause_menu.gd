@@ -11,6 +11,7 @@ signal unpause_game;
 
 func _ready() -> void:
 	visible = false;
+	menuCam.enabled = false
 
 func _process(delta: float) -> void:
 	if(GlobalVars.inPauseMenu):
