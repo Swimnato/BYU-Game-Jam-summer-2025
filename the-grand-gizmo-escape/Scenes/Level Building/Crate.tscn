@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cegpbg7vdfok1"]
 
 [ext_resource type="Script" uid="uid://bks4w0rjksm3s" path="res://Scripts/crate.gd" id="1_qqa4y"]
-[ext_resource type="Texture2D" uid="uid://cxg7i0o8q46o2" path="res://Textures/green.png" id="1_u7jy6"]
+[ext_resource type="Texture2D" uid="uid://xukunii4bjet" path="res://Textures/crate.PNG" id="2_qqa4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1ylc"]
-size = Vector2(56, 57)
+size = Vector2(248, 237)
 
 [node name="Crate" type="RigidBody2D" groups=["pickable", "resettable"]]
 collision_layer = 2
@@ -12,10 +12,10 @@ collision_mask = 2
 script = ExtResource("1_qqa4y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10, -10.5)
+position = Vector2(5, -6)
 shape = SubResource("RectangleShape2D_a1ylc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9.5, -10.5)
-scale = Vector2(57, 57)
-texture = ExtResource("1_u7jy6")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qqa4y")

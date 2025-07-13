@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ntxq8fud5h5e"
-path="res://.godot/imported/Tilemap_AutoTile_128 (4).png-d2a3986319606d15bfaad5430c03375b.ctex"
+uid="uid://xukunii4bjet"
+path="res://.godot/imported/crate.PNG-d0c3f3f09d09e52ae04acbaab54699ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tilemap_AutoTile_128 (4).png"
-dest_files=["res://.godot/imported/Tilemap_AutoTile_128 (4).png-d2a3986319606d15bfaad5430c03375b.ctex"]
+source_file="res://Textures/crate.PNG"
+dest_files=["res://.godot/imported/crate.PNG-d0c3f3f09d09e52ae04acbaab54699ae.ctex"]
 
 [params]
 
