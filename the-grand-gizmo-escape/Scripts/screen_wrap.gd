@@ -41,15 +41,10 @@ func _draw() -> void:
 		processSideBlocking(SIDES.DOWN);
 		
 func _on_in_camera_body_exited(body: Node2D) -> void:
-	if(body.name == "Player"):
-		if(wrapEnabled):
-			body.removeCloneFurthestFromCamera(global_position);
-	else:
-		if body is TileMap:
-			handleTiles(body, enableCollision)
-		else:
-			disableCollision(body)
-		
+	if body is TileMap:
+		handleTiles(body, disableCollision)
+	elif(!body.is_in_group("Collision_Off_Screen_Enabled") and body.name != "Player"):
+		disableCollision(body)
 
 func _on_in_camera_body_entered(body: Node2D) -> void:
 	if(body.name != "Player"):

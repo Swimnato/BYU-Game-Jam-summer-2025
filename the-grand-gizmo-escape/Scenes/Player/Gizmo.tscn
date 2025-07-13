@@ -80,31 +80,31 @@ shape = SubResource("RectangleShape2D_g8nvh")
 position = Vector2(972, 0)
 shape = SubResource("RectangleShape2D_g8nvh")
 
-[node name="BR Corner" type="StaticBody2D" parent="Screen_Wrap"]
+[node name="BR Corner" type="StaticBody2D" parent="Screen_Wrap" groups=["Collision_Off_Screen_Enabled"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/BR Corner"]
-position = Vector2(1011, 591)
+position = Vector2(1008, 588)
 shape = SubResource("RectangleShape2D_88dxh")
 debug_color = Color(0.501961, 0.580392, 0.101961, 0.419608)
 
-[node name="BL Corner" type="StaticBody2D" parent="Screen_Wrap"]
+[node name="BL Corner" type="StaticBody2D" parent="Screen_Wrap" groups=["Collision_Off_Screen_Enabled"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/BL Corner"]
-position = Vector2(-1011, 591)
+position = Vector2(-1008, 588)
 shape = SubResource("RectangleShape2D_88dxh")
 debug_color = Color(0.501961, 0.580392, 0.101961, 0.419608)
 
-[node name="TR Corner" type="StaticBody2D" parent="Screen_Wrap"]
+[node name="TR Corner" type="StaticBody2D" parent="Screen_Wrap" groups=["Collision_Off_Screen_Enabled"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/TR Corner"]
-position = Vector2(1011, -591)
+position = Vector2(1008, -588)
 shape = SubResource("RectangleShape2D_88dxh")
 debug_color = Color(0.502489, 0.579159, 0.102971, 0.42)
 
-[node name="TL Corner" type="StaticBody2D" parent="Screen_Wrap"]
+[node name="TL Corner" type="StaticBody2D" parent="Screen_Wrap" groups=["Collision_Off_Screen_Enabled"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen_Wrap/TL Corner"]
-position = Vector2(-1011, -591)
+position = Vector2(-1008, -588)
 shape = SubResource("RectangleShape2D_88dxh")
 debug_color = Color(0.501961, 0.580392, 0.101961, 0.419608)
 

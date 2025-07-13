@@ -40,6 +40,7 @@ folder_colors={
 
 pickable="An object that can be picked up."
 resettable=""
+Collision_Off_Screen_Enabled=""
 
 [input]
 
