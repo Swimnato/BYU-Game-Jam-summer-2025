@@ -215,9 +215,6 @@ func processSideBlocking(side : SIDES):
 	solidAreas = checkForCollisionsBetweenSides(startPoint, endPoint);
 	for child : CollisionShape2D in screenColiderObject.get_children():
 		var stillExists = false;
-		if(side == SIDES.UP):
-			print(child);
-			print(len(solidAreas));
 		if(solidAreas.is_empty()):
 			child.queue_free();
 		for area : Vector2 in solidAreas:
