@@ -47,19 +47,20 @@ func compareDistance(a, b) -> bool:
 	return	a.global_position.distance_to(area.global_position) \
 		  < b.global_position.distance_to(area.global_position)
 
-func pickup(gizmo : RigidBody2D) -> void:
-	held = gizmo
+func pickup(item : RigidBody2D) -> void:
+	held = item
 	
 	# disable physics for gizmo
-	gizmo.freeze = true
-	gizmo.freeze_mode = RigidBody2D.FREEZE_MODE_STATIC # TODO: correct mode?
-	gizmo.sleeping = true
-	gizmo.linear_velocity = Vector2.ZERO
-	gizmo.angular_velocity = 0.0
+	item.freeze = true
+	item.freeze_mode = RigidBody2D.FREEZE_MODE_STATIC # TODO: correct mode?
+	item.sleeping = true
+	item.linear_velocity = Vector2.ZERO
+	item.angular_velocity = 0.0
 	
-	gizmo.get_node("Screen_Wrap").wrapEnabled = false;
+	if item.name == "Gizmo":
+		item.get_node("Screen_Wrap").wrapEnabled = false;
 	
-	for child in gizmo.get_children():
+	for child in item.get_children():
 		if (child is CollisionShape2D):
 			child.disabled = true
 			
@@ -67,32 +68,33 @@ func pickup(gizmo : RigidBody2D) -> void:
 	# "tween" is a word I just learned. don't know how I feel about it
 	var tween := create_tween()
 	tween.tween_property(
-		gizmo, "global_position", socket.global_position, tween_time
+		item, "global_position", socket.global_position, tween_time
 	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
-	tween.tween_callback(Callable(self, "attachToSocket").bind(gizmo))
+	tween.tween_callback(Callable(self, "attachToSocket").bind(item))
 
 func attachToSocket(gizmo: RigidBody2D) -> void:
 	gizmo.reparent(socket)
 	gizmo.position = Vector2.ZERO # aligns gizmo exactly with the socket
 
 func drop() -> void:
-	var gizmo := held
+	var item := held
 	held = null
-	if not gizmo:
+	if not item:
 		return
 	
-	gizmo.reparent(get_tree().current_scene) # release the gizmo back into the wild
-	gizmo.global_rotation = 0
+	item.reparent(get_tree().current_scene) # release the gizmo back into the wild
+	item.global_rotation = 0
 	
 	# enable physics for gizmo
-	gizmo.freeze = false
-	gizmo.sleeping = false
+	item.freeze = false
+	item.sleeping = false
 	
-	for child in gizmo.get_children():
+	for child in item.get_children():
 		if (child is CollisionShape2D):
 			child.disabled = false
 	
-	gizmo.apply_impulse(Vector2.ZERO, Vector2.DOWN * 400)
+	item.apply_impulse(Vector2.ZERO, Vector2.DOWN * 400)
 	
-	gizmo.get_node("Screen_Wrap").wrapEnabled = true;
+	if item.name == "Gizmo":
+		item.get_node("Screen_Wrap").wrapEnabled = true;
