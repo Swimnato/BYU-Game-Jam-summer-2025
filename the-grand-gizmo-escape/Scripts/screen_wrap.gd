@@ -213,10 +213,13 @@ func processSideBlocking(side : SIDES):
 		screenColiderObject = screenWrapBlockerDown;
 	
 	solidAreas = checkForCollisionsBetweenSides(startPoint, endPoint);
-	if(len(solidAreas) == 0):
-		return;
 	for child : CollisionShape2D in screenColiderObject.get_children():
 		var stillExists = false;
+		if(side == SIDES.UP):
+			print(child);
+			print(len(solidAreas));
+		if(solidAreas.is_empty()):
+			child.queue_free();
 		for area : Vector2 in solidAreas:
 			var rectSizeAndPos = findPosAndSizeOfBlocking(side, area);
 			var rectPos : Vector2 = rectSizeAndPos[0];
@@ -227,6 +230,8 @@ func processSideBlocking(side : SIDES):
 				break;
 		if(!stillExists):
 			child.queue_free();
+	if(solidAreas.is_empty()):
+		return;
 	for area in solidAreas:
 		var rectSizeAndPos = findPosAndSizeOfBlocking(side, area);
 		var rectPos : Vector2 = rectSizeAndPos[0];
