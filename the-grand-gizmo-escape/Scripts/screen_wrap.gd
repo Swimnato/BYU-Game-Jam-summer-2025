@@ -14,15 +14,14 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	rotation = - $"..".rotation;
-	solidAreas = checkForCollisionsBetweenSides(global_position + scaleFactor/2 * Vector2(1,-1), global_position + scaleFactor/2 );
 	queue_redraw();
 
 func _draw() -> void:
+	solidAreas = checkForCollisionsBetweenSides(global_position + scaleFactor/2 * Vector2(1,-1), global_position + scaleFactor/2 );
 	if(len(solidAreas) == 0):
 		return;
 	for area in solidAreas:
-		print(area); 
-		draw_rect(Rect2(Vector2(scaleFactor.x/2 - 10, to_local(area).y),Vector2(scaleFactor.x/2 + 10, to_local(Vector2(0, area.x)).y)), Color.RED);
+		draw_rect(Rect2(Vector2(scaleFactor.x/2-10, (area.x + area.y)/2 - abs(area.x - area.y)/2),Vector2(20,abs(area.x - area.y))),Color.RED);
 
 func _on_in_camera_body_exited(body: Node2D) -> void:
 	if(body.name == "Player"):
@@ -98,11 +97,13 @@ func checkForCollisionsBetweenSides(point_a : Vector2, point_b : Vector2):
 			searchingForObjects = false;
 		else:
 			bodiesFound.append(resultsFromCast.rid);
+			draw_circle(to_local(resultsFromCast.position), 20, Color.AQUA);
 			if(point_a.x == point_b.x):
-				returnVal.append(Vector2(resultsFromCast.position.y, 0));
+				returnVal.append(Vector2(to_local(resultsFromCast.position).y, 0));
 			elif(point_a.y == point_b.y):
-				returnVal.append(Vector2(resultsFromCast.position.x, 0));
+				returnVal.append(Vector2(to_local(resultsFromCast.position).x, 0));
 	
+	searchingForObjects = true;
 	#check from the opposite direction (if you start a raycast in the middle of an object it won't detect it)
 	while(searchingForObjects):
 		var query = PhysicsRayQueryParameters2D.create(point_b, point_a);
@@ -112,29 +113,31 @@ func checkForCollisionsBetweenSides(point_a : Vector2, point_b : Vector2):
 			searchingForObjects = false;
 		else:
 			bodiesFound.append(resultsFromCast.rid);
+			draw_circle(to_local(resultsFromCast.position), 15, Color.MEDIUM_SEA_GREEN);
 			if(point_a.x == point_b.x):
-				returnVal.append(Vector2(point_a.y, resultsFromCast.position.y));
+				returnVal.append(Vector2(to_local(point_a).y, to_local(resultsFromCast.position).y));
 			elif(point_a.y == point_b.y):
-				returnVal.append(Vector2(point_a.x, resultsFromCast.position.x));
+				returnVal.append(Vector2(to_local(point_a).x, to_local(resultsFromCast.position).x));
 	
 	#find top coords of first found bodies
 	for body in range(len(bodiesFound)):
 		if(returnVal[body].y == 0):
 			var exclusionList = bodiesFound.duplicate(true);
-			exclusionList.remove_at(body);
+			exclusionList.erase(bodiesFound[body]);
 			var query = PhysicsRayQueryParameters2D.create(point_b, point_a);
 			query.exclude = exclusionList;
 			var resultsFromCast = space.intersect_ray(query);
 			if(resultsFromCast):
+				draw_circle(to_local(resultsFromCast.position), 10, Color.PURPLE);
 				if(point_a.x == point_b.x):
-					returnVal[body].y = resultsFromCast.position.y;
+					returnVal[body].y = to_local(resultsFromCast.position).y;
 				elif(point_a.y == point_b.y):
-					returnVal[body].y = resultsFromCast.position.x;
+					returnVal[body].y = to_local(resultsFromCast.position).x;
 			else:
 				if(point_a.x == point_b.x):
-					returnVal[body].y = point_b.y;
+					returnVal[body].y = to_local(point_b).y;
 				elif(point_a.y == point_b.y):
-					returnVal[body].y = point_b.x;
+					returnVal[body].y = to_local(point_b).x;
 	
 	return returnVal;
 
