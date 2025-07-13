@@ -1,3 +1,49 @@
-[gd_scene format=3 uid="uid://b47bdlwsed0gw"]
+[gd_scene load_steps=3 format=3 uid="uid://b47bdlwsed0gw"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" uid="uid://c6juev68sc7b7" path="res://Scripts/main_scene.gd" id="1_idj7w"]
+[ext_resource type="Texture2D" uid="uid://bgruuw5yltofl" path="res://Assets/Building_not_blown_up.png" id="1_r150o"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_idj7w")
+
+[node name="Prision Building" type="Sprite2D" parent="."]
+texture = ExtResource("1_r150o")
+
+[node name="Main_Menu" type="Node2D" parent="."]
+
+[node name="Menu_Buttons" type="Control" parent="Main_Menu"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Play Button" type="Button" parent="Main_Menu/Menu_Buttons"]
+layout_mode = 0
+offset_left = -277.0
+offset_top = -215.0
+offset_right = 265.0
+offset_bottom = -1.0
+text = "Play"
+
+[node name="Credits" type="Button" parent="Main_Menu/Menu_Buttons"]
+layout_mode = 0
+offset_left = -273.0
+offset_top = 56.0
+offset_right = 269.0
+offset_bottom = 270.0
+text = "Credits"
+
+[node name="Quit" type="Button" parent="Main_Menu/Menu_Buttons"]
+layout_mode = 0
+offset_left = -268.0
+offset_top = 317.0
+offset_right = 274.0
+offset_bottom = 531.0
+text = "Quit"
+
+[node name="Main_Menu_Cam" type="Camera2D" parent="Main_Menu"]
+zoom = Vector2(0.667, 0.667)
+
+[connection signal="pressed" from="Main_Menu/Menu_Buttons/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Main_Menu/Menu_Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Main_Menu/Menu_Buttons/Quit" to="." method="_on_quit_pressed"]
