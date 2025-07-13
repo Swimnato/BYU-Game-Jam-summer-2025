@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var TextureAndCollision = preload("res://Scenes/Player/Player_Texture_And_Collision.tscn");
 
 func _ready() -> void:
 	var mainClone = TextureAndCollision.instantiate();

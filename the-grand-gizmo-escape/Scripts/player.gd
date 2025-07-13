@@ -40,6 +40,7 @@ signal player_death
 
 func _ready():
 	# Setup input buffer timer
+	GlobalVars.playerPTR = self;
 	disableSide(1);
 	input_buffer = Timer.new()
 	input_buffer.wait_time = INPUT_BUFFER_PATIENCE
