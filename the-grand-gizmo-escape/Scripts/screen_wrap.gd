@@ -11,10 +11,12 @@ const scaleFactor : Vector2 = Vector2(1920.0, 1080.0); #This is the native resol
 @export var screenWrapBlockerUp : StaticBody2D;
 @export var screenWrapBlockerDown : StaticBody2D;
 
+@export var debugRaycastingEdges : bool = false;
+
 
 enum SIDES {LEFT, RIGHT, UP, DOWN};
 
-@export var sideBlockSize = 2;
+@export var sideBlockSize = 1;
 
 func _ready() -> void:
 	scale = (Vector2(get_viewport().size) / scaleFactor) / $"../GizmoCam".zoom;
@@ -22,11 +24,21 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	rotation = - $"..".rotation;
-	queue_redraw();
+	if(debugRaycastingEdges):
+		queue_redraw();
+	else:
+		processSideBlocking(SIDES.LEFT);
+		processSideBlocking(SIDES.RIGHT);
+		processSideBlocking(SIDES.UP);
+		processSideBlocking(SIDES.DOWN);
+
 
 func _draw() -> void:
-	processSideBlocking(SIDES.LEFT);
-	processSideBlocking(SIDES.RIGHT);
+	if(debugRaycastingEdges):
+		processSideBlocking(SIDES.LEFT);
+		processSideBlocking(SIDES.RIGHT);
+		processSideBlocking(SIDES.UP);
+		processSideBlocking(SIDES.DOWN);
 		
 func _on_in_camera_body_exited(body: Node2D) -> void:
 	if(body.name == "Player"):
@@ -109,7 +121,8 @@ func checkForCollisionsBetweenSides(point_a : Vector2, point_b : Vector2):
 			searchingForObjects = false;
 		else:
 			bodiesFound.append(resultsFromCast.rid);
-			draw_circle(to_local(resultsFromCast.position), 20, Color.AQUA);
+			if(debugRaycastingEdges):
+				draw_circle(to_local(resultsFromCast.position), 20, Color.AQUA);
 			if(point_a.x == point_b.x):
 				returnVal.append(Vector2(to_local(resultsFromCast.position).y, -999999));
 			elif(point_a.y == point_b.y):
@@ -125,7 +138,8 @@ func checkForCollisionsBetweenSides(point_a : Vector2, point_b : Vector2):
 			searchingForObjects = false;
 		else:
 			bodiesFound.append(resultsFromCast.rid);
-			draw_circle(to_local(resultsFromCast.position), 15, Color.MEDIUM_SEA_GREEN);
+			if(debugRaycastingEdges):
+				draw_circle(to_local(resultsFromCast.position), 15, Color.MEDIUM_SEA_GREEN);
 			if(point_a.x == point_b.x):
 				returnVal.append(Vector2(to_local(point_a).y, to_local(resultsFromCast.position).y));
 			elif(point_a.y == point_b.y):
@@ -134,6 +148,9 @@ func checkForCollisionsBetweenSides(point_a : Vector2, point_b : Vector2):
 	#find top coords of first found bodies
 	for body in range(len(bodiesFound)):
 		if(body + 1 > len(returnVal)):
+			#There is a weird crashing bug where bodies found has objects but the returnVal is empty, 
+			#it is only usually on one single frame though so I just put this so that it wouldn't 
+			#crash and it will re-calculate everything on the next frame.
 			break;
 		if(returnVal[body].y == -999999):
 			var exclusionList = bodiesFound.duplicate(true);
@@ -142,7 +159,8 @@ func checkForCollisionsBetweenSides(point_a : Vector2, point_b : Vector2):
 			query.exclude = exclusionList + IgnoredObjects;
 			var resultsFromCast = space.intersect_ray(query);
 			if(resultsFromCast):
-				draw_circle(to_local(resultsFromCast.position), 10, Color.PURPLE);
+				if(debugRaycastingEdges):
+					draw_circle(to_local(resultsFromCast.position), 10, Color.PURPLE);
 				if(point_a.x == point_b.x):
 					returnVal[body].y = to_local(resultsFromCast.position).y;
 				elif(point_a.y == point_b.y):
@@ -163,6 +181,12 @@ func findPosAndSizeOfBlocking(side: SIDES, minMax: Vector2):
 	elif(side == SIDES.RIGHT):
 		returnVal.append(Vector2(scaleFactor.x/2 - sideBlockSize/2, (minMax.x + minMax.y)/2));
 		returnVal.append(Vector2(sideBlockSize,abs(minMax.x - minMax.y)-1));
+	elif(side == SIDES.UP):
+		returnVal.append(Vector2((minMax.x + minMax.y)/2, -scaleFactor.y/2 + sideBlockSize/2));
+		returnVal.append(Vector2(abs(minMax.x - minMax.y)-1,sideBlockSize));
+	elif(side == SIDES.DOWN):
+		returnVal.append(Vector2((minMax.x + minMax.y)/2, scaleFactor.y/2 - sideBlockSize/2));
+		returnVal.append(Vector2(abs(minMax.x - minMax.y)-1,sideBlockSize));
 	return returnVal;
 
 func processSideBlocking(side : SIDES):
@@ -179,6 +203,14 @@ func processSideBlocking(side : SIDES):
 		startPoint = to_global(scaleFactor/2 * Vector2(-1,-1));
 		endPoint = to_global(scaleFactor/2 * Vector2(-1,1));
 		screenColiderObject = screenWrapBlockerRight;
+	elif(side == SIDES.UP):
+		startPoint = to_global(scaleFactor/2 * Vector2(-1,1));
+		endPoint = to_global(scaleFactor/2 * Vector2(1,1));
+		screenColiderObject = screenWrapBlockerUp;
+	elif(side == SIDES.DOWN):
+		startPoint = to_global(scaleFactor/2 * Vector2(-1,-1));
+		endPoint = to_global(scaleFactor/2 * Vector2(1,-1));
+		screenColiderObject = screenWrapBlockerDown;
 	
 	solidAreas = checkForCollisionsBetweenSides(startPoint, endPoint);
 	if(len(solidAreas) == 0):
