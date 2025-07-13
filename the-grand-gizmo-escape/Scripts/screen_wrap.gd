@@ -22,7 +22,7 @@ func _ready() -> void:
 	scale = (Vector2(get_viewport().size) / scaleFactor) / $"../GizmoCam".zoom;
 	GlobalVars.gizmoCamPTR = gizmoCam;
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	rotation = - $"..".rotation;
 	if(debugRaycastingEdges):
 		queue_redraw();
@@ -171,16 +171,16 @@ func checkForCollisionsBetweenSides(point_a : Vector2, point_b : Vector2):
 func findPosAndSizeOfBlocking(side: SIDES, minMax: Vector2):
 	var returnVal : Array[Vector2];
 	if(side == SIDES.LEFT):
-		returnVal.append(Vector2(-scaleFactor.x/2 + sideBlockSize/2, (minMax.x + minMax.y)/2));
+		returnVal.append(Vector2(-scaleFactor.x/2.0 + sideBlockSize/2.0, (minMax.x + minMax.y)/2.0));
 		returnVal.append(Vector2(sideBlockSize,abs(minMax.x - minMax.y)-1));
 	elif(side == SIDES.RIGHT):
-		returnVal.append(Vector2(scaleFactor.x/2 - sideBlockSize/2, (minMax.x + minMax.y)/2));
+		returnVal.append(Vector2(scaleFactor.x/2.0 - sideBlockSize/2.0, (minMax.x + minMax.y)/2.0));
 		returnVal.append(Vector2(sideBlockSize,abs(minMax.x - minMax.y)-1));
 	elif(side == SIDES.UP):
-		returnVal.append(Vector2((minMax.x + minMax.y)/2, -scaleFactor.y/2 + sideBlockSize/2));
+		returnVal.append(Vector2((minMax.x + minMax.y)/2.0, -scaleFactor.y/2.0 + sideBlockSize/2.0));
 		returnVal.append(Vector2(abs(minMax.x - minMax.y)-1,sideBlockSize));
 	elif(side == SIDES.DOWN):
-		returnVal.append(Vector2((minMax.x + minMax.y)/2, scaleFactor.y/2 - sideBlockSize/2));
+		returnVal.append(Vector2((minMax.x + minMax.y)/2.0, scaleFactor.y/2.0 - sideBlockSize/2.0));
 		returnVal.append(Vector2(abs(minMax.x - minMax.y)-1,sideBlockSize));
 	return returnVal;
 
@@ -229,7 +229,7 @@ func processSideBlocking(side : SIDES):
 		var rectPos : Vector2 = rectSizeAndPos[0];
 		var rectSize : Vector2 = rectSizeAndPos[1];
 		var shape : RectangleShape2D = RectangleShape2D.new();
-		shape.set_size(rectSize);
+		shape.set_size(abs(rectSize));
 		var newCollider : CollisionShape2D = CollisionShape2D.new()
 		newCollider.position = rectPos;
 		newCollider.shape = shape

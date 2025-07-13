@@ -13,7 +13,7 @@ func _ready() -> void:
 	visible = false;
 	menuCam.enabled = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(GlobalVars.inPauseMenu):
 		global_position = gizmo.global_position;
 

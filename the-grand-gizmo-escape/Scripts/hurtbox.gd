@@ -12,8 +12,8 @@ class_name Hurtbox
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
+	#pass
 
 func connectEntered(fn: Callable) -> void:
 	area.body_entered.connect(fn)

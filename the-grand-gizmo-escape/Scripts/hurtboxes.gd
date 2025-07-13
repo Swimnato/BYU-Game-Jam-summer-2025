@@ -9,7 +9,8 @@ func _ready() -> void:
 		box.connectEntered(onBodyEntered)
 
 func onBodyEntered(body: Node):
-	player.die()
+	if body.name == "Player":
+		player.die()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
