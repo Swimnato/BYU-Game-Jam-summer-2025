@@ -25,7 +25,7 @@ var menuAppeared : bool = false;
 var mainMenuEndRot : float;
 @export var mainMenuBegPos : Vector2 = Vector2(30,20);
 var mainMenuEndPos : Vector2;
-@export var mainMenuBegScale: Vector2 = Vector2(.1,.1);
+@export var mainMenuBegScale: Vector2 = Vector2(.01,.01);
 var mainMenuEndScale : Vector2;
 
 func _ready() -> void:
@@ -41,15 +41,6 @@ func _process(delta: float) -> void:
 		if(countup > startToRasiatedDelay and !bldngRasiated):
 			bldngRasiated = true;
 			prisionBuildingSprite.texture = postExplodedTexture;
-			menuButtons.visible = true;
-			menuButtons.rotation = mainMenuBegRot;
-			menuButtons.position = mainMenuBegPos;
-			menuButtons.scale = mainMenuBegScale;
-			var tween : Tween = self.create_tween()
-			tween.set_parallel()
-			tween.tween_property(menuButtons, "position", mainMenuEndPos, startToMenuDelay);
-			tween.tween_property(menuButtons, "rotation", mainMenuEndRot, startToMenuDelay);
-			tween.tween_property(menuButtons, "scale", mainMenuEndScale, startToMenuDelay);
 		elif(countup >= startToMenuDelay and !menuAppeared):
 			menuAppeared = true;
 			playBtn.grab_focus();
@@ -64,22 +55,34 @@ func _unhandled_input(event: InputEvent) -> void:
 		prisionBuildingSprite.texture = explodedTexture;
 		explosionHappened = true;
 		blowupTxt.visible = false;
+		menuButtons.visible = true;
+		menuButtons.rotation = mainMenuBegRot;
+		menuButtons.position = mainMenuBegPos;
+		menuButtons.scale = mainMenuBegScale;
+		var tween : Tween = self.create_tween()
+		tween.set_parallel()
+		tween.tween_property(menuButtons, "position", mainMenuEndPos, startToMenuDelay);
+		tween.tween_property(menuButtons, "rotation", mainMenuEndRot, startToMenuDelay);
+		tween.tween_property(menuButtons, "scale", mainMenuEndScale, startToMenuDelay);
 
 func _on_play_button_pressed() -> void:
-	menuButtons.visible = false;
-	prisionBuildingSprite.visible = false;
-	var mainScn = gameScn.instantiate();
-	menuCam.enabled = false;
-	add_child(mainScn);
+	if(menuAppeared):
+		menuButtons.visible = false;
+		prisionBuildingSprite.visible = false;
+		var mainScn = gameScn.instantiate();
+		menuCam.enabled = false;
+		add_child(mainScn);
 
 
 func _on_credits_pressed() -> void:
-	menuButtons.visible = false;
-	prisionBuildingSprite.visible = false;
-	var scn = creditsScn.instantiate();
-	menuCam.enabled = false;
-	add_child(scn);
+	if(menuAppeared):
+		menuButtons.visible = false;
+		prisionBuildingSprite.visible = false;
+		var scn = creditsScn.instantiate();
+		menuCam.enabled = false;
+		add_child(scn);
 
 
 func _on_quit_pressed() -> void:
-	get_tree().quit();
+	if(menuAppeared):
+		get_tree().quit();
