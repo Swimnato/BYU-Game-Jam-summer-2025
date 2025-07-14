@@ -1,17 +1,17 @@
 extends CharacterBody2D
 
-@export var SPEED = 300.0
-@export var ACCELERATION = 5000.0
-@export var FRICTION = 1400.0
+@export var SPEED = 1500.0
+@export var ACCELERATION = 8500.0
+@export var FRICTION = 4500.0
 
-@export var GRAVITY = 3000.0
-@export var FALL_GRAVITY = 4000.0
-@export var FAST_FALL_GRAVITY = 5000.0
-@export var WALL_GRAVITY = 25.0
+@export var GRAVITY = 6000.0
+@export var FALL_GRAVITY = 7500.0
+@export var FAST_FALL_GRAVITY = 9000.0
+@export var WALL_GRAVITY = 50.0
 
-@export var JUMP_VELOCITY = -1200.0
-@export var WALL_JUMP_VELOCITY = -1000.0
-@export var WALL_JUMP_PUSHBACK = 1600.0 # 300.0
+@export var JUMP_VELOCITY = -3000.0
+@export var WALL_JUMP_VELOCITY = -3000.0
+@export var WALL_JUMP_PUSHBACK = 3000.0 # 300.0
 
 @export var INPUT_BUFFER_PATIENCE = 0.1
 @export var COYOTE_TIME = 0.08
@@ -33,6 +33,8 @@ const LAYER_GIZMO = 1 << 1
 var spawn_point: Vector2
 
 signal player_death
+
+@onready var sprites = [$A_Side/Texture_A, $B_Side/Texture_B]
 
 #func _unhandled_input(event: InputEvent) -> void:
 	#if (event.is_action_pressed("Use")):
@@ -95,6 +97,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity * (TERMINAL_VELOCITY_SQUARED / velocitySquared);
 	
 	move_and_slide();
+	handleAnimations(velocity, !is_on_floor())
 	
 	for object in range(get_slide_collision_count()):
 		var collider = get_slide_collision(object).get_collider();
@@ -167,3 +170,7 @@ func removeCloneFurthestFromCamera(cameraPos : Vector2):
 		else:
 			A_Side = true;
 			disableSide(1);
+
+func handleAnimations(velocity: Vector2, jumping: bool):
+	for sprite in sprites:
+		sprite.handleAnimation(velocity, jumping)
