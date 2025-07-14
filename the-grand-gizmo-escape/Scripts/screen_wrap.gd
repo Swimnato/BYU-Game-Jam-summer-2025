@@ -76,22 +76,22 @@ func _on_sidebox_body_exited(body: Node2D) -> void:
 
 func _on_top_hitbox_body_entered(body: Node2D) -> void:
 	if(body.name == "Player"):
-		body.addClone(scaleFactor * Vector2(0,1) + Vector2(0,1));
+		body.addClone(scale * scaleFactor * Vector2(0,1) + Vector2(0,1));
 
 
 func _on_bottom_hitbox_body_entered(body: Node2D) -> void:
 	if(body.name == "Player"):
-		body.addClone(scaleFactor * Vector2(0,-1) + Vector2(0,-1));
+		body.addClone(scale * scaleFactor * Vector2(0,-1) + Vector2(0,-1));
 
 
 func _on_left_hitbox_body_entered(body: Node2D) -> void:
 	if(body.name == "Player"):
-		body.addClone(scaleFactor * Vector2(1,0) + Vector2(1,0));
+		body.addClone(scale * scaleFactor * Vector2(1,0) + Vector2(1,0));
 
 
 func _on_right_hitbox_body_entered(body: Node2D) -> void:
 	if(body.name == "Player"):
-		body.addClone(scaleFactor * Vector2(-1,0) + Vector2(-1,0));
+		body.addClone(scale * scaleFactor * Vector2(-1,0) + Vector2(-1,0));
 
 func checkForCollisionsBetweenSides(point_a : Vector2, point_b : Vector2):
 	var returnVal: Array[Vector2];
