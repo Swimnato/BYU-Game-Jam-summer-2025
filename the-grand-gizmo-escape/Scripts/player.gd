@@ -12,6 +12,9 @@ extends CharacterBody2D
 @export var JUMP_VELOCITY = -3000.0
 @export var WALL_JUMP_VELOCITY = -3000.0
 @export var WALL_JUMP_PUSHBACK = 3000.0 # 300.0
+@export var WALL_JUMP_DENY_TURNAROUND_TIME = 0.08
+
+@export var WALL_GRACE = 0.15
 
 @export var INPUT_BUFFER_PATIENCE = 0.1
 @export var COYOTE_TIME = 0.08
@@ -21,6 +24,14 @@ extends CharacterBody2D
 var input_buffer : Timer
 var coyote_timer : Timer
 var coyote_jump_available : bool = true
+
+var wall_grace_timer : Timer
+var can_wall_jump : bool = false
+var wall_jump_direction_x : float = 0.0
+
+var wall_jump_deny_turnaround_timer : Timer
+var can_turn_around : bool = true
+
 var A_Side = true;
 
 @onready var pickupControllers = [$A_Side/PickupController_A, $B_Side/PickupController_B];
@@ -56,6 +67,18 @@ func _ready():
 	add_child(coyote_timer)
 	coyote_timer.timeout.connect(coyoteTimeout)
 
+	wall_grace_timer = Timer.new()
+	wall_grace_timer.wait_time = WALL_GRACE
+	wall_grace_timer.one_shot = true
+	add_child(wall_grace_timer)
+	wall_grace_timer.timeout.connect(wallGraceTimeout)
+
+	wall_jump_deny_turnaround_timer = Timer.new()
+	wall_jump_deny_turnaround_timer.wait_time = WALL_JUMP_DENY_TURNAROUND_TIME
+	wall_jump_deny_turnaround_timer.one_shot = true
+	add_child(wall_jump_deny_turnaround_timer)
+	wall_jump_deny_turnaround_timer.timeout.connect(wallJumpDenyTurnaroundTimeout)
+
 func _physics_process(delta: float) -> void:
 	var horizontal_input = Input.get_axis("Left", "Right")
 	var jump_attempted = Input.is_action_just_pressed("Jump")
@@ -65,15 +88,23 @@ func _physics_process(delta: float) -> void:
 		if (coyote_jump_available):
 			velocity.y = JUMP_VELOCITY
 			coyote_jump_available = false
-		elif (is_on_wall() and horizontal_input != 0):
+		elif (can_wall_jump):
 			velocity.y = WALL_JUMP_VELOCITY
-			velocity.x = WALL_JUMP_PUSHBACK * -sign(horizontal_input)
+			velocity.x = WALL_JUMP_PUSHBACK * wall_jump_direction_x
+			can_wall_jump = false
+			wall_jump_deny_turnaround_timer.start()
+			can_turn_around = false
 		elif (jump_attempted):
 			input_buffer.start()
 	
 	# Fall faster when you don't hold jump key
 	if (Input.is_action_just_released("Jump") and velocity.y < 0):
 		velocity.y = JUMP_VELOCITY / 4
+
+	if (is_on_wall_only()):
+		can_wall_jump = true
+		wall_grace_timer.start()
+		wall_jump_direction_x = get_wall_normal().x
 	
 	if (is_on_floor()):
 		coyote_jump_available = true
@@ -87,7 +118,7 @@ func _physics_process(delta: float) -> void:
 	# Horizontal motion
 	var floor_damping : float = 1.0 if is_on_floor() else 0.2
 	# var dash_multiplier : float 2.0 if Input.ison_pressed("Dash")
-	if (horizontal_input):
+	if (can_turn_around or horizontal_input != -wall_jump_direction_x):
 		velocity.x = move_toward(velocity.x, horizontal_input * SPEED, ACCELERATION * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, (FRICTION * delta) * floor_damping)
@@ -119,7 +150,7 @@ func _physics_process(delta: float) -> void:
 func getGravity(input_dir : float = 0) -> float:
 	# if Input.is_action_pressed("FastFall")
 	#	return FAST_FALL_GRAVITY
-	if is_on_wall_only() and velocity.y > 0 and input_dir != 0:
+	if (can_wall_jump and velocity.y > 0 and input_dir != 0):
 		return WALL_GRAVITY
 	return GRAVITY if (velocity.y < 0) else FALL_GRAVITY
 
@@ -128,6 +159,11 @@ func coyoteTimeout():
 	# reset coyote jump when you timeout
 	coyote_jump_available = false
 
+func wallGraceTimeout():
+	can_wall_jump = false
+
+func wallJumpDenyTurnaroundTimeout():
+	can_turn_around = true
 
 func die():
 	self.position = spawn_point
