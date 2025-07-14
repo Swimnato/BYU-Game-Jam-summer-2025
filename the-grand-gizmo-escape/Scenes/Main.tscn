@@ -60,7 +60,7 @@ focus_neighbor_top = NodePath("../Credits")
 focus_neighbor_bottom = NodePath("../Play Button")
 text = "Quit"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Main_Menu"]
+[node name="MenuSFX" type="AudioStreamPlayer2D" parent="Main_Menu"]
 script = ExtResource("6_v1gob")
 
 [node name="MusicBox" type="AudioStreamPlayer2D" parent="."]
@@ -68,12 +68,15 @@ max_distance = 100000.0
 attenuation = 1e-05
 max_polyphony = 2
 
-[connection signal="button_down" from="Main_Menu/Menu_Buttons/Play Button" to="Main_Menu/AudioStreamPlayer2D" method="playAccept"]
-[connection signal="focus_entered" from="Main_Menu/Menu_Buttons/Play Button" to="Main_Menu/AudioStreamPlayer2D" method="playHovered"]
+[connection signal="button_down" from="Main_Menu/Menu_Buttons/Play Button" to="Main_Menu/MenuSFX" method="playAccept"]
+[connection signal="focus_entered" from="Main_Menu/Menu_Buttons/Play Button" to="Main_Menu/MenuSFX" method="playHovered"]
+[connection signal="mouse_entered" from="Main_Menu/Menu_Buttons/Play Button" to="Main_Menu/MenuSFX" method="playHovered"]
 [connection signal="pressed" from="Main_Menu/Menu_Buttons/Play Button" to="." method="_on_play_button_pressed"]
-[connection signal="focus_entered" from="Main_Menu/Menu_Buttons/Credits" to="Main_Menu/AudioStreamPlayer2D" method="playHovered"]
+[connection signal="focus_entered" from="Main_Menu/Menu_Buttons/Credits" to="Main_Menu/MenuSFX" method="playHovered"]
+[connection signal="mouse_entered" from="Main_Menu/Menu_Buttons/Credits" to="Main_Menu/MenuSFX" method="playHovered"]
 [connection signal="pressed" from="Main_Menu/Menu_Buttons/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="Main_Menu/Menu_Buttons/Credits" to="Main_Menu/AudioStreamPlayer2D" method="playAccept"]
-[connection signal="focus_entered" from="Main_Menu/Menu_Buttons/Quit" to="Main_Menu/AudioStreamPlayer2D" method="playHovered"]
+[connection signal="pressed" from="Main_Menu/Menu_Buttons/Credits" to="Main_Menu/MenuSFX" method="playAccept"]
+[connection signal="focus_entered" from="Main_Menu/Menu_Buttons/Quit" to="Main_Menu/MenuSFX" method="playHovered"]
+[connection signal="mouse_entered" from="Main_Menu/Menu_Buttons/Quit" to="Main_Menu/MenuSFX" method="playHovered"]
 [connection signal="pressed" from="Main_Menu/Menu_Buttons/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Main_Menu/Menu_Buttons/Quit" to="Main_Menu/AudioStreamPlayer2D" method="playAccept"]
+[connection signal="pressed" from="Main_Menu/Menu_Buttons/Quit" to="Main_Menu/MenuSFX" method="playAccept"]

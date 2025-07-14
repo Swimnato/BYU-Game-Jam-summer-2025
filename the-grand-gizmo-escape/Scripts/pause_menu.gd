@@ -14,6 +14,8 @@ func _ready() -> void:
 	menuCam.enabled = false
 
 func _process(_delta: float) -> void:
+	menuCam.zoom = GlobalVars.gizmoCamPTR.zoom;
+	scale = Vector2(1,1) / GlobalVars.gizmoCamPTR.zoom;
 	if(GlobalVars.inPauseMenu):
 		global_position = gizmo.global_position;
 
