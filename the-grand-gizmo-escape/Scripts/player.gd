@@ -94,7 +94,19 @@ func _physics_process(delta: float) -> void:
 	if(velocitySquared > TERMINAL_VELOCITY_SQUARED):
 		velocity = velocity * (TERMINAL_VELOCITY_SQUARED / velocitySquared);
 	
-	move_and_slide()  
+	move_and_slide();
+	
+	for object in range(get_slide_collision_count()):
+		var collider = get_slide_collision(object).get_collider();
+		if(collider.is_in_group("Conveyer Belt")):
+			if(collider.direction == collider.DIRECTIONS.LEFT):
+				velocity.x = -collider.beltSpeed;
+			elif(collider.direction == collider.DIRECTIONS.RIGHT):
+				velocity.x = collider.beltSpeed;
+			elif(collider.direction == collider.DIRECTIONS.UP):
+				pass
+			elif(collider.direction == collider.DIRECTIONS.DOWN):
+				pass
 	
 	# reset level
 	if(Input.is_action_just_released("ResetLvl")):

@@ -32,12 +32,14 @@ var mainMenuEndPos : Vector2;
 @export var mainMenuBegScale: Vector2 = Vector2(.01,.01);
 var mainMenuEndScale : Vector2;
 
+
 func _ready() -> void:
 	menuButtons.visible = false;
 	blowupTxt.visible = true;
 	mainMenuEndRot = menuButtons.rotation;
 	mainMenuEndPos = menuButtons.position;
 	mainMenuEndScale = menuButtons.scale;
+
 
 func _process(delta: float) -> void:
 	if(explosionHappened):
@@ -49,7 +51,7 @@ func _process(delta: float) -> void:
 			menuAppeared = true;
 			playBtn.grab_focus();
 			musicBox.stream = TitleScreenTheme;
-			musicBox.connect("finished", Callable(self,"playSongAgain"))
+			musicBox.connect("finished", Callable(self,"playSongAgain"));
 			musicBox.play();
 	elif(menuAppeared and !musicBox.playing):
 		musicBox.seek(0);
@@ -61,8 +63,10 @@ func _process(delta: float) -> void:
 			timeSinceBlinkText = 0.0;
 			blowupTxt.visible = !blowupTxt.visible;
 
+
 func playSongAgain():
 	musicBox.play();
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("Use") and !explosionHappened):
@@ -73,11 +77,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		menuButtons.rotation = mainMenuBegRot;
 		menuButtons.position = mainMenuBegPos;
 		menuButtons.scale = mainMenuBegScale;
-		var tween : Tween = self.create_tween()
-		tween.set_parallel()
+		var tween : Tween = self.create_tween();
+		tween.set_parallel();
 		tween.tween_property(menuButtons, "position", mainMenuEndPos, startToMenuDelay);
 		tween.tween_property(menuButtons, "rotation", mainMenuEndRot, startToMenuDelay);
 		tween.tween_property(menuButtons, "scale", mainMenuEndScale, startToMenuDelay);
+
 
 func _on_play_button_pressed() -> void:
 	if(menuAppeared):

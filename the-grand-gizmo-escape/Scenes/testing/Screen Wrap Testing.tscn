@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://v5ukptp155h7"]
+[gd_scene load_steps=12 format=3 uid="uid://v5ukptp155h7"]
 
 [ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_o2duk"]
 [ext_resource type="PackedScene" uid="uid://wf6f5r3s7d0m" path="res://Scenes/Level Building/Lever.tscn" id="2_ny5cp"]
 [ext_resource type="PackedScene" uid="uid://crpdu3punicwa" path="res://Scenes/Level Building/Door.tscn" id="3_gddd6"]
+[ext_resource type="PackedScene" uid="uid://bvhj0jvjvt1ay" path="res://Scenes/Level Building/Conveyer Belt.tscn" id="3_na0ew"]
 [ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player/Player.tscn" id="4_44fs4"]
 [ext_resource type="Script" uid="uid://bw54jqyqbespn" path="res://Scripts/pause_manager.gd" id="4_273do"]
 [ext_resource type="PackedScene" uid="uid://cdiko8cbd2dil" path="res://Scenes/Player/Gizmo.tscn" id="5_av7s8"]
@@ -33,6 +34,20 @@ position = Vector2(1015, 21)
 shape = SubResource("RectangleShape2D_o085r")
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D"]
+position = Vector2(1015.88, 21.375)
+scale = Vector2(2052.25, 63.25)
+texture = ExtResource("1_o2duk")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Level/Floor"]
+position = Vector2(5122.31, -892.31)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Floor/StaticBody2D4"]
+position = Vector2(1015, 21)
+shape = SubResource("RectangleShape2D_o085r")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D4"]
 position = Vector2(1015.88, 21.375)
 scale = Vector2(2052.25, 63.25)
 texture = ExtResource("1_o2duk")
@@ -96,6 +111,29 @@ scale = Vector2(20.25, 1322.81)
 texture = ExtResource("1_o2duk")
 
 [node name="Interactables" type="Node2D" parent="Level"]
+
+[node name="ConveyerBelt" parent="Level/Interactables" instance=ExtResource("3_na0ew")]
+position = Vector2(4413, -852)
+scale = Vector2(10, 10)
+direction = 2
+
+[node name="ConveyerBelt2" parent="Level/Interactables" instance=ExtResource("3_na0ew")]
+position = Vector2(4612, -852)
+scale = Vector2(10, 10)
+direction = 2
+piece = 1
+
+[node name="ConveyerBelt3" parent="Level/Interactables" instance=ExtResource("3_na0ew")]
+position = Vector2(4812, -852)
+scale = Vector2(10, 10)
+direction = 2
+piece = 1
+
+[node name="ConveyerBelt4" parent="Level/Interactables" instance=ExtResource("3_na0ew")]
+position = Vector2(5012, -852)
+scale = Vector2(10, 10)
+direction = 2
+piece = 2
 
 [node name="Lever" parent="Level/Interactables" node_paths=PackedStringArray("door") instance=ExtResource("2_ny5cp")]
 position = Vector2(867, -472)
