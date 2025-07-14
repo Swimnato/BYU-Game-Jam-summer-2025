@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://vr3ly8sfysf"
+path="res://.godot/imported/Mechanical Lever Pull.wav-c9269d757c6518d9fb794c84d2a6a103.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Mechanical Lever Pull.wav"
+dest_files=["res://.godot/imported/Mechanical Lever Pull.wav-c9269d757c6518d9fb794c84d2a6a103.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

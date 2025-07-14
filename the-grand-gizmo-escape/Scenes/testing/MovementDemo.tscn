@@ -616,7 +616,8 @@ FRICTION = 20000.0
 [node name="Gizmo" parent="Entities" instance=ExtResource("5_7qwkw")]
 position = Vector2(890, -38)
 
-[node name="Menu Controller" parent="." instance=ExtResource("12_hddqy")]
+[node name="Menu Controller" parent="." node_paths=PackedStringArray("gizmo") instance=ExtResource("12_hddqy")]
 position = Vector2(1960, -3014)
+gizmo = NodePath("../Entities/Gizmo")
 
 [editable path="Entities/Player"]

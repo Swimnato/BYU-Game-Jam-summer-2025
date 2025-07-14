@@ -11,8 +11,8 @@ var menuAppeared : bool = false;
 @onready var explodedTexture = preload("res://Assets/The_explosion.png");
 @onready var postExplodedTexture = preload("res://Assets/rasiated.png");
 
-@onready var TitleScreenTheme = preload("res://Audio/Title Screen (115 bpm, 2-29).wav");
-@onready var MainTheme = preload("res://Audio/Main Theme (105 bpm, 2-102).wav");
+@onready var TitleScreenTheme = preload("res://Audio/Music/Title Screen (115 bpm, 2-29).wav");
+@onready var MainTheme = preload("res://Audio/Music/Main Theme (105 bpm, 2-102).wav");
 
 @onready var prisionBuildingSprite = $"Prision Building";
 @onready var menuButtons = $Main_Menu;

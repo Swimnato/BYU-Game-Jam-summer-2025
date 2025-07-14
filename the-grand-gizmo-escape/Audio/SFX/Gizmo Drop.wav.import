@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cyx8ip333wxni"
+path="res://.godot/imported/Gizmo Drop.wav-08594035779c5f84c1a3a7ff85b2ef4b.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Gizmo Drop.wav"
+dest_files=["res://.godot/imported/Gizmo Drop.wav-08594035779c5f84c1a3a7ff85b2ef4b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
