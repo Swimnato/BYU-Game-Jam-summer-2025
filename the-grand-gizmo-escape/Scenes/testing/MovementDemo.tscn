@@ -458,9 +458,9 @@ rotation = -0.598648
 shape = SubResource("RectangleShape2D_johof")
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/Floor/StaticBody2D2"]
-position = Vector2(2475.48, -325.911)
+position = Vector2(2477.2, -327.083)
 rotation = -0.598648
-scale = Vector2(2052.25, 63.25)
+scale = Vector2(1702.22, 63.25)
 texture = ExtResource("1_y6kw6")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Level/Floor"]
@@ -616,8 +616,7 @@ FRICTION = 20000.0
 [node name="Gizmo" parent="Entities" instance=ExtResource("5_7qwkw")]
 position = Vector2(890, -38)
 
-[node name="Menu Controller" parent="." node_paths=PackedStringArray("gizmo") instance=ExtResource("12_hddqy")]
+[node name="Menu Controller" parent="." instance=ExtResource("12_hddqy")]
 position = Vector2(1960, -3014)
-gizmo = NodePath("")
 
 [editable path="Entities/Player"]
