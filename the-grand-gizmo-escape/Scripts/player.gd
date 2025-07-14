@@ -10,8 +10,8 @@ extends CharacterBody2D
 @export var WALL_GRAVITY = 50.0
 
 @export var JUMP_VELOCITY = -3000.0
-@export var WALL_JUMP_VELOCITY = -3000.0
-@export var WALL_JUMP_PUSHBACK = 3000.0 # 300.0
+@export var WALL_JUMP_VELOCITY = -2600.0
+@export var WALL_JUMP_PUSHBACK = 2600.0 # 300.0
 @export var WALL_JUMP_DENY_TURNAROUND_TIME = 0.08
 
 @export var WALL_GRACE = 0.15
