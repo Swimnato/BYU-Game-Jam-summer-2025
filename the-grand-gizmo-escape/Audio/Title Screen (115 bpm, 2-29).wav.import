@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cgn05tges1p8c"
+path="res://.godot/imported/Title Screen (115 bpm, 2-29).wav-5218ab80c77e98bd3fa7c982fe930c93.sample"
+
+[deps]
+
+source_file="res://Audio/Title Screen (115 bpm, 2-29).wav"
+dest_files=["res://.godot/imported/Title Screen (115 bpm, 2-29).wav-5218ab80c77e98bd3fa7c982fe930c93.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

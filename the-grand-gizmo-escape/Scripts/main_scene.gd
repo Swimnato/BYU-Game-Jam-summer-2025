@@ -11,11 +11,15 @@ var menuAppeared : bool = false;
 @onready var explodedTexture = preload("res://Assets/The_explosion.png");
 @onready var postExplodedTexture = preload("res://Assets/rasiated.png");
 
+@onready var TitleScreenTheme = preload("res://Audio/Title Screen (115 bpm, 2-29).wav");
+@onready var MainTheme = preload("res://Audio/Main Theme (105 bpm, 2-102).wav");
+
 @onready var prisionBuildingSprite = $"Prision Building";
 @onready var menuButtons = $Main_Menu;
 @onready var menuCam = $Main_Menu_Cam;
 @onready var blowupTxt = $"Blowup Text";
 @onready var playBtn = $"Main_Menu/Menu_Buttons/Play Button";
+@onready var musicBox = $MusicBox;
 
 @export var startToRasiatedDelay = 0.5;
 @export var startToMenuDelay = 2;
@@ -44,11 +48,21 @@ func _process(delta: float) -> void:
 		elif(countup >= startToMenuDelay and !menuAppeared):
 			menuAppeared = true;
 			playBtn.grab_focus();
+			musicBox.stream = TitleScreenTheme;
+			musicBox.connect("finished", Callable(self,"playSongAgain"))
+			musicBox.play();
+	elif(menuAppeared and !musicBox.playing):
+		musicBox.seek(0);
+		musicBox.stream = TitleScreenTheme;
+		musicBox.playing = true;
 	else:
 		timeSinceBlinkText += delta;
 		if(timeSinceBlinkText > blinkDuration):
 			timeSinceBlinkText = 0.0;
 			blowupTxt.visible = !blowupTxt.visible;
+
+func playSongAgain():
+	musicBox.play();
 
 func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("Use") and !explosionHappened):
@@ -67,6 +81,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_play_button_pressed() -> void:
 	if(menuAppeared):
+		musicBox.stream = MainTheme;
+		musicBox.play();
 		menuButtons.visible = false;
 		prisionBuildingSprite.visible = false;
 		var mainScn = gameScn.instantiate();

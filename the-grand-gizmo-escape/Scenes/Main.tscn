@@ -59,6 +59,8 @@ focus_neighbor_top = NodePath("../Credits")
 focus_neighbor_bottom = NodePath("../Play Button")
 text = "Quit"
 
+[node name="MusicBox" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="pressed" from="Main_Menu/Menu_Buttons/Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Main_Menu/Menu_Buttons/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Main_Menu/Menu_Buttons/Quit" to="." method="_on_quit_pressed"]

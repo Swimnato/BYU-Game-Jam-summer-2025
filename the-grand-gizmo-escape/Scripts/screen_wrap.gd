@@ -234,6 +234,3 @@ func processSideBlocking(side : SIDES):
 		newCollider.position = rectPos;
 		newCollider.shape = shape
 		screenColiderObject.add_child(newCollider);
-
-
-var h;
