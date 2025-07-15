@@ -5,8 +5,11 @@ extends Node2D
 var on := false
 var other_bodies: Array[Node2D]
 
-#func _ready() -> void:
-	#reset()
+@onready var buttonPressedSound = preload("res://Audio/SFX/Button Press.wav");
+@onready var sfxPlayer = $SFX;
+
+func _ready() -> void:
+	sfxPlayer.stream = buttonPressedSound;
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body is RigidBody2D or body.name == "Player") and !(body in other_bodies):
@@ -15,6 +18,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		on = true
 		other_bodies.append(body)
 		updateDoor()
+		sfxPlayer.play(0);
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body in other_bodies:
@@ -23,6 +27,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		on = false
 		$Sprite2D/AnimationPlayer.play("press", -1, -1, true)
 		updateDoor()
+		sfxPlayer.play(0);
 
 func reset():
 	$Sprite2D/AnimationPlayer.play("RESET")
