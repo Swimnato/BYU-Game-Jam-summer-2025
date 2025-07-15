@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvgvaxq4l543v"]
+[gd_scene load_steps=11 format=3 uid="uid://bvgvaxq4l543v"]
 
 [ext_resource type="Script" uid="uid://dee4wjjgienl0" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://cyu0tgd5mep0v" path="res://Textures/player_sprite_sheet.png" id="2_ude3g"]
 [ext_resource type="Script" uid="uid://cly5owfacpraq" path="res://Scripts/pickup_controller.gd" id="3_gntrk"]
 [ext_resource type="Script" uid="uid://bssf6yyqy4sgj" path="res://Scripts/handle_player_animations.gd" id="3_jmcll"]
+[ext_resource type="AudioStream" uid="uid://ba1ri1uy3f38x" path="res://Audio/SFX/Death Stinger.wav" id="5_jmcll"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h54ih"]
 radius = 184.0
@@ -122,6 +123,12 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_ude3g")
 
 [node name="WalkingSFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = 20.0
+max_distance = 10000.0
+attenuation = 0.0
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_jmcll")
 volume_db = 20.0
 max_distance = 10000.0
 attenuation = 0.0

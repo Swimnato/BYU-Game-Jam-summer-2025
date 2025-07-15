@@ -4,13 +4,17 @@ extends Node2D
 
 var on := false
 
-func _onready():
-	reset()
+@onready var leverActuatedSound = preload("res://Audio/SFX/Mechanical Lever Pull.wav");
+@onready var sfxPlayer = $SFX;
+
+func _ready():
+	sfxPlayer.stream = leverActuatedSound;
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		on = !on
 		updateDoor()
+		sfxPlayer.play(0);
 		if on:
 			$Sprite2D/AnimationPlayer.play("swing")
 		else: 

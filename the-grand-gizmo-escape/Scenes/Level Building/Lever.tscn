@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://0qlx78da61t" path="res://Scripts/lever.gd" id="1_0so5j"]
 [ext_resource type="Texture2D" uid="uid://cnuubsmw1bjr6" path="res://Textures/lever_sprite_sheet.png" id="2_il67e"]
 
+[sub_resource type="Animation" id="Animation_x5isb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_il67e"]
 resource_name = "swing"
 length = 0.14
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
-}
-
-[sub_resource type="Animation" id="Animation_x5isb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6nsvo"]
@@ -64,5 +64,10 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-16, -28)
 shape = SubResource("RectangleShape2D_6kuia")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = 10.0
+max_distance = 10000.0
+attenuation = 0.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

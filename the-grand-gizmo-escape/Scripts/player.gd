@@ -46,6 +46,7 @@ var isWalking = false;
 @onready var pickupControllers = [$A_Side/PickupController_A, $B_Side/PickupController_B];
 @onready var collisions: Array[CollisionShape2D] = [$Collision_A, $Collision_B];
 @onready var sides = [$A_Side, $B_Side];
+@onready var deathSFXPlayer = $DeathSFX;
 
 const LAYER_SPIKES = 1 << 2
 const LAYER_GIZMO = 1 << 1
@@ -199,8 +200,9 @@ func wallJumpDenyTurnaroundTimeout():
 	can_turn_around = true
 
 func die():
-	self.position = spawn_point
-	player_death.emit()
+	self.position = spawn_point;
+	player_death.emit();
+	deathSFXPlayer.play();
 	print("TODO respawn gizmo logic")
 
 func setSpawnPoint(pos: Vector2):
