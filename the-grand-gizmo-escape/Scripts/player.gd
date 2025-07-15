@@ -239,6 +239,10 @@ func disableSide(side: int):
 	pickupControllers[side].enabled = false;
 	collisions[side].set_deferred("disabled", true);
 	sides[side].visible = false;
+	if(pickupControllers[side].held != null):
+		var item = pickupControllers[side].held;
+		pickupControllers[side].drop();
+		pickupControllers[0 if side == 1 else 1].pickup(item, true);
 
 func enableSide(side: int):
 	pickupControllers[side].enabled = true;
