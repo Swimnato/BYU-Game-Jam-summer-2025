@@ -34,6 +34,15 @@ var can_turn_around : bool = true
 
 var A_Side = true;
 
+var isWalking = false;
+@export var footstepCanter = .25;
+@onready var walkingSFXPlayer = $WalkingSFX;
+@onready var walkingSounds = [preload("res://Audio/SFX/Footsteps_1.wav"),
+								preload("res://Audio/SFX/Footsteps_2.wav"),
+								preload("res://Audio/SFX/Footsteps_3.wav"),
+								preload("res://Audio/SFX/Footsteps_4.wav"),
+								preload("res://Audio/SFX/Footsteps_5.wav")];
+
 @onready var pickupControllers = [$A_Side/PickupController_A, $B_Side/PickupController_B];
 @onready var collisions: Array[CollisionShape2D] = [$Collision_A, $Collision_B];
 @onready var sides = [$A_Side, $B_Side];
@@ -78,10 +87,21 @@ func _ready():
 	wall_jump_deny_turnaround_timer.one_shot = true
 	add_child(wall_jump_deny_turnaround_timer)
 	wall_jump_deny_turnaround_timer.timeout.connect(wallJumpDenyTurnaroundTimeout)
+	
+	walkingSFXPlayer.stream = walkingSounds[0];
+	walkingSFXPlayer.connect("finished", Callable(self,"queueContinueFootsteps"));
 
 func _physics_process(delta: float) -> void:
 	var horizontal_input = Input.get_axis("Left", "Right")
 	var jump_attempted = Input.is_action_just_pressed("Jump")
+	
+	if(!isWalking and horizontal_input != 0 and is_on_floor()):
+		walkingSFXPlayer.play();
+	
+	isWalking = horizontal_input != 0;
+	
+	if(!isWalking or !is_on_floor()):
+		walkingSFXPlayer.stop();
 	
 	# Handle jumping
 	if (jump_attempted or input_buffer.time_left > 0):
@@ -146,6 +166,19 @@ func _physics_process(delta: float) -> void:
 	if(Input.is_action_just_released("ResetLvl")):
 		get_tree().reload_current_scene()
 
+func queueContinueFootsteps():
+	var timer = Timer.new();
+	timer.connect("timeout", Callable(self, "continueFootsteps"));
+	timer.connect("timeout", Callable(timer, "queue_free"));
+	timer.wait_time = footstepCanter;
+	get_tree().root.add_child(timer);
+	timer.start();
+
+func continueFootsteps():
+	if(isWalking and is_on_floor()):
+		walkingSFXPlayer.global_position = GlobalVars.gizmoCamPTR.global_position;
+		walkingSFXPlayer.stream = walkingSounds[randi_range(0,4)];
+		walkingSFXPlayer.play();
 
 func getGravity(input_dir : float = 0) -> float:
 	# if Input.is_action_pressed("FastFall")
