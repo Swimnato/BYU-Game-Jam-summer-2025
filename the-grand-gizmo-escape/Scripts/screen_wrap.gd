@@ -5,6 +5,7 @@ var wrapEnabled : bool = true;
 @export var gizmoCam : Camera2D;
 
 const scaleFactor : Vector2 = Vector2(1920.0, 1080.0); #This is the native resolution of the scene
+const defaultScaling : Vector2 = Vector2(2.0/3.0,2.0/3.0)
 
 @export var screenWrapBlockerLeft : StaticBody2D;
 @export var screenWrapBlockerRight : StaticBody2D;
@@ -19,7 +20,7 @@ enum SIDES {LEFT, RIGHT, UP, DOWN};
 @export var sideBlockSize = 1;
 
 func _ready() -> void:
-	scale = (Vector2(get_viewport().size) / scaleFactor) / $"../GizmoCam".zoom;
+	scale = defaultScaling / gizmoCam.zoom;
 	GlobalVars.gizmoCamPTR = gizmoCam;
 
 func _process(_delta: float) -> void:
