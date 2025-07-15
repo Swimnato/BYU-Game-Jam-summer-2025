@@ -200,7 +200,7 @@ func wallJumpDenyTurnaroundTimeout():
 	can_turn_around = true
 
 func die():
-	self.position = spawn_point;
+	self.global_position = spawn_point;
 	player_death.emit();
 	deathSFXPlayer.play();
 	print("TODO respawn gizmo logic")
