@@ -453,9 +453,8 @@ terrain_set_0/terrain_0/color = Color(0.00505658, 0.0028675, 0.00390067, 1)
 sources/3 = SubResource("TileSetAtlasSource_bwxhm")
 sources/0 = SubResource("TileSetAtlasSource_cqp72")
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("spawn_point")]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_ebu0d")
-spawn_point = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("2_6epvh")]
 position = Vector2(76, 468)

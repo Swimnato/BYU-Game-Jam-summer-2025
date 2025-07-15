@@ -483,6 +483,7 @@ player = NodePath("../Entities/Player")
 
 [node name="SpawnPoint" parent="Level" instance=ExtResource("9_7qwkw")]
 position = Vector2(104, 2503)
+script = null
 
 [node name="Floor" type="Node2D" parent="Level"]
 
@@ -663,9 +664,6 @@ layer_0/tile_data = PackedInt32Array(-327672, 720899, 0, -327673, 393219, 0, -32
 [node name="Player" parent="Entities" instance=ExtResource("4_fxb0a")]
 position = Vector2(662, 2201)
 scale = Vector2(0.5, 0.5)
-
-[node name="Texture_A" parent="Entities/Player/A_Side" index="0"]
-frame = 11
 
 [node name="Gizmo" parent="Entities" instance=ExtResource("5_7qwkw")]
 position = Vector2(1287, 2189)
