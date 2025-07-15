@@ -8,14 +8,21 @@
 texture = SubResource("ViewportTexture_msqbs")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 1150.0
-offset_bottom = 938.0
-text = "Credits
-
-Art:
-
-Music:
-
-Programmers:
-
-"
+offset_left = -573.0
+offset_top = -450.0
+offset_right = 577.0
+offset_bottom = 488.0
+bbcode_enabled = true
+text = "[font_size=100]Credits[/font_size]
+[font_size=50]Art:[/font_size]
+[font_size=30] [color=#4cf][rainbow]Sam Johnston[/rainbow]
+[tornado]Becca[/tornado] 
+[wave]TheBoss007[/wave] 
+[/color] [/font_size][font_size=50]Music:[/font_size][font_size=30] [color=#4cf]
+ [wave]Finn Morrison[/wave][/color] [/font_size]
+[font_size=50]Programmers:[/font_size][font_size=30] [color=#4cf]
+[tornado]Bubadabado[/tornado] 
+[pulse]Swimnato[/pulse][/color] [/font_size]
+[font_size=50]Game Design:[/font_size][font_size=30] [color=#4cf]
+[pulse]Voidlighter[/pulse]
+[/color] [/font_size]"

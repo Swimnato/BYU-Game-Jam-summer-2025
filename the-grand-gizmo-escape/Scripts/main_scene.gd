@@ -5,13 +5,13 @@ var timeSinceBlinkText = 0.0;
 var explosionHappened : bool = false;
 var bldngRasiated : bool = false;
 var menuAppeared : bool = false;
-@onready var gameScn = preload("res://Scenes/Level Building/Level_Swimn.tscn");
+@onready var gameScn = preload("res://Scenes/Levels/Level_Swimn.tscn");
 @onready var creditsScn = preload("res://Scenes/UI/Credits.tscn");
 
 @onready var explodedTexture = preload("res://Assets/The_explosion.png");
 @onready var postExplodedTexture = preload("res://Assets/rasiated.png");
 
-@onready var Explosion = preload("res://Audio/SFX/Explosion.wav")
+@onready var Explosion = preload("res://Audio/SFX/Explosion.wav");
 @onready var MainMenuMusic = preload("res://Audio/Music/Main Menu Music (120 bpm).wav");
 @onready var TitleScreenTheme = preload("res://Audio/Music/Title Screen (115 bpm, 2-29).wav");
 @onready var MainTheme = preload("res://Audio/Music/Main Theme (105 bpm, 2-102).wav");
