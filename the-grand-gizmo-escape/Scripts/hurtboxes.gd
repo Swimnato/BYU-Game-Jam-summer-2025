@@ -6,7 +6,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for box in hurtboxes:
-		box.connectEntered(onBodyEntered)
+		if(box != null):
+			box.connectEntered(onBodyEntered)
 
 func onBodyEntered(body: Node):
 	if body.name == "Player":

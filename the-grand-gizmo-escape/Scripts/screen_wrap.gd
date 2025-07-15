@@ -44,6 +44,7 @@ func _on_in_camera_body_exited(body: Node2D) -> void:
 	if body is TileMap:
 		handleTiles(body, disableCollision)
 	elif(!body.is_in_group("Collision_Off_Screen_Enabled") and body.name != "Player"):
+		print(body);
 		disableCollision(body)
 
 func _on_in_camera_body_entered(body: Node2D) -> void:
@@ -61,8 +62,8 @@ func enableCollision(body: Node2D):
 	body.set_collision_layer_value(1, true);
 	body.set_collision_layer_value(8, false);
 	
-func handleTiles(body: Node2D, fn: Callable):
-	var pos = body.get_coords_for_body_rid(body)
+func handleTiles(body, fn: Callable):
+	var pos = body.get_coords_for_body_rid(body);
 	var tile_data = body.get_cell_tile_data(0, pos)
 	if tile_data:
 		var physics_layer = tile_data.get_custom_data("physics_layer")
