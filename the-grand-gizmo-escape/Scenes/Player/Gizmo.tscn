@@ -1,8 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdiko8cbd2dil"]
+[gd_scene load_steps=14 format=3 uid="uid://cdiko8cbd2dil"]
 
 [ext_resource type="Texture2D" uid="uid://cxg7i0o8q46o2" path="res://Textures/green.png" id="1_drug4"]
 [ext_resource type="Script" uid="uid://bbguqjncer846" path="res://Scripts/gizmo.gd" id="1_tpu5s"]
 [ext_resource type="Script" uid="uid://d2o8lr3hsw0h1" path="res://Scripts/screen_wrap.gd" id="2_a1ylc"]
+[ext_resource type="Texture2D" uid="uid://ckl0kar2d283t" path="res://Assets/Gizmo_Tutorial.png" id="4_a68hg"]
+[ext_resource type="Script" uid="uid://dfdm4iasv4nca" path="res://Scripts/tutorials.gd" id="4_pl8s7"]
+[ext_resource type="Texture2D" uid="uid://qnyqcbuixgus" path="res://Assets/Jump_Tutorial.png" id="5_ejppr"]
+[ext_resource type="Texture2D" uid="uid://dm4e5qk51nyr7" path="res://Assets/Move_Tutorial.png" id="6_ejppr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1ylc"]
 size = Vector2(36, 38)
@@ -118,6 +122,21 @@ debug_color = Color(0.501961, 0.580392, 0.101961, 0.419608)
 collision_mask = 3
 
 [node name="ScreenWrapBlockerDown" type="StaticBody2D" parent="Screen_Wrap" groups=["Collision_Off_Screen_Enabled"]]
+
+[node name="Tutorials" type="Node2D" parent="Screen_Wrap"]
+script = ExtResource("4_pl8s7")
+
+[node name="GizmoTutorial" type="Sprite2D" parent="Screen_Wrap/Tutorials"]
+position = Vector2(338, -408)
+texture = ExtResource("4_a68hg")
+
+[node name="JumpTutorial" type="Sprite2D" parent="Screen_Wrap/Tutorials"]
+position = Vector2(590, 182)
+texture = ExtResource("5_ejppr")
+
+[node name="MoveTutorial" type="Sprite2D" parent="Screen_Wrap/Tutorials"]
+position = Vector2(-351, 181)
+texture = ExtResource("6_ejppr")
 
 [node name="GizmoCam" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
