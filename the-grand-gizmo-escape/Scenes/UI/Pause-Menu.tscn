@@ -1,16 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://oecuyrjjcgxa"]
+[gd_scene load_steps=14 format=3 uid="uid://oecuyrjjcgxa"]
 
 [ext_resource type="Script" uid="uid://dqtjf6fv3oaue" path="res://Scripts/pause_menu.gd" id="1_7dbc6"]
+[ext_resource type="Texture2D" uid="uid://cplsivrf08w6f" path="res://Assets/Pause.png" id="2_hdvrk"]
 [ext_resource type="Script" uid="uid://cxcfy35hicf0s" path="res://Scripts/ButtonSFX.gd" id="2_yhmj7"]
+[ext_resource type="Texture2D" uid="uid://b244awe5q8yxc" path="res://Assets/Resume.png" id="3_2q61w"]
+[ext_resource type="Texture2D" uid="uid://b637l5fl66ddq" path="res://Assets/Resume_Clicked.png" id="4_ysvf3"]
+[ext_resource type="Texture2D" uid="uid://dar2h61f6uvgc" path="res://Assets/Resume_Hover.png" id="5_88svg"]
+[ext_resource type="Script" uid="uid://dgya1i0nd2ja7" path="res://Scenes/button_Click_Mask.gd" id="6_r7f6n"]
+[ext_resource type="Texture2D" uid="uid://dntcx61bpnrnp" path="res://Assets/Restart_Button.png" id="7_88svg"]
+[ext_resource type="Texture2D" uid="uid://dsvf1bfurbvl8" path="res://Assets/Restart_Clicked.png" id="8_r7f6n"]
+[ext_resource type="Texture2D" uid="uid://duv6bcgxusksd" path="res://Assets/Restart_Hover.png" id="9_sxqp7"]
+[ext_resource type="Texture2D" uid="uid://blv8hmkte6ebm" path="res://Assets/Quit_Button.png" id="10_s7flj"]
+[ext_resource type="Texture2D" uid="uid://cvn1v7w46yiwu" path="res://Assets/Quitt_Clicked.png" id="11_fn0hp"]
+[ext_resource type="Texture2D" uid="uid://d26xekitt3vsr" path="res://Assets/Quit_Hover.png" id="12_ah7oc"]
 
 [node name="Menu Controller" type="Node2D" node_paths=PackedStringArray("menuCam", "firstButton")]
 script = ExtResource("1_7dbc6")
 menuCam = NodePath("MenuCam")
 firstButton = NodePath("Menu Items/Resume")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(1, 1, 1, 0.454902)
-polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+[node name="Polygon2D" type="Sprite2D" parent="."]
+scale = Vector2(0.667, 0.667)
+texture = ExtResource("2_hdvrk")
 
 [node name="MenuCam" type="Camera2D" parent="."]
 
@@ -31,41 +42,59 @@ text = "[color=#000][font_size=100]Menu[/font_size][/color]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Resume" type="Button" parent="Menu Items"]
+[node name="Resume" type="TextureButton" parent="Menu Items"]
 layout_mode = 0
-offset_left = -176.0
-offset_top = -148.0
-offset_right = 177.0
-offset_bottom = -54.0
+offset_left = -270.0
+offset_top = -59.0
+offset_right = 468.0
+offset_bottom = 113.0
+scale = Vector2(0.672904, 0.672904)
 focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../Restart")
 focus_next = NodePath("../Restart")
 focus_previous = NodePath("../Quit")
-text = "Resume"
+texture_normal = ExtResource("3_2q61w")
+texture_pressed = ExtResource("4_ysvf3")
+texture_hover = ExtResource("5_88svg")
+texture_focused = ExtResource("5_88svg")
+script = ExtResource("6_r7f6n")
+clickmaskImageSource = ExtResource("3_2q61w")
 
-[node name="Restart" type="Button" parent="Menu Items"]
+[node name="Restart" type="TextureButton" parent="Menu Items"]
 layout_mode = 0
-offset_left = -175.0
-offset_right = 178.0
-offset_bottom = 94.0
+offset_left = -268.0
+offset_top = 69.0
+offset_right = 474.0
+offset_bottom = 242.0
+scale = Vector2(0.67577, 0.67577)
 focus_neighbor_top = NodePath("../Resume")
 focus_neighbor_bottom = NodePath("../Quit")
 focus_next = NodePath("../Quit")
 focus_previous = NodePath("../Resume")
-text = "Restart"
+texture_normal = ExtResource("7_88svg")
+texture_pressed = ExtResource("8_r7f6n")
+texture_hover = ExtResource("9_sxqp7")
+texture_focused = ExtResource("9_sxqp7")
+script = ExtResource("6_r7f6n")
+clickmaskImageSource = ExtResource("7_88svg")
 
-[node name="Quit" type="Button" parent="Menu Items"]
+[node name="Quit" type="TextureButton" parent="Menu Items"]
 layout_mode = 0
-offset_left = -174.0
-offset_top = 148.0
-offset_right = 179.0
-offset_bottom = 242.0
+offset_left = -204.0
+offset_top = 192.0
+offset_right = 321.0
+offset_bottom = 365.0
+scale = Vector2(0.6955, 0.6955)
 focus_neighbor_top = NodePath("../Restart")
 focus_neighbor_bottom = NodePath("../Resume")
 focus_next = NodePath("../Resume")
 focus_previous = NodePath("../Restart")
-text = "Quit
-"
+texture_normal = ExtResource("10_s7flj")
+texture_pressed = ExtResource("11_fn0hp")
+texture_hover = ExtResource("12_ah7oc")
+texture_focused = ExtResource("12_ah7oc")
+script = ExtResource("6_r7f6n")
+clickmaskImageSource = ExtResource("10_s7flj")
 
 [node name="MenuSFX" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("2_yhmj7")

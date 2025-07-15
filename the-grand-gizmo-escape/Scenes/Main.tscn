@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b47bdlwsed0gw"]
+[gd_scene load_steps=14 format=3 uid="uid://b47bdlwsed0gw"]
 
 [ext_resource type="Script" uid="uid://c6juev68sc7b7" path="res://Scripts/main_scene.gd" id="1_idj7w"]
 [ext_resource type="Texture2D" uid="uid://bgruuw5yltofl" path="res://Assets/Building_not_blown_up.png" id="1_r150o"]
@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://crv3ja2t6017e" path="res://Assets/break_in_ clicked.png" id="6_50glp"]
 [ext_resource type="Script" uid="uid://cxcfy35hicf0s" path="res://Scripts/ButtonSFX.gd" id="6_v1gob"]
 [ext_resource type="Texture2D" uid="uid://dmfysrvw3kcjh" path="res://Assets/Break_in_Selected.png" id="7_vy5pj"]
+[ext_resource type="Script" uid="uid://dgya1i0nd2ja7" path="res://Scenes/button_Click_Mask.gd" id="8_vy5pj"]
+[ext_resource type="Texture2D" uid="uid://blv8hmkte6ebm" path="res://Assets/Quit_Button.png" id="9_bmxlf"]
+[ext_resource type="Texture2D" uid="uid://cvn1v7w46yiwu" path="res://Assets/Quitt_Clicked.png" id="10_grg3l"]
+[ext_resource type="Texture2D" uid="uid://d26xekitt3vsr" path="res://Assets/Quit_Hover.png" id="11_frkhe"]
+
+[sub_resource type="BitMap" id="BitMap_bmxlf"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_idj7w")
@@ -46,26 +52,37 @@ texture_normal = ExtResource("4_pbw6q")
 texture_pressed = ExtResource("6_50glp")
 texture_hover = ExtResource("7_vy5pj")
 texture_focused = ExtResource("7_vy5pj")
+texture_click_mask = SubResource("BitMap_bmxlf")
+script = ExtResource("8_vy5pj")
+clickmaskImageSource = ExtResource("4_pbw6q")
 
 [node name="Credits" type="Button" parent="Main_Menu/Menu_Buttons"]
 layout_mode = 0
-offset_left = -273.0
-offset_top = 56.0
-offset_right = 269.0
-offset_bottom = 270.0
+offset_left = -498.0
+offset_top = 21.0
+offset_right = 44.0
+offset_bottom = 235.0
+rotation = 0.224728
 focus_neighbor_top = NodePath("../Play Button")
 focus_neighbor_bottom = NodePath("../Quit")
 text = "Credits"
 
-[node name="Quit" type="Button" parent="Main_Menu/Menu_Buttons"]
+[node name="Quit" type="TextureButton" parent="Main_Menu/Menu_Buttons"]
 layout_mode = 0
-offset_left = -268.0
-offset_top = 317.0
-offset_right = 274.0
-offset_bottom = 531.0
+offset_left = -555.0
+offset_top = 258.0
+offset_right = -12.9999
+offset_bottom = 472.0
+rotation = 0.202306
+scale = Vector2(0.862205, 0.862205)
 focus_neighbor_top = NodePath("../Credits")
 focus_neighbor_bottom = NodePath("../Play Button")
-text = "Quit"
+texture_normal = ExtResource("9_bmxlf")
+texture_pressed = ExtResource("10_grg3l")
+texture_hover = ExtResource("11_frkhe")
+texture_focused = ExtResource("11_frkhe")
+script = ExtResource("8_vy5pj")
+clickmaskImageSource = ExtResource("9_bmxlf")
 
 [node name="MenuSFX" type="AudioStreamPlayer2D" parent="Main_Menu"]
 script = ExtResource("6_v1gob")
