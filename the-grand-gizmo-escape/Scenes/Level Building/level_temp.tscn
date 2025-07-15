@@ -472,9 +472,8 @@ terrain_set_0/terrain_0/color = Color(0.00505658, 0.0028675, 0.00390067, 1)
 sources/3 = SubResource("TileSetAtlasSource_bwxhm")
 sources/0 = SubResource("TileSetAtlasSource_cqp72")
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("player", "spawn_point")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("1_2dl6o")
-player = NodePath("")
 spawn_point = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("2_5hq3t")]
@@ -624,9 +623,8 @@ position = Vector2(-3497, 2681)
 [node name="Crate4" parent="Interactables" instance=ExtResource("7_yeuv5")]
 position = Vector2(1072, -72)
 
-[node name="Hurtboxes" parent="." node_paths=PackedStringArray("player", "hurtboxes") instance=ExtResource("8_6wh8q")]
+[node name="Hurtboxes" parent="." node_paths=PackedStringArray("hurtboxes") instance=ExtResource("8_6wh8q")]
 position = Vector2(-288, 24)
-player = NodePath("")
 hurtboxes = [NodePath("Hurtbox"), NodePath("Hurtbox2"), NodePath("Hurtbox3")]
 
 [node name="Hurtbox" parent="Hurtboxes" instance=ExtResource("9_qbbeu")]
