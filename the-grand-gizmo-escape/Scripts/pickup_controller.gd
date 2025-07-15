@@ -30,7 +30,13 @@ func _ready() -> void:
 ## HANDLE INPUT
 func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed(pickup_action) and enabled):
-		drop() if held else tryPickup()
+		if(held):
+			drop();
+			GizmoPickupSetdownSFX.global_position = GlobalVars.gizmoCamPTR.global_position;
+			GizmoPickupSetdownSFX.stream = gizmoDrop;
+			GizmoPickupSetdownSFX.play();
+		else:
+			tryPickup();
 
 ## PICKUP AREA SIGNALS
 func onBodyEntered(body: Node) -> void:
@@ -47,15 +53,15 @@ func tryPickup() -> void:
 		return
 	candidates.sort_custom(compareDistance) # I know we won't have more than one gizmo but maybe?
 	pickup(candidates[0])
+	GizmoPickupSetdownSFX.global_position = GlobalVars.gizmoCamPTR.global_position;
+	GizmoPickupSetdownSFX.stream = gizmoPickup;
+	GizmoPickupSetdownSFX.play();
 
 func compareDistance(a, b) -> bool:
 	return	a.global_position.distance_to(area.global_position) \
 		  < b.global_position.distance_to(area.global_position)
 
-func pickup(item : RigidBody2D) -> void:
-	GizmoPickupSetdownSFX.global_position = GlobalVars.gizmoCamPTR.global_position;
-	GizmoPickupSetdownSFX.stream = gizmoPickup;
-	GizmoPickupSetdownSFX.play();
+func pickup(item : RigidBody2D, instant = false) -> void:
 	held = item
 	
 	# disable physics for gizmo
@@ -71,8 +77,9 @@ func pickup(item : RigidBody2D) -> void:
 	for child in item.get_children():
 		if (child is CollisionShape2D):
 			child.disabled = true
-			
 	
+	if(instant):
+		item.global_position = socket.global_position;
 	# "tween" is a word I just learned. don't know how I feel about it
 	var tween := create_tween()
 	tween.tween_property(
@@ -86,9 +93,6 @@ func attachToSocket(gizmo: RigidBody2D) -> void:
 	gizmo.position = Vector2.ZERO # aligns gizmo exactly with the socket
 
 func drop() -> void:
-	GizmoPickupSetdownSFX.global_position = GlobalVars.gizmoCamPTR.global_position;
-	GizmoPickupSetdownSFX.stream = gizmoDrop;
-	GizmoPickupSetdownSFX.play();
 	var item := held
 	held = null
 	if not item:

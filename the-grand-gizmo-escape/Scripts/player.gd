@@ -217,7 +217,7 @@ func die():
 	self.global_position = spawn_point;
 	player_death.emit();
 	deathSFXPlayer.play();
-	print("TODO respawn gizmo logic")
+	GlobalVars.gizmoCamPTR.global_position = spawn_point;
 
 func setSpawnPoint(pos: Vector2):
 	spawn_point = pos
@@ -239,6 +239,10 @@ func disableSide(side: int):
 	pickupControllers[side].enabled = false;
 	collisions[side].set_deferred("disabled", true);
 	sides[side].visible = false;
+	if(pickupControllers[side].held != null):
+		var item = pickupControllers[side].held;
+		pickupControllers[side].drop();
+		pickupControllers[0 if side == 1 else 1].pickup(item, true);
 
 func enableSide(side: int):
 	pickupControllers[side].enabled = true;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://v5ukptp155h7"]
+[gd_scene load_steps=13 format=3 uid="uid://v5ukptp155h7"]
 
 [ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_o2duk"]
 [ext_resource type="PackedScene" uid="uid://wf6f5r3s7d0m" path="res://Scenes/Level Building/Lever.tscn" id="2_ny5cp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bw54jqyqbespn" path="res://Scripts/pause_manager.gd" id="4_273do"]
 [ext_resource type="PackedScene" uid="uid://cdiko8cbd2dil" path="res://Scenes/Player/Gizmo.tscn" id="5_av7s8"]
 [ext_resource type="PackedScene" uid="uid://oecuyrjjcgxa" path="res://Scenes/UI/Pause-Menu.tscn" id="6_p82pe"]
+[ext_resource type="PackedScene" uid="uid://cegpbg7vdfok1" path="res://Scenes/Level Building/Crate.tscn" id="9_wahuo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o085r"]
 size = Vector2(2050, 62)
@@ -157,6 +158,9 @@ position = Vector2(1913, -564)
 [node name="Menu" parent="." node_paths=PackedStringArray("gizmo") instance=ExtResource("6_p82pe")]
 position = Vector2(1170.81, -413.351)
 gizmo = NodePath("../Entities/Gizmo")
+
+[node name="Crate" parent="." instance=ExtResource("9_wahuo")]
+position = Vector2(1606, -256)
 
 [connection signal="pause_game" from="Menu" to="Level" method="pause"]
 [connection signal="pause_game" from="Menu" to="Entities" method="pause"]

@@ -111,20 +111,13 @@ shape = SubResource("RectangleShape2D_88dxh")
 debug_color = Color(0.501961, 0.580392, 0.101961, 0.419608)
 
 [node name="ScreenWrapBlockerLeft" type="StaticBody2D" parent="Screen_Wrap" groups=["Collision_Off_Screen_Enabled"]]
-collision_layer = 3
-collision_mask = 3
 
 [node name="ScreenWrapBlockerRight" type="StaticBody2D" parent="Screen_Wrap" groups=["Collision_Off_Screen_Enabled"]]
-collision_layer = 3
-collision_mask = 3
 
 [node name="ScreenWrapBlockerUp" type="StaticBody2D" parent="Screen_Wrap" groups=["Collision_Off_Screen_Enabled"]]
-collision_layer = 3
 collision_mask = 3
 
 [node name="ScreenWrapBlockerDown" type="StaticBody2D" parent="Screen_Wrap" groups=["Collision_Off_Screen_Enabled"]]
-collision_layer = 3
-collision_mask = 3
 
 [node name="GizmoCam" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
