@@ -37,11 +37,19 @@ var A_Side = true;
 var isWalking = false;
 @export var footstepCanter = .25;
 @onready var walkingSFXPlayer = $WalkingSFX;
+@onready var jumpSFXPlayer = $JumpSFX;
 @onready var walkingSounds = [preload("res://Audio/SFX/Footsteps_1.wav"),
 								preload("res://Audio/SFX/Footsteps_2.wav"),
 								preload("res://Audio/SFX/Footsteps_3.wav"),
 								preload("res://Audio/SFX/Footsteps_4.wav"),
 								preload("res://Audio/SFX/Footsteps_5.wav")];
+@onready var jumpingSounds = [preload("res://Audio/SFX/Jump Efforts_1.wav"),
+								preload("res://Audio/SFX/Jump Efforts_2.wav"),
+								preload("res://Audio/SFX/Jump Efforts_3.wav")];
+@onready var wallJumpingSounds = [preload("res://Audio/SFX/Wall Jump_1.wav"),
+								preload("res://Audio/SFX/Wall Jump_2.wav"),
+								preload("res://Audio/SFX/Wall Jump_3.wav"),
+								preload("res://Audio/SFX/Wall Jump_4.wav")];
 
 @onready var pickupControllers = [$A_Side/PickupController_A, $B_Side/PickupController_B];
 @onready var collisions: Array[CollisionShape2D] = [$Collision_A, $Collision_B];
@@ -109,12 +117,18 @@ func _physics_process(delta: float) -> void:
 		if (coyote_jump_available):
 			velocity.y = JUMP_VELOCITY
 			coyote_jump_available = false
+			jumpSFXPlayer.global_position = GlobalVars.gizmoCamPTR.global_position;
+			jumpSFXPlayer.stream = jumpingSounds[randi_range(0, 2)]
+			jumpSFXPlayer.play();
 		elif (can_wall_jump):
 			velocity.y = WALL_JUMP_VELOCITY
 			velocity.x = WALL_JUMP_PUSHBACK * wall_jump_direction_x
 			can_wall_jump = false
 			wall_jump_deny_turnaround_timer.start()
 			can_turn_around = false
+			jumpSFXPlayer.global_position = GlobalVars.gizmoCamPTR.global_position;
+			jumpSFXPlayer.stream = wallJumpingSounds[randi_range(0, 3)]
+			jumpSFXPlayer.play();
 		elif (jump_attempted):
 			input_buffer.start()
 	

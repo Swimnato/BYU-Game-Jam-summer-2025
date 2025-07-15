@@ -16,6 +16,11 @@ var enabled = true;
 @onready var socket : Node2D = get_node(socket_path)
 @onready var area	: Area2D = get_node(pickup_area_path)
 
+@onready var gizmoPickup = preload("res://Audio/SFX/Gizmo Pickup.wav");
+@onready var gizmoDrop = preload("res://Audio/SFX/Gizmo Drop.wav");
+
+@onready var GizmoPickupSetdownSFX = $"../../GizmoPickupSetdownSFX";
+
 
 ## INITIALIZATION
 func _ready() -> void:
@@ -48,6 +53,9 @@ func compareDistance(a, b) -> bool:
 		  < b.global_position.distance_to(area.global_position)
 
 func pickup(item : RigidBody2D) -> void:
+	GizmoPickupSetdownSFX.global_position = GlobalVars.gizmoCamPTR.global_position;
+	GizmoPickupSetdownSFX.stream = gizmoPickup;
+	GizmoPickupSetdownSFX.play();
 	held = item
 	
 	# disable physics for gizmo
@@ -78,6 +86,9 @@ func attachToSocket(gizmo: RigidBody2D) -> void:
 	gizmo.position = Vector2.ZERO # aligns gizmo exactly with the socket
 
 func drop() -> void:
+	GizmoPickupSetdownSFX.global_position = GlobalVars.gizmoCamPTR.global_position;
+	GizmoPickupSetdownSFX.stream = gizmoDrop;
+	GizmoPickupSetdownSFX.play();
 	var item := held
 	held = null
 	if not item:

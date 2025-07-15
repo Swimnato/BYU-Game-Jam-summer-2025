@@ -132,3 +132,7 @@ stream = ExtResource("5_jmcll")
 volume_db = 20.0
 max_distance = 10000.0
 attenuation = 0.0
+
+[node name="GizmoPickupSetdownSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
