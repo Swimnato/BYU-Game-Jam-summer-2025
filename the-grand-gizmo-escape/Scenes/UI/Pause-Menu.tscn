@@ -31,17 +31,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Menu Items"]
-layout_mode = 0
-offset_left = -202.0
-offset_top = -343.0
-offset_right = 204.0
-offset_bottom = -200.0
-bbcode_enabled = true
-text = "[color=#000][font_size=100]Menu[/font_size][/color]"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Resume" type="TextureButton" parent="Menu Items"]
 layout_mode = 0
 offset_left = -270.0

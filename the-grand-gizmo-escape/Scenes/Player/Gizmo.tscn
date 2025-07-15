@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://cdiko8cbd2dil"]
 
-[ext_resource type="Texture2D" uid="uid://cxg7i0o8q46o2" path="res://Textures/green.png" id="1_drug4"]
 [ext_resource type="Script" uid="uid://bbguqjncer846" path="res://Scripts/gizmo.gd" id="1_tpu5s"]
 [ext_resource type="Script" uid="uid://d2o8lr3hsw0h1" path="res://Scripts/screen_wrap.gd" id="2_a1ylc"]
+[ext_resource type="Texture2D" uid="uid://baoeo16nfmbtw" path="res://Assets/Gizmo.png" id="2_pl8s7"]
 [ext_resource type="Texture2D" uid="uid://ckl0kar2d283t" path="res://Assets/Gizmo_Tutorial.png" id="4_a68hg"]
 [ext_resource type="Script" uid="uid://dfdm4iasv4nca" path="res://Scripts/tutorials.gd" id="4_pl8s7"]
 [ext_resource type="Texture2D" uid="uid://qnyqcbuixgus" path="res://Assets/Jump_Tutorial.png" id="5_ejppr"]
 [ext_resource type="Texture2D" uid="uid://dm4e5qk51nyr7" path="res://Assets/Move_Tutorial.png" id="6_ejppr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1ylc"]
-size = Vector2(36, 38)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjifg"]
+radius = 80.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drug4"]
 size = Vector2(156, 148)
@@ -32,15 +32,16 @@ collision_mask = 2
 script = ExtResource("1_tpu5s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -20)
-shape = SubResource("RectangleShape2D_a1ylc")
+position = Vector2(-1, -24)
+shape = SubResource("CircleShape2D_gjifg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -20)
-scale = Vector2(38, 38)
-texture = ExtResource("1_drug4")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_pl8s7")
 
 [node name="PickupTrigger" type="Area2D" parent="."]
+scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupTrigger"]
 position = Vector2(0, -20)

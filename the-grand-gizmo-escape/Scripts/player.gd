@@ -218,6 +218,10 @@ func die():
 	player_death.emit();
 	deathSFXPlayer.play();
 	GlobalVars.gizmoCamPTR.get_parent().global_position = spawn_point;
+	if(A_Side):
+		sides[0].position = Vector2(0,0);
+	else:
+		sides[1].position = Vector2(0,0);
 
 func setSpawnPoint(pos: Vector2):
 	spawn_point = pos
