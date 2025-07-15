@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bgctqdkd8mh2"]
+[gd_scene load_steps=25 format=3 uid="uid://bgctqdkd8mh2"]
 
 [ext_resource type="Script" uid="uid://btlttwau8030" path="res://Scripts/level.gd" id="1_hjq4c"]
 [ext_resource type="Texture2D" uid="uid://uuwmo5y2245i" path="res://Textures/blue.png" id="1_y6kw6"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://vkip0flr6p0r" path="res://Textures/tileset_glass.PNG" id="11_bwxhm"]
 [ext_resource type="PackedScene" uid="uid://oecuyrjjcgxa" path="res://Scenes/UI/Pause-Menu.tscn" id="12_hddqy"]
 [ext_resource type="PackedScene" uid="uid://cegpbg7vdfok1" path="res://Scenes/Level Building/Crate.tscn" id="13_wbyul"]
+[ext_resource type="Texture2D" uid="uid://cyu0tgd5mep0v" path="res://Textures/player_sprite_sheet.png" id="14_cqp72"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_johof"]
 size = Vector2(1704, 62)
@@ -664,6 +665,20 @@ layer_0/tile_data = PackedInt32Array(-327672, 720899, 0, -327673, 393219, 0, -32
 [node name="Player" parent="Entities" instance=ExtResource("4_fxb0a")]
 position = Vector2(662, 2201)
 scale = Vector2(0.5, 0.5)
+
+[node name="Texture_A" parent="Entities/Player/A_Side" index="0"]
+texture = ExtResource("14_cqp72")
+vframes = 1
+frame = 0
+
+[node name="B_Side" parent="Entities/Player" index="3"]
+visible = true
+
+[node name="Texture_B" parent="Entities/Player/B_Side" index="0"]
+position = Vector2(0, 0)
+texture = ExtResource("14_cqp72")
+vframes = 1
+frame = 0
 
 [node name="Gizmo" parent="Entities" instance=ExtResource("5_7qwkw")]
 position = Vector2(1287, 2189)
