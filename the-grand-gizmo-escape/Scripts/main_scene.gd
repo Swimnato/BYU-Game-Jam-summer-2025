@@ -5,7 +5,7 @@ var timeSinceBlinkText = 0.0;
 var explosionHappened : bool = false;
 var bldngRasiated : bool = false;
 var menuAppeared : bool = false;
-@onready var gameScn = preload("res://Scenes/testing/MovementDemo.tscn");
+@onready var gameScn = preload("res://Scenes/Level Building/Level_Swimn.tscn");
 @onready var creditsScn = preload("res://Scenes/UI/Credits.tscn");
 
 @onready var explodedTexture = preload("res://Assets/The_explosion.png");

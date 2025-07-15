@@ -217,7 +217,7 @@ func die():
 	self.global_position = spawn_point;
 	player_death.emit();
 	deathSFXPlayer.play();
-	print("TODO respawn gizmo logic")
+	GlobalVars.gizmoCamPTR.global_position = spawn_point;
 
 func setSpawnPoint(pos: Vector2):
 	spawn_point = pos

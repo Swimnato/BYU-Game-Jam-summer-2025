@@ -477,10 +477,9 @@ sources/0 = SubResource("TileSetAtlasSource_cqp72")
 
 [node name="Game" type="Node2D"]
 
-[node name="Level" type="Node2D" parent="." node_paths=PackedStringArray("player", "spawn_point")]
+[node name="Level" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("1_hjq4c")
 player = NodePath("../Entities/Player")
-spawn_point = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" parent="Level" instance=ExtResource("9_7qwkw")]
 position = Vector2(104, 2503)

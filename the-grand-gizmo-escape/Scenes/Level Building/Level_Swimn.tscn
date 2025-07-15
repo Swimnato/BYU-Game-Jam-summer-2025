@@ -460,13 +460,19 @@ terrain_set_0/terrain_0/color = Color(0.00505658, 0.0028675, 0.00390067, 1)
 sources/3 = SubResource("TileSetAtlasSource_bwxhm")
 sources/0 = SubResource("TileSetAtlasSource_cqp72")
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("player", "spawn_point")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("player", "central_spawn_point")]
 script = ExtResource("1_p5gk7")
 player = NodePath("Entities/Player")
-spawn_point = NodePath("SpawnPoint")
+central_spawn_point = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("2_v5ilh")]
-position = Vector2(2396, -1462)
+position = Vector2(1233, -1398)
+
+[node name="SpawnPoint2" parent="." instance=ExtResource("2_v5ilh")]
+position = Vector2(919, 1381)
+
+[node name="SpawnPoint3" parent="." instance=ExtResource("2_v5ilh")]
+position = Vector2(12367, 2513)
 
 [node name="Interactables" type="Node2D" parent="."]
 
@@ -672,6 +678,6 @@ position = Vector2(662, 2201)
 scale = Vector2(0.5, 0.5)
 
 [node name="Gizmo" parent="Entities" instance=ExtResource("7_sbx2k")]
-position = Vector2(1280, 2486)
+position = Vector2(1422, 2061)
 
 [editable path="Entities/Player"]
