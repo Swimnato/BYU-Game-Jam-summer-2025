@@ -483,6 +483,7 @@ player = NodePath("../Entities/Player")
 
 [node name="SpawnPoint" parent="Level" instance=ExtResource("9_7qwkw")]
 position = Vector2(104, 2503)
+script = null
 
 [node name="Floor" type="Node2D" parent="Level"]
 

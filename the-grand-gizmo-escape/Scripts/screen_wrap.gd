@@ -54,12 +54,14 @@ func _on_in_camera_body_entered(body: Node2D) -> void:
 			enableCollision(body)
 
 func disableCollision(body: Node2D):
-	body.set_collision_layer_value(1, false);
-	body.set_collision_layer_value(8, true);
+	if body:
+		body.set_collision_layer_value(1, false);
+		body.set_collision_layer_value(8, true);
 
 func enableCollision(body: Node2D):
-	body.set_collision_layer_value(1, true);
-	body.set_collision_layer_value(8, false);
+	if body:
+		body.set_collision_layer_value(1, true);
+		body.set_collision_layer_value(8, false);
 	
 func handleTiles(body, fn: Callable):
 	var pos = body.get_coords_for_body_rid(body);

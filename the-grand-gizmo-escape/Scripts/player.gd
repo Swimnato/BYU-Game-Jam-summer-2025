@@ -163,7 +163,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity * (TERMINAL_VELOCITY_SQUARED / velocitySquared);
 	
 	move_and_slide();
-	handleAnimations(velocity, !is_on_floor())
+	handleAnimations(velocity, !is_on_floor(), can_wall_jump)
 	
 	for object in range(get_slide_collision_count()):
 		var collider = get_slide_collision(object).get_collider();
@@ -260,6 +260,6 @@ func removeCloneFurthestFromCamera(cameraPos : Vector2):
 			A_Side = true;
 			disableSide(1);
 
-func handleAnimations(velocity: Vector2, jumping: bool):
+func handleAnimations(velocity: Vector2, jumping: bool, on_wall: bool):
 	for sprite in sprites:
-		sprite.handleAnimation(velocity, jumping)
+		sprite.handleAnimation(velocity, jumping, on_wall)
