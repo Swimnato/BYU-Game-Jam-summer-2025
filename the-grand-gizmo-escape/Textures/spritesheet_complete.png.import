@@ -15,8 +15,8 @@ dest_files=["res://.godot/imported/spritesheet_complete.png-c4696d03ae8a346f137c
 
 [params]
 
-compress/mode=1
-compress/high_quality=true
+compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
