@@ -583,11 +583,11 @@ position = Vector2(5728, -1720)
 door = NodePath("../Door3")
 
 [node name="Lever" parent="Level/Interactables" node_paths=PackedStringArray("door") instance=ExtResource("2_8j1cn")]
-position = Vector2(843, -448)
+position = Vector2(-280, 2405)
 door = NodePath("../Door")
 
 [node name="Door" parent="Level/Interactables" instance=ExtResource("3_dbbe8")]
-position = Vector2(304, -128)
+position = Vector2(1496, 2482)
 
 [node name="Button" parent="Level/Interactables" node_paths=PackedStringArray("door") instance=ExtResource("4_8j1cn")]
 position = Vector2(-890, 2575)
