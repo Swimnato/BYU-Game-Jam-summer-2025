@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://oecuyrjjcgxa"]
+[gd_scene load_steps=3 format=3 uid="uid://oecuyrjjcgxa"]
 
 [ext_resource type="Script" uid="uid://dqtjf6fv3oaue" path="res://Scripts/pause_menu.gd" id="1_7dbc6"]
+[ext_resource type="Script" uid="uid://cxcfy35hicf0s" path="res://Scripts/ButtonSFX.gd" id="2_yhmj7"]
 
 [node name="Menu Controller" type="Node2D" node_paths=PackedStringArray("menuCam", "firstButton")]
 script = ExtResource("1_7dbc6")
@@ -66,6 +67,18 @@ focus_previous = NodePath("../Restart")
 text = "Quit
 "
 
+[node name="MenuSFX" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("2_yhmj7")
+
+[connection signal="focus_entered" from="Menu Items/Resume" to="MenuSFX" method="playHovered"]
+[connection signal="mouse_entered" from="Menu Items/Resume" to="MenuSFX" method="playHovered"]
 [connection signal="pressed" from="Menu Items/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Menu Items/Resume" to="MenuSFX" method="playAccept"]
+[connection signal="focus_entered" from="Menu Items/Restart" to="MenuSFX" method="playHovered"]
+[connection signal="mouse_entered" from="Menu Items/Restart" to="MenuSFX" method="playHovered"]
 [connection signal="pressed" from="Menu Items/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Menu Items/Restart" to="MenuSFX" method="playAccept"]
+[connection signal="focus_entered" from="Menu Items/Quit" to="MenuSFX" method="playHovered"]
+[connection signal="mouse_entered" from="Menu Items/Quit" to="MenuSFX" method="playHovered"]
 [connection signal="pressed" from="Menu Items/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu Items/Quit" to="MenuSFX" method="playAccept"]

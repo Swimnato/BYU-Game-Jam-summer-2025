@@ -11,6 +11,8 @@ var menuAppeared : bool = false;
 @onready var explodedTexture = preload("res://Assets/The_explosion.png");
 @onready var postExplodedTexture = preload("res://Assets/rasiated.png");
 
+@onready var Explosion = preload("res://Audio/SFX/Explosion.wav")
+@onready var MainMenuMusic = preload("res://Audio/Music/Main Menu Music (120 bpm).wav");
 @onready var TitleScreenTheme = preload("res://Audio/Music/Title Screen (115 bpm, 2-29).wav");
 @onready var MainTheme = preload("res://Audio/Music/Main Theme (105 bpm, 2-102).wav");
 
@@ -39,6 +41,9 @@ func _ready() -> void:
 	mainMenuEndRot = menuButtons.rotation;
 	mainMenuEndPos = menuButtons.position;
 	mainMenuEndScale = menuButtons.scale;
+	musicBox.stream = MainMenuMusic;
+	musicBox.connect("finished", Callable(self,"playSongAgain"));
+	musicBox.play();
 
 
 func _process(delta: float) -> void:
@@ -50,13 +55,9 @@ func _process(delta: float) -> void:
 		elif(countup >= startToMenuDelay and !menuAppeared):
 			menuAppeared = true;
 			playBtn.grab_focus();
+			musicBox.stop();
 			musicBox.stream = TitleScreenTheme;
-			musicBox.connect("finished", Callable(self,"playSongAgain"));
 			musicBox.play();
-	elif(menuAppeared and !musicBox.playing):
-		musicBox.seek(0);
-		musicBox.stream = TitleScreenTheme;
-		musicBox.playing = true;
 	else:
 		timeSinceBlinkText += delta;
 		if(timeSinceBlinkText > blinkDuration):
@@ -82,6 +83,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		tween.tween_property(menuButtons, "position", mainMenuEndPos, startToMenuDelay);
 		tween.tween_property(menuButtons, "rotation", mainMenuEndRot, startToMenuDelay);
 		tween.tween_property(menuButtons, "scale", mainMenuEndScale, startToMenuDelay);
+		musicBox.stop();
+		musicBox.stream = Explosion;
+		musicBox.play();
 
 
 func _on_play_button_pressed() -> void:
