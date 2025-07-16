@@ -15,7 +15,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8ahd"]
 size = Vector2(6405, 3594)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cqp72"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hwvp3"]
 texture = ExtResource("4_jv26f")
 texture_region_size = Vector2i(378, 378)
 0:0/0 = 0
@@ -67,7 +67,7 @@ texture_region_size = Vector2i(378, 378)
 10:3/0 = 0
 11:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwxhm"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_afv7b"]
 texture = ExtResource("5_rb0md")
 texture_region_size = Vector2i(378, 378)
 0:0/0 = 0
@@ -456,8 +456,8 @@ physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Foreground"
 terrain_set_0/terrain_0/color = Color(0.00505658, 0.0028675, 0.00390067, 1)
-sources/3 = SubResource("TileSetAtlasSource_bwxhm")
-sources/0 = SubResource("TileSetAtlasSource_cqp72")
+sources/3 = SubResource("TileSetAtlasSource_afv7b")
+sources/0 = SubResource("TileSetAtlasSource_hwvp3")
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_cyadu")
