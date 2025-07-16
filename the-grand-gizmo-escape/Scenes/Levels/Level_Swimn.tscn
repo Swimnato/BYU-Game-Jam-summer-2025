@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ymsceubr6ayp"]
+[gd_scene load_steps=28 format=3 uid="uid://ymsceubr6ayp"]
 
 [ext_resource type="Script" uid="uid://btlttwau8030" path="res://Scripts/level.gd" id="1_cpf7f"]
 [ext_resource type="PackedScene" uid="uid://cdoia3ku05owb" path="res://Scenes/Level Building/SpawnPoint.tscn" id="2_ninju"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://bvgvaxq4l543v" path="res://Scenes/Player/Player.tscn" id="12_anoit"]
 [ext_resource type="PackedScene" uid="uid://cdiko8cbd2dil" path="res://Scenes/Player/Gizmo.tscn" id="13_ybtes"]
 [ext_resource type="PackedScene" uid="uid://oecuyrjjcgxa" path="res://Scenes/UI/Pause-Menu.tscn" id="14_5taw8"]
-[ext_resource type="Script" uid="uid://jd5dxh48jhhx" path="res://Scripts/end.gd" id="15_ninju"]
 [ext_resource type="Texture2D" uid="uid://cc3uq233alyk7" path="res://Textures/bg.png" id="15_ninju"]
 [ext_resource type="Texture2D" uid="uid://fj1uu7nlepls" path="res://Textures/spikes.png" id="16_jrnwl"]
 
@@ -2154,13 +2153,11 @@ position = Vector2(4955.94, 10142.1)
 gizmo = NodePath("../Entities/Gizmo")
 
 [node name="End" type="Area2D" parent="."]
-script = ExtResource("15_ninju")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
 position = Vector2(79212, 20974)
 shape = SubResource("RectangleShape2D_cpf7f")
 
-[connection signal="body_entered" from="End" to="End" method="_on_body_entered"]
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -4096
 position = Vector2(13952, 3712)
@@ -2250,5 +2247,7 @@ texture = ExtResource("16_jrnwl")
 [node name="Sprite2D22" type="Sprite2D" parent="."]
 position = Vector2(53722, 21720)
 texture = ExtResource("16_jrnwl")
+
+[connection signal="body_entered" from="End" to="End" method="_on_body_entered"]
 
 [editable path="Entities/Player"]
