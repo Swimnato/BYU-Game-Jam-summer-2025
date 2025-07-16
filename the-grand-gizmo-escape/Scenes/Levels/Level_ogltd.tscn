@@ -467,13 +467,16 @@ player = NodePath("Entities/Player")
 central_spawn_point = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("2_uqvet")]
-position = Vector2(1233, -1398)
+position = Vector2(4136, 3262)
+scale = Vector2(7.195, 7.195)
 
 [node name="SpawnPoint2" parent="." instance=ExtResource("2_uqvet")]
-position = Vector2(919, 1381)
+position = Vector2(19928, 7718)
+scale = Vector2(12.94, 12.94)
 
 [node name="SpawnPoint3" parent="." instance=ExtResource("2_uqvet")]
-position = Vector2(12367, 2513)
+position = Vector2(27680, 8090)
+scale = Vector2(10.805, 10.805)
 
 [node name="Interactables" type="Node2D" parent="."]
 
