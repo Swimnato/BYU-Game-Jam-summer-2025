@@ -34,6 +34,10 @@ var mainMenuEndPos : Vector2;
 @export var mainMenuBegScale: Vector2 = Vector2(.01,.01);
 var mainMenuEndScale : Vector2;
 
+var inCredits = false;
+var creditsSCN : Node2D;
+var creditsDismissed = 0;
+
 
 func _ready() -> void:
 	menuButtons.visible = false;
@@ -47,6 +51,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if(creditsSCN == null and inCredits):
+		inCredits = false;
+		creditsDismissed = Time.get_ticks_msec();
+	
 	if(explosionHappened):
 		countup += delta;
 		if(countup > startToRasiatedDelay and !bldngRasiated):
@@ -100,9 +108,11 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_credits_pressed() -> void:
-	if(menuAppeared):
+	if(menuAppeared and !inCredits and Time.get_ticks_msec() - creditsDismissed > 100):
 		var scn = creditsScn.instantiate();
 		add_child(scn);
+		inCredits = true;
+		creditsSCN = scn;
 
 
 func _on_quit_pressed() -> void:

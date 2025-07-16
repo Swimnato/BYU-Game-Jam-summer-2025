@@ -179,7 +179,7 @@ func _physics_process(delta: float) -> void:
 	
 	# reset level
 	if(Input.is_action_just_released("ResetLvl")):
-		get_tree().reload_current_scene()
+		die()
 
 func queueContinueFootsteps():
 	var timer = Timer.new();
