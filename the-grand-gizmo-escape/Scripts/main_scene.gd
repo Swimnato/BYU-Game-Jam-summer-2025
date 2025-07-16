@@ -101,10 +101,7 @@ func _on_play_button_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	if(menuAppeared):
-		menuButtons.visible = false;
-		prisionBuildingSprite.visible = false;
 		var scn = creditsScn.instantiate();
-		menuCam.enabled = false;
 		add_child(scn);
 
 

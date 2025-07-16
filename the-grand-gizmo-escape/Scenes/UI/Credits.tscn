@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1wyi3n7fw060"]
+[gd_scene load_steps=3 format=3 uid="uid://b1wyi3n7fw060"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_msqbs"]
+[ext_resource type="Script" uid="uid://p015esh4niv8" path="res://Scripts/credits.gd" id="1_habdp"]
+[ext_resource type="Texture2D" uid="uid://djg75pofpnd3k" path="res://Assets/Credits_page.png" id="2_eg3jt"]
 
 [node name="Credits" type="Node2D"]
+script = ExtResource("1_habdp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("ViewportTexture_msqbs")
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_eg3jt")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = -573.0
@@ -13,16 +15,16 @@ offset_top = -450.0
 offset_right = 577.0
 offset_bottom = 488.0
 bbcode_enabled = true
-text = "[font_size=100]Credits[/font_size]
-[font_size=50]Art:[/font_size]
+text = "[color=#000][font_size=100]Credits[/font_size]
+[font_size=50]Art:[/font_size][/color]
 [font_size=30] [color=#4cf][rainbow]Sam Johnston[/rainbow]
 [tornado]Becca[/tornado] 
 [wave]TheBoss007[/wave] 
-[/color] [/font_size][font_size=50]Music:[/font_size][font_size=30] [color=#4cf]
+[/color] [/font_size][font_size=50][color=#000]Music:[/color][/font_size][font_size=30] [color=#4cf]
  [wave]Finn Morrison[/wave][/color] [/font_size]
-[font_size=50]Programmers:[/font_size][font_size=30] [color=#4cf]
+[font_size=50][color=#000]Programmers:[/color][/font_size][font_size=30] [color=#4cf]
 [tornado]Bubadabado[/tornado] 
 [pulse]Swimnato[/pulse][/color] [/font_size]
-[font_size=50]Game Design:[/font_size][font_size=30] [color=#4cf]
+[font_size=50][color=#000]Game Design:[/color][/font_size][font_size=30] [color=#4cf]
 [pulse]Voidlighter[/pulse]
 [/color] [/font_size]"
