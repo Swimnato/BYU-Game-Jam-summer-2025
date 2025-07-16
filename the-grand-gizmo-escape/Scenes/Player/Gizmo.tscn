@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d2o8lr3hsw0h1" path="res://Scripts/screen_wrap.gd" id="2_a1ylc"]
 [ext_resource type="Texture2D" uid="uid://baoeo16nfmbtw" path="res://Assets/Gizmo.png" id="2_pl8s7"]
 [ext_resource type="Texture2D" uid="uid://ckl0kar2d283t" path="res://Assets/Gizmo_Tutorial.png" id="4_a68hg"]
-[ext_resource type="Script" uid="uid://dfdm4iasv4nca" path="res://Scripts/tutorials.gd" id="4_pl8s7"]
+[ext_resource type="Script" path="res://Scripts/tutorials.gd" id="4_pl8s7"]
 [ext_resource type="Texture2D" uid="uid://qnyqcbuixgus" path="res://Assets/Jump_Tutorial.png" id="5_ejppr"]
 [ext_resource type="Texture2D" uid="uid://dm4e5qk51nyr7" path="res://Assets/Move_Tutorial.png" id="6_ejppr"]
 
