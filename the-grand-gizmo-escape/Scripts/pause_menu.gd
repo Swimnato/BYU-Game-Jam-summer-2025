@@ -46,7 +46,7 @@ func _on_resume_pressed() -> void:
 
 
 func _on_restart_pressed() -> void:
-	get_tree().reload_current_scene();
+	GlobalVars.playerPTR.die();
 
 
 func _on_quit_pressed() -> void:

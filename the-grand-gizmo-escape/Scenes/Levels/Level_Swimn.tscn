@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ymsceubr6ayp"]
+[gd_scene load_steps=29 format=3 uid="uid://ymsceubr6ayp"]
 
 [ext_resource type="Script" uid="uid://btlttwau8030" path="res://Scripts/level.gd" id="1_cpf7f"]
 [ext_resource type="PackedScene" uid="uid://cdoia3ku05owb" path="res://Scenes/Level Building/SpawnPoint.tscn" id="2_ninju"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://oecuyrjjcgxa" path="res://Scenes/UI/Pause-Menu.tscn" id="14_5taw8"]
 [ext_resource type="Texture2D" uid="uid://cc3uq233alyk7" path="res://Textures/bg.png" id="15_ninju"]
 [ext_resource type="Texture2D" uid="uid://fj1uu7nlepls" path="res://Textures/spikes.png" id="16_jrnwl"]
+[ext_resource type="Script" uid="uid://jd5dxh48jhhx" path="res://Scripts/end.gd" id="17_84n3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8ahd"]
 size = Vector2(6405, 3594)
@@ -2115,6 +2116,97 @@ scale = Vector2(20, 20)
 position = Vector2(60043, 22923)
 scale = Vector2(20, 20)
 
+[node name="Sprite2D" type="Sprite2D" parent="Hurtboxes"]
+z_index = -4096
+position = Vector2(20620, 3713)
+rotation = 3.14159
+scale = Vector2(516.856, 204.353)
+texture = ExtResource("15_ninju")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(18349, 3664)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(18728, 3664)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(19107, 3664)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(19498, 3664)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(19877, 3664)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(20256, 3664)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(20635, 3664)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(21020, 3664)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(21411, 3664)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(21802, 3664)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(52418, 20277)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(52805, 20277)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(53192, 20277)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(53572, 20277)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(53948, 20277)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(54335, 20277)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(54719, 20277)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(55110, 20277)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(59614, 22545)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D21" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(59940, 22545)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D22" type="Sprite2D" parent="Hurtboxes"]
+position = Vector2(60103, 22545)
+texture = ExtResource("16_jrnwl")
+
 [node name="LevelDesignCameraRef" type="CollisionShape2D" parent="."]
 position = Vector2(38893, 7469)
 shape = SubResource("RectangleShape2D_b8ahd")
@@ -2142,111 +2234,22 @@ layer_0/tile_data = PackedInt32Array(65538, 65539, 3, 65539, 65539, 3, 65540, 65
 position = Vector2(7, -4000)
 
 [node name="Player" parent="Entities" instance=ExtResource("12_anoit")]
-position = Vector2(-50811, -964)
+position = Vector2(-51132, -850)
 scale = Vector2(0.5, 0.5)
 
 [node name="Gizmo" parent="Entities" instance=ExtResource("13_ybtes")]
-position = Vector2(-50504, -956)
+position = Vector2(-50255, -999)
 
 [node name="Menu Controller" parent="." node_paths=PackedStringArray("gizmo") instance=ExtResource("14_5taw8")]
 position = Vector2(4955.94, 10142.1)
 gizmo = NodePath("../Entities/Gizmo")
 
 [node name="End" type="Area2D" parent="."]
+script = ExtResource("17_84n3b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
 position = Vector2(85305, 21911)
 shape = SubResource("RectangleShape2D_cpf7f")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -4096
-position = Vector2(20332, 3737)
-scale = Vector2(-516.856, -204.353)
-texture = ExtResource("15_ninju")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(18061, 3688)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(18440, 3688)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(18819, 3688)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D5" type="Sprite2D" parent="."]
-position = Vector2(19210, 3688)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D6" type="Sprite2D" parent="."]
-position = Vector2(19589, 3688)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D7" type="Sprite2D" parent="."]
-position = Vector2(19968, 3688)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D8" type="Sprite2D" parent="."]
-position = Vector2(20347, 3688)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D9" type="Sprite2D" parent="."]
-position = Vector2(20732, 3688)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D10" type="Sprite2D" parent="."]
-position = Vector2(21123, 3688)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D11" type="Sprite2D" parent="."]
-position = Vector2(21514, 3688)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D12" type="Sprite2D" parent="."]
-position = Vector2(52130, 20301)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D13" type="Sprite2D" parent="."]
-position = Vector2(52517, 20301)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D14" type="Sprite2D" parent="."]
-position = Vector2(52904, 20301)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D15" type="Sprite2D" parent="."]
-position = Vector2(53284, 20301)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D16" type="Sprite2D" parent="."]
-position = Vector2(53660, 20301)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D17" type="Sprite2D" parent="."]
-position = Vector2(54047, 20301)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D18" type="Sprite2D" parent="."]
-position = Vector2(54431, 20301)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D19" type="Sprite2D" parent="."]
-position = Vector2(54822, 20301)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D20" type="Sprite2D" parent="."]
-position = Vector2(59326, 22569)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D21" type="Sprite2D" parent="."]
-position = Vector2(59652, 22569)
-texture = ExtResource("16_jrnwl")
-
-[node name="Sprite2D22" type="Sprite2D" parent="."]
-position = Vector2(59815, 22569)
-texture = ExtResource("16_jrnwl")
 
 [connection signal="body_entered" from="End" to="End" method="_on_body_entered"]
 

@@ -19,4 +19,5 @@ func _physics_process(delta: float) -> void:
 				pass
 
 func endGame():
+	print("game ended");
 	$Screen_Wrap/EndCredits.visible = true;

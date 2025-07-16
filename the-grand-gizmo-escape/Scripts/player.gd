@@ -214,14 +214,17 @@ func wallJumpDenyTurnaroundTimeout():
 	can_turn_around = true
 
 func die():
+	removeCloneFurthestFromCamera(GlobalVars.gizmoCamPTR.global_position)
 	self.global_position = spawn_point;
 	player_death.emit();
 	deathSFXPlayer.play();
 	GlobalVars.gizmoCamPTR.get_parent().global_position = spawn_point;
 	if(A_Side):
 		sides[0].position = Vector2(0,0);
+		collisions[0].position = Vector2(0,0);
 	else:
 		sides[1].position = Vector2(0,0);
+		collisions[1].position = Vector2(0,0);
 
 func setSpawnPoint(pos: Vector2):
 	spawn_point = pos
