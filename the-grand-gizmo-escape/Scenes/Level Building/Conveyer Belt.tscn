@@ -1,12 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvhj0jvjvt1ay"]
+[gd_scene load_steps=7 format=3 uid="uid://bvhj0jvjvt1ay"]
 
 [ext_resource type="Script" uid="uid://cw0xe0l3a28as" path="res://Scripts/conveyer_belt.gd" id="1_g3507"]
+[ext_resource type="Texture2D" uid="uid://c6p0bnqpgs4q6" path="res://Textures/conveyor_belt.png" id="2_osg8j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cy8j8"]
-size = Vector2(20, 10)
+size = Vector2(44, 10)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cy8j8"]
-size = Vector2(20, 10)
+[sub_resource type="Animation" id="Animation_ygu8b"]
+resource_name = "dothing"
+length = 0.04
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_62jr3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dxl1e"]
+_data = {
+&"RESET": SubResource("Animation_62jr3"),
+&"dothing": SubResource("Animation_ygu8b")
+}
 
 [node name="ConveyerBelt" type="StaticBody2D" groups=["Conveyer Belt"]]
 collision_layer = 3
@@ -18,4 +54,14 @@ beltSpeed = 1000
 shape = SubResource("RectangleShape2D_cy8j8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_cy8j8")
+position = Vector2(0, 1)
+scale = Vector2(0.1045, 0.1045)
+texture = ExtResource("2_osg8j")
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_dxl1e")
+}
+autoplay = "dothing"
