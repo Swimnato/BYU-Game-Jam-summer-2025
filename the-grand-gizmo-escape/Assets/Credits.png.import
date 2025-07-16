@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coxd0fnh5616d"
-path="res://.godot/imported/spritesheet_complete.png-c4696d03ae8a346f137c255f52a1fef2.ctex"
+uid="uid://dex6bo0omknmt"
+path="res://.godot/imported/Credits.png-e96754861ea05a4d93723b5dc4786a65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/spritesheet_complete.png"
-dest_files=["res://.godot/imported/spritesheet_complete.png-c4696d03ae8a346f137c255f52a1fef2.ctex"]
+source_file="res://Assets/Credits.png"
+dest_files=["res://.godot/imported/Credits.png-e96754861ea05a4d93723b5dc4786a65.ctex"]
 
 [params]
 
-compress/mode=1
-compress/high_quality=true
+compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

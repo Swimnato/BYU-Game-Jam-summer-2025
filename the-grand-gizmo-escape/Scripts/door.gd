@@ -19,14 +19,14 @@ func _onready():
 
 
 func setState(to):
-	open = to
-	collision.set_deferred("disabled", open)
-	if(open):
+	collision.set_deferred("disabled", to);
+	if(!open && to):
 		$Sprite2D/AnimationPlayer.play("open")
 		position = positionOriginal + offsetOn;
-	else:
+	elif(open && !to):
 		$Sprite2D/AnimationPlayer.play("open", -1, -1, true)
 		position = positionOriginal;
+	open = to;
 	#sprite.visible = !open
 
 func reset():
