@@ -240,7 +240,6 @@ shape = SubResource("CapsuleShape2D_h54ih")
 shape = SubResource("CapsuleShape2D_h54ih")
 
 [node name="A_Side" type="Node2D" parent="."]
-visible = false
 
 [node name="Texture_A" type="Sprite2D" parent="A_Side"]
 position = Vector2(37.375, 64.875)
@@ -273,6 +272,7 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_ude3g")
 
 [node name="B_Side" type="Node2D" parent="."]
+visible = false
 
 [node name="Texture_B" type="Sprite2D" parent="B_Side"]
 position = Vector2(37.375, 64.875)
