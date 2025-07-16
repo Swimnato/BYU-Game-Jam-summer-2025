@@ -47,6 +47,7 @@ func _on_resume_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	GlobalVars.playerPTR.die();
+	toggle_menu();
 
 
 func _on_quit_pressed() -> void:

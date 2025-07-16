@@ -14,7 +14,7 @@ config/name="The Grand Gizmo Escape"
 run/main_scene="uid://b47bdlwsed0gw"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://bgruuw5yltofl"
-config/icon="res://icon.svg"
+config/icon="uid://wjet0akvjjm0"
 
 [autoload]
 
