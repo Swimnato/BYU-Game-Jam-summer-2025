@@ -1,8 +1,9 @@
 extends Node2D
 
 @export var door = Node
+@export var default_state := false
 
-var on := false
+@onready var on := default_state
 
 @onready var leverActuatedSound = preload("res://Audio/SFX/Mechanical Lever Pull.wav");
 @onready var sfxPlayer = $SFX;
@@ -22,10 +23,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func reset():
 	$Sprite2D/AnimationPlayer.play("RESET")
-	on = false
+	on = default_state
 	updateDoor()
 	
 func updateDoor():
 	door.setState(on)
-
-		
