@@ -1359,7 +1359,7 @@ size = Vector2(1000, 1000)
 [node name="Level" type="Node2D" node_paths=PackedStringArray("player", "central_spawn_point")]
 script = ExtResource("1_cpf7f")
 player = NodePath("Entities/Player")
-central_spawn_point = NodePath("SpawnPoint")
+central_spawn_point = NodePath("SpawnPoint7")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("2_ninju")]
 position = Vector2(1233, -1398)
@@ -1371,8 +1371,8 @@ position = Vector2(919, 1381)
 position = Vector2(12367, 2513)
 
 [node name="SpawnPoint4" parent="." instance=ExtResource("2_ninju")]
-position = Vector2(44628, 16860)
-scale = Vector2(100, 10)
+position = Vector2(44541, 16399)
+scale = Vector2(10, 10)
 
 [node name="SpawnPoint5" parent="." instance=ExtResource("2_ninju")]
 position = Vector2(60420, 21316)
@@ -1381,6 +1381,14 @@ scale = Vector2(12.94, 12.94)
 [node name="SpawnPoint6" parent="." instance=ExtResource("2_ninju")]
 position = Vector2(68172, 21688)
 scale = Vector2(10.805, 10.805)
+
+[node name="SpawnPoint7" parent="." instance=ExtResource("2_ninju")]
+position = Vector2(-49060, -5000)
+scale = Vector2(10, 10)
+
+[node name="SpawnPoint8" parent="." instance=ExtResource("2_ninju")]
+position = Vector2(-25796, -6306)
+scale = Vector2(10, 10)
 
 [node name="Interactables" type="Node2D" parent="."]
 
@@ -2027,7 +2035,7 @@ door = NodePath("../Door3")
 default_state = true
 
 [node name="Lever4" parent="Interactables/LeverSituations" node_paths=PackedStringArray("door") instance=ExtResource("4_84n3b")]
-position = Vector2(31163, 9485)
+position = Vector2(31163, 9406)
 door = NodePath("../Door4")
 
 [node name="Lever5" parent="Interactables/LeverSituations" node_paths=PackedStringArray("door") instance=ExtResource("4_84n3b")]
