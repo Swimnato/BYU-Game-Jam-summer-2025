@@ -5,13 +5,18 @@ extends Node2D
 var offsetOn := Vector2(1,1);
 var positionOriginal :Vector2;
 
+@export var open_by_default = false
+
 var open
 
 func _ready() -> void:
 	positionOriginal = position;
+	if(open_by_default):
+		setState(open_by_default)
 
 func _onready():
-	open = false;
+	open = open_by_default;
+
 
 func setState(to):
 	collision.set_deferred("disabled", to);
@@ -26,4 +31,4 @@ func setState(to):
 
 func reset():
 	$Sprite2D/AnimationPlayer.play("reset")
-	setState(false)
+	setState(open_by_default)

@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var door = Node
+@export var default_state = false
 
 var on := false
 var other_bodies: Array[Node2D]
@@ -13,9 +14,9 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body is RigidBody2D or body.name == "Player") and !(body in other_bodies):
-		if on == false:
+		if on == default_state:
 			$Sprite2D/AnimationPlayer.play("press")
-		on = true
+		on = !default_state
 		other_bodies.append(body)
 		updateDoor()
 		sfxPlayer.play(0);
@@ -24,14 +25,14 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body in other_bodies:
 		other_bodies.erase(body)
 	if other_bodies.is_empty():
-		on = false
+		on = default_state
 		$Sprite2D/AnimationPlayer.play("press", -1, -1, true)
 		updateDoor()
 		sfxPlayer.play(0);
 
 func reset():
 	$Sprite2D/AnimationPlayer.play("RESET")
-	on = false
+	on = default_state
 	other_bodies.clear()
 	updateDoor()
 	
