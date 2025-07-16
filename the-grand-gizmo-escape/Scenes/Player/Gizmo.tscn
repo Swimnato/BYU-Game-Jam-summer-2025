@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdiko8cbd2dil"]
+[gd_scene load_steps=15 format=3 uid="uid://cdiko8cbd2dil"]
 
 [ext_resource type="Script" uid="uid://bbguqjncer846" path="res://Scripts/gizmo.gd" id="1_tpu5s"]
 [ext_resource type="Script" uid="uid://d2o8lr3hsw0h1" path="res://Scripts/screen_wrap.gd" id="2_a1ylc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dfdm4iasv4nca" path="res://Scripts/tutorials.gd" id="4_pl8s7"]
 [ext_resource type="Texture2D" uid="uid://qnyqcbuixgus" path="res://Assets/Jump_Tutorial.png" id="5_ejppr"]
 [ext_resource type="Texture2D" uid="uid://dm4e5qk51nyr7" path="res://Assets/Move_Tutorial.png" id="6_ejppr"]
+[ext_resource type="Texture2D" uid="uid://b31tayfflqhst" path="res://Assets/EndCredits.jpg" id="8_gjifg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gjifg"]
 radius = 80.0
@@ -138,6 +139,12 @@ texture = ExtResource("5_ejppr")
 [node name="MoveTutorial" type="Sprite2D" parent="Screen_Wrap/Tutorials"]
 position = Vector2(-351, 181)
 texture = ExtResource("6_ejppr")
+
+[node name="EndCredits" type="Sprite2D" parent="Screen_Wrap"]
+visible = false
+position = Vector2(12, -179)
+scale = Vector2(0.707642, 0.707642)
+texture = ExtResource("8_gjifg")
 
 [node name="GizmoCam" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)

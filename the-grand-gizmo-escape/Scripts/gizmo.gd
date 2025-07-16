@@ -17,3 +17,6 @@ func _physics_process(delta: float) -> void:
 				pass
 			elif(collider.direction == collider.DIRECTIONS.DOWN):
 				pass
+
+func endGame():
+	$Screen_Wrap/EndCredits.visible = true;
