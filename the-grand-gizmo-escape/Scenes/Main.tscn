@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c6juev68sc7b7" path="res://Scripts/main_scene.gd" id="1_idj7w"]
 [ext_resource type="Texture2D" uid="uid://bgruuw5yltofl" path="res://Assets/Building_not_blown_up.png" id="1_r150o"]
 [ext_resource type="Texture2D" uid="uid://fmgiq8xn3hrh" path="res://Assets/blow_up_txt.png" id="3_kln2b"]
-[ext_resource type="Texture2D" uid="uid://c3x20pejislwr" path="res://Assets/Title_Menu.png" id="3_rgh2o"]
+[ext_resource type="Texture2D" uid="uid://qfsxrl6xlpum" path="res://Assets/TitleTitle.png" id="4_h1m7h"]
 [ext_resource type="Texture2D" uid="uid://bpanm551c7vma" path="res://Assets/Break_in_button.png" id="4_pbw6q"]
 [ext_resource type="Texture2D" uid="uid://crv3ja2t6017e" path="res://Assets/break_in_ clicked.png" id="6_50glp"]
 [ext_resource type="Script" uid="uid://cxcfy35hicf0s" path="res://Scripts/ButtonSFX.gd" id="6_v1gob"]
@@ -33,7 +33,8 @@ zoom = Vector2(0.667, 0.667)
 [node name="Main_Menu" type="Node2D" parent="."]
 
 [node name="Menu_BG" type="Sprite2D" parent="Main_Menu"]
-texture = ExtResource("3_rgh2o")
+position = Vector2(-8, -390)
+texture = ExtResource("4_h1m7h")
 
 [node name="Menu_Buttons" type="Control" parent="Main_Menu"]
 layout_mode = 3
@@ -43,11 +44,11 @@ offset_bottom = 40.0
 
 [node name="Play Button" type="TextureButton" parent="Main_Menu/Menu_Buttons"]
 layout_mode = 0
-offset_left = -520.0
-offset_top = -376.0
-offset_right = 680.0
-offset_bottom = 395.0
-rotation = 0.220047
+offset_left = 38.0
+offset_top = -418.0
+offset_right = 1238.0
+offset_bottom = 353.0
+rotation = 0.11913
 scale = Vector2(0.726114, 0.726114)
 focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../Credits")
@@ -61,11 +62,11 @@ clickmaskImageSource = ExtResource("4_pbw6q")
 
 [node name="Credits" type="TextureButton" parent="Main_Menu/Menu_Buttons"]
 layout_mode = 0
-offset_left = -579.0
-offset_top = 36.0
-offset_right = 159.0
-offset_bottom = 250.0
-rotation = 0.209867
+offset_left = 109.0
+offset_top = 24.0
+offset_right = 847.0
+offset_bottom = 238.0
+rotation = 0.0957077
 focus_neighbor_top = NodePath("../Play Button")
 focus_neighbor_bottom = NodePath("../Quit")
 texture_normal = ExtResource("9_h1m7h")
@@ -77,11 +78,11 @@ clickmaskImageSource = ExtResource("9_h1m7h")
 
 [node name="Quit" type="TextureButton" parent="Main_Menu/Menu_Buttons"]
 layout_mode = 0
-offset_left = -555.0
-offset_top = 258.0
-offset_right = -12.9999
-offset_bottom = 472.0
-rotation = 0.202306
+offset_left = 353.0
+offset_top = 268.0
+offset_right = 895.0
+offset_bottom = 482.0
+rotation = 0.104693
 scale = Vector2(0.862205, 0.862205)
 focus_neighbor_top = NodePath("../Credits")
 focus_neighbor_bottom = NodePath("../Play Button")
