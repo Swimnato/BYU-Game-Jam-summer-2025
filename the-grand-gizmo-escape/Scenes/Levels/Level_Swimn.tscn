@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cdiko8cbd2dil" path="res://Scenes/Player/Gizmo.tscn" id="13_ybtes"]
 [ext_resource type="PackedScene" uid="uid://oecuyrjjcgxa" path="res://Scenes/UI/Pause-Menu.tscn" id="14_5taw8"]
 [ext_resource type="Script" uid="uid://jd5dxh48jhhx" path="res://Scripts/end.gd" id="15_ninju"]
+[ext_resource type="Texture2D" uid="uid://cc3uq233alyk7" path="res://Textures/bg.png" id="15_ninju"]
+[ext_resource type="Texture2D" uid="uid://fj1uu7nlepls" path="res://Textures/spikes.png" id="16_jrnwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8ahd"]
 size = Vector2(6405, 3594)
@@ -1414,20 +1416,8 @@ position = Vector2(3289, 4372)
 scale = Vector2(25, 25)
 direction = 2
 
-[node name="ConveyerBelt4" parent="Interactables/Belts" instance=ExtResource("6_0djfw")]
-position = Vector2(3791, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt5" parent="Interactables/Belts" instance=ExtResource("6_0djfw")]
 position = Vector2(4294, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt6" parent="Interactables/Belts" instance=ExtResource("6_0djfw")]
-position = Vector2(4799, 4373)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1438,20 +1428,8 @@ scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt8" parent="Interactables/Belts" instance=ExtResource("6_0djfw")]
-position = Vector2(5804, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt9" parent="Interactables/Belts" instance=ExtResource("6_0djfw")]
 position = Vector2(6307, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt10" parent="Interactables/Belts" instance=ExtResource("6_0djfw")]
-position = Vector2(6807, 4373)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1462,32 +1440,14 @@ scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt12" parent="Interactables/Belts" instance=ExtResource("6_0djfw")]
-position = Vector2(7812, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt13" parent="Interactables/Belts" instance=ExtResource("6_0djfw")]
 position = Vector2(8315, 4372)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt14" parent="Interactables/Belts" instance=ExtResource("6_0djfw")]
-position = Vector2(8820, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt15" parent="Interactables/Belts" instance=ExtResource("6_0djfw")]
 position = Vector2(9323, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt16" parent="Interactables/Belts" instance=ExtResource("6_0djfw")]
-position = Vector2(9825, 4373)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1698,20 +1658,8 @@ scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt5" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(4294, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt6" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
 position = Vector2(4799, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt7" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(5302, 4372)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1722,20 +1670,8 @@ scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt9" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(6307, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt10" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
 position = Vector2(6807, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt11" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(7310, 4372)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1746,20 +1682,8 @@ scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt13" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(8315, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt14" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
 position = Vector2(8820, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt15" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(9323, 4372)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1770,31 +1694,13 @@ scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt17" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(10328, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 2
-
 [node name="ConveyerBelt18" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
 position = Vector2(10834, 4372)
 scale = Vector2(25, 25)
 direction = 2
 
-[node name="ConveyerBelt19" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(11336, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt20" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
 position = Vector2(11839, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt21" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(12344, 4373)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1805,20 +1711,8 @@ scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt23" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(13349, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt24" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
 position = Vector2(13852, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt25" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(14352, 4373)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1829,32 +1723,14 @@ scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt27" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(15357, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt28" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
 position = Vector2(15860, 4372)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt29" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(16365, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt30" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
 position = Vector2(16868, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt31" parent="Interactables/Belts1" instance=ExtResource("6_0djfw")]
-position = Vector2(17370, 4373)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1873,20 +1749,8 @@ position = Vector2(3289, 4372)
 scale = Vector2(25, 25)
 direction = 2
 
-[node name="ConveyerBelt4" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
-position = Vector2(3791, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt5" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
 position = Vector2(4294, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt6" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
-position = Vector2(4799, 4373)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1897,20 +1761,8 @@ scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt8" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
-position = Vector2(5804, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt9" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
 position = Vector2(6307, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt10" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
-position = Vector2(6807, 4373)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1921,20 +1773,8 @@ scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt12" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
-position = Vector2(7812, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt13" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
 position = Vector2(8315, 4372)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
-[node name="ConveyerBelt14" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
-position = Vector2(8820, 4373)
 scale = Vector2(25, 25)
 direction = 2
 piece = 1
@@ -1945,22 +1785,11 @@ scale = Vector2(25, 25)
 direction = 2
 piece = 1
 
-[node name="ConveyerBelt16" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
-position = Vector2(9825, 4373)
-scale = Vector2(25, 25)
-direction = 2
-piece = 1
-
 [node name="ConveyerBelt17" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
 position = Vector2(10328, 4372)
 scale = Vector2(25, 25)
 direction = 2
 piece = 2
-
-[node name="ConveyerBelt18" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
-position = Vector2(10834, 4372)
-scale = Vector2(25, 25)
-direction = 2
 
 [node name="ConveyerBelt19" parent="Interactables/Belts2" instance=ExtResource("6_0djfw")]
 position = Vector2(11336, 4373)
@@ -2244,43 +2073,43 @@ player = NodePath("../Entities/Player")
 hurtboxes = [NodePath("Hurtbox"), NodePath("Hurtbox2"), NodePath("Hurtbox3"), NodePath("Hurtbox4"), NodePath("Hurtbox5"), NodePath("Hurtbox6"), NodePath("Hurtbox7"), NodePath("Hurtbox8"), NodePath("Hurtbox9"), NodePath("Hurtbox10"), NodePath("Hurtbox11")]
 
 [node name="Hurtbox" parent="Hurtboxes" instance=ExtResource("9_2a7jy")]
-position = Vector2(18463, 3361)
-scale = Vector2(20, 20)
+position = Vector2(18463, 3650)
+scale = Vector2(20, 4.025)
 
 [node name="Hurtbox2" parent="Hurtboxes" instance=ExtResource("9_2a7jy")]
-position = Vector2(19262, 3361)
-scale = Vector2(20, 20)
+position = Vector2(19262, 3650)
+scale = Vector2(20, 4.025)
 
 [node name="Hurtbox3" parent="Hurtboxes" instance=ExtResource("9_2a7jy")]
-position = Vector2(20066, 3364)
-scale = Vector2(20, 20)
+position = Vector2(20066, 3653)
+scale = Vector2(20, 4.025)
 
 [node name="Hurtbox4" parent="Hurtboxes" instance=ExtResource("9_2a7jy")]
-position = Vector2(20872, 3364)
-scale = Vector2(20, 20)
+position = Vector2(20872, 3653)
+scale = Vector2(20, 4.025)
 
 [node name="Hurtbox5" parent="Hurtboxes" instance=ExtResource("9_2a7jy")]
-position = Vector2(21675, 3364)
-scale = Vector2(20, 20)
+position = Vector2(21675, 3653)
+scale = Vector2(20, 4.025)
 
 [node name="Hurtbox6" parent="Hurtboxes" instance=ExtResource("9_2a7jy")]
-position = Vector2(46410, 19185)
+position = Vector2(46441, 19705)
 scale = Vector2(20, 20)
 
 [node name="Hurtbox7" parent="Hurtboxes" instance=ExtResource("9_2a7jy")]
-position = Vector2(47209, 19185)
+position = Vector2(47240, 19705)
 scale = Vector2(20, 20)
 
 [node name="Hurtbox8" parent="Hurtboxes" instance=ExtResource("9_2a7jy")]
-position = Vector2(48013, 19188)
+position = Vector2(48044, 19708)
 scale = Vector2(20, 20)
 
 [node name="Hurtbox9" parent="Hurtboxes" instance=ExtResource("9_2a7jy")]
-position = Vector2(48819, 19188)
+position = Vector2(48850, 19708)
 scale = Vector2(20, 20)
 
 [node name="Hurtbox10" parent="Hurtboxes" instance=ExtResource("9_2a7jy")]
-position = Vector2(53510, 21986)
+position = Vector2(53468, 21993)
 scale = Vector2(20, 20)
 
 [node name="Hurtbox11" parent="Hurtboxes" instance=ExtResource("9_2a7jy")]
@@ -2332,5 +2161,94 @@ position = Vector2(79212, 20974)
 shape = SubResource("RectangleShape2D_cpf7f")
 
 [connection signal="body_entered" from="End" to="End" method="_on_body_entered"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4096
+position = Vector2(13952, 3712)
+scale = Vector2(-469.496, -204.353)
+texture = ExtResource("15_ninju")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(18061, 3688)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(18440, 3688)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(18819, 3688)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(19210, 3688)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(19589, 3688)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(19968, 3688)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(20347, 3688)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(20732, 3688)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(21123, 3688)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+position = Vector2(21514, 3688)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D12" type="Sprite2D" parent="."]
+position = Vector2(46037, 19452)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+position = Vector2(46424, 19452)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D14" type="Sprite2D" parent="."]
+position = Vector2(46811, 19452)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D15" type="Sprite2D" parent="."]
+position = Vector2(47191, 19452)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D16" type="Sprite2D" parent="."]
+position = Vector2(47567, 19452)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D17" type="Sprite2D" parent="."]
+position = Vector2(47954, 19452)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D18" type="Sprite2D" parent="."]
+position = Vector2(48338, 19452)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D19" type="Sprite2D" parent="."]
+position = Vector2(48729, 19452)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D20" type="Sprite2D" parent="."]
+position = Vector2(53233, 21720)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D21" type="Sprite2D" parent="."]
+position = Vector2(53559, 21720)
+texture = ExtResource("16_jrnwl")
+
+[node name="Sprite2D22" type="Sprite2D" parent="."]
+position = Vector2(53722, 21720)
+texture = ExtResource("16_jrnwl")
 
 [editable path="Entities/Player"]
