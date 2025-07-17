@@ -1359,7 +1359,7 @@ size = Vector2(1000, 1000)
 [node name="Level" type="Node2D" node_paths=PackedStringArray("player", "central_spawn_point")]
 script = ExtResource("1_cpf7f")
 player = NodePath("Entities/Player")
-central_spawn_point = NodePath("SpawnPoint10")
+central_spawn_point = NodePath("SpawnPoint9")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("2_ninju")]
 position = Vector2(1324, -1646)
