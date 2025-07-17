@@ -215,12 +215,16 @@ func wallJumpDenyTurnaroundTimeout():
 
 func die():
 	disableSide(1);
+	enableSide(0);
 	self.global_position = spawn_point;
+	move_and_collide(Vector2(0,0));
 	player_death.emit();
 	deathSFXPlayer.play();
 	GlobalVars.gizmoCamPTR.get_parent().global_position = spawn_point;
+	GlobalVars.gizmoCamPTR.get_parent().move_and_collide(Vector2(0,0));
 	sides[0].position = Vector2(0,0);
 	collisions[0].position = Vector2(0,0);
+	enableSide(0);
 
 func setSpawnPoint(pos: Vector2):
 	spawn_point = pos

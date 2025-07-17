@@ -272,9 +272,10 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="A_Side/PickupTrigger_A"]
 shape = SubResource("RectangleShape2D_ude3g")
 
-[node name="InWallDetection" type="Node2D" parent="A_Side" node_paths=PackedStringArray("player")]
+[node name="InWallDetection" type="Node2D" parent="A_Side" node_paths=PackedStringArray("player", "collisionSide")]
 script = ExtResource("5_4wape")
 player = NodePath("../..")
+collisionSide = NodePath("../../Collision_A")
 
 [node name="L" type="RayCast2D" parent="A_Side/InWallDetection"]
 position = Vector2(175, -275)
@@ -327,9 +328,10 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="B_Side/PickupTrigger_B"]
 shape = SubResource("RectangleShape2D_ude3g")
 
-[node name="InWallDetection" type="Node2D" parent="B_Side" node_paths=PackedStringArray("player")]
+[node name="InWallDetection" type="Node2D" parent="B_Side" node_paths=PackedStringArray("player", "collisionSide")]
 script = ExtResource("5_4wape")
 player = NodePath("../..")
+collisionSide = NodePath("../../Collision_B")
 
 [node name="L" type="RayCast2D" parent="B_Side/InWallDetection"]
 rotation = 1.5708

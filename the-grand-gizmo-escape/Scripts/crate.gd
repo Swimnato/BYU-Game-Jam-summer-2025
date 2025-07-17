@@ -10,6 +10,7 @@ func _ready() -> void:
 
 func reset() -> void:
 	self.position = start_pos
+	move_and_collide(Vector2(0,0));
 
 func _physics_process(delta: float) -> void:
 	for collider in get_colliding_bodies():

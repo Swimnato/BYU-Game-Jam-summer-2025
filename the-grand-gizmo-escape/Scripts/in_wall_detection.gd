@@ -3,13 +3,15 @@ extends Node2D
 @export var player : CharacterBody2D;
 @export var in_wall_threshold = 2;
 
+@export var collisionSide : CollisionShape2D;
+
 func _ready() -> void:
 	for child in get_children():
 		if child is RayCast2D:
 			child.add_exception_rid(player.get_rid());
 
 func _process(delta: float) -> void:
-	if(get_parent().visible):
+	if(!collisionSide.disabled):
 		var insideWallCount = 0;
 		for child in get_children():
 			if child is RayCast2D:
@@ -19,4 +21,5 @@ func _process(delta: float) -> void:
 					print(child.get_collider());
 					insideWallCount += 1;
 		if(insideWallCount >= in_wall_threshold):
+			print("Inside wall")
 			player.die();
