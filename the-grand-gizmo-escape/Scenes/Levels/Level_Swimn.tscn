@@ -1391,7 +1391,11 @@ position = Vector2(-46664, -5059)
 scale = Vector2(10, 10)
 
 [node name="SpawnPoint8" parent="." instance=ExtResource("2_ninju")]
-position = Vector2(-25796, -6306)
+position = Vector2(-25690, -6179)
+scale = Vector2(10, 10)
+
+[node name="SpawnPoint10" parent="." instance=ExtResource("2_ninju")]
+position = Vector2(24119, 2702)
 scale = Vector2(10, 10)
 
 [node name="Interactables" type="Node2D" parent="."]

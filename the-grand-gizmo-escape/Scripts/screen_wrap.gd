@@ -14,6 +14,8 @@ const defaultScaling : Vector2 = Vector2(2.0/3.0,2.0/3.0)
 
 @export var debugRaycastingEdges : bool = false;
 
+@export var offScreenOffset = 100;
+
 
 enum SIDES {LEFT, RIGHT, UP, DOWN};
 
@@ -188,29 +190,47 @@ func findPosAndSizeOfBlocking(side: SIDES, minMax: Vector2):
 	return returnVal;
 
 func processSideBlocking(side : SIDES):
-	var startPoint;
-	var endPoint;
+	var startPoints;
+	var endPoints;
 	var solidAreas : Array[Vector2];
 	var screenColiderObject : StaticBody2D;
 	
 	if(side == SIDES.LEFT):
-		startPoint = to_global(scaleFactor/2 * Vector2(1,-1));
-		endPoint = to_global(scaleFactor/2); 
+		startPoints = [to_global(scaleFactor/2 * Vector2(1,-1))];
+		startPoints.append(startPoints[0] + Vector2(offScreenOffset, 0));
+		startPoints.append(startPoints[0] + Vector2(offScreenOffset * 2, 0));
+		endPoints = [to_global(scaleFactor/2)]; 
+		endPoints.append(endPoints[0] + Vector2(offScreenOffset, 0));
+		endPoints.append(endPoints[0] + Vector2(offScreenOffset * 2, 0));
 		screenColiderObject = screenWrapBlockerLeft;
 	elif(side == SIDES.RIGHT):
-		startPoint = to_global(scaleFactor/2 * Vector2(-1,-1));
-		endPoint = to_global(scaleFactor/2 * Vector2(-1,1));
+		startPoints = [to_global(scaleFactor/2 * Vector2(-1,-1))];
+		startPoints.append(startPoints[0] + Vector2(-offScreenOffset, 0));
+		startPoints.append(startPoints[0] + Vector2(-offScreenOffset * 2, 0));
+		endPoints = [to_global(scaleFactor/2 * Vector2(-1,1))];
+		endPoints.append(endPoints[0] + Vector2(-offScreenOffset, 0));
+		endPoints.append(endPoints[0] + Vector2(-offScreenOffset * 2, 0));
 		screenColiderObject = screenWrapBlockerRight;
 	elif(side == SIDES.UP):
-		startPoint = to_global(scaleFactor/2 * Vector2(-1,1));
-		endPoint = to_global(scaleFactor/2 * Vector2(1,1));
+		startPoints = [to_global(scaleFactor/2 * Vector2(-1,1))];
+		startPoints.append(startPoints[0] + Vector2(0, offScreenOffset));
+		startPoints.append(startPoints[0] + Vector2(0, offScreenOffset * 2));
+		endPoints = [to_global(scaleFactor/2 * Vector2(1,1))];
+		endPoints.append(endPoints[0] + Vector2(0, offScreenOffset));
+		endPoints.append(endPoints[0] + Vector2(0, offScreenOffset * 2));
 		screenColiderObject = screenWrapBlockerUp;
 	elif(side == SIDES.DOWN):
-		startPoint = to_global(scaleFactor/2 * Vector2(-1,-1));
-		endPoint = to_global(scaleFactor/2 * Vector2(1,-1));
+		startPoints = [to_global(scaleFactor/2 * Vector2(-1,-1))];
+		startPoints.append(startPoints[0] + Vector2(0, -offScreenOffset));
+		startPoints.append(startPoints[0] + Vector2(0, -offScreenOffset * 2));
+		endPoints = [to_global(scaleFactor/2 * Vector2(1,-1))];
+		endPoints.append(endPoints[0] + Vector2(0, -offScreenOffset));
+		endPoints.append(endPoints[0] + Vector2(0, -offScreenOffset * 2));
 		screenColiderObject = screenWrapBlockerDown;
 	
-	solidAreas = checkForCollisionsBetweenSides(startPoint, endPoint);
+	solidAreas = checkForCollisionsBetweenSides(startPoints[0], endPoints[0]);
+	solidAreas += checkForCollisionsBetweenSides(startPoints[1], endPoints[1]);
+	solidAreas += checkForCollisionsBetweenSides(startPoints[2], endPoints[2]);
 	for child : CollisionShape2D in screenColiderObject.get_children():
 		var stillExists = false;
 		if(solidAreas.is_empty()):
@@ -222,7 +242,6 @@ func processSideBlocking(side : SIDES):
 			if(child.position == rectPos and child.shape.size == rectSize):
 				stillExists = true;
 				solidAreas.erase(area);
-				break;
 		if(!stillExists):
 			child.queue_free();
 	if(solidAreas.is_empty()):

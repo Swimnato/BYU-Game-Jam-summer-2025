@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvgvaxq4l543v"]
+[gd_scene load_steps=17 format=3 uid="uid://bvgvaxq4l543v"]
 
 [ext_resource type="Script" uid="uid://dee4wjjgienl0" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://coxd0fnh5616d" path="res://Textures/spritesheet_complete.png" id="2_4wape"]
 [ext_resource type="Script" uid="uid://cly5owfacpraq" path="res://Scripts/pickup_controller.gd" id="3_gntrk"]
 [ext_resource type="Script" uid="uid://bssf6yyqy4sgj" path="res://Scripts/handle_player_animations.gd" id="3_jmcll"]
+[ext_resource type="Script" uid="uid://vn17th26qwl8" path="res://Scripts/in_wall_detection.gd" id="5_4wape"]
 [ext_resource type="AudioStream" uid="uid://ba1ri1uy3f38x" path="res://Audio/SFX/Death Stinger.wav" id="5_jmcll"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h54ih"]
@@ -271,6 +272,28 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="A_Side/PickupTrigger_A"]
 shape = SubResource("RectangleShape2D_ude3g")
 
+[node name="InWallDetection" type="Node2D" parent="A_Side" node_paths=PackedStringArray("player")]
+script = ExtResource("5_4wape")
+player = NodePath("../..")
+
+[node name="L" type="RayCast2D" parent="A_Side/InWallDetection"]
+position = Vector2(175, -275)
+rotation = 1.5708
+target_position = Vector2(0, 350)
+
+[node name="R" type="RayCast2D" parent="A_Side/InWallDetection"]
+position = Vector2(-175, 275)
+rotation = 1.5708
+target_position = Vector2(0, -350)
+
+[node name="U" type="RayCast2D" parent="A_Side/InWallDetection"]
+rotation = 1.5708
+target_position = Vector2(-575, 0)
+
+[node name="D" type="RayCast2D" parent="A_Side/InWallDetection"]
+rotation = 1.5708
+target_position = Vector2(575, 0)
+
 [node name="B_Side" type="Node2D" parent="."]
 visible = false
 
@@ -303,6 +326,26 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="B_Side/PickupTrigger_B"]
 shape = SubResource("RectangleShape2D_ude3g")
+
+[node name="InWallDetection" type="Node2D" parent="B_Side" node_paths=PackedStringArray("player")]
+script = ExtResource("5_4wape")
+player = NodePath("../..")
+
+[node name="L" type="RayCast2D" parent="B_Side/InWallDetection"]
+rotation = 1.5708
+target_position = Vector2(0, 175)
+
+[node name="R" type="RayCast2D" parent="B_Side/InWallDetection"]
+rotation = 1.5708
+target_position = Vector2(0, -175)
+
+[node name="U" type="RayCast2D" parent="B_Side/InWallDetection"]
+rotation = 1.5708
+target_position = Vector2(-575, 0)
+
+[node name="D" type="RayCast2D" parent="B_Side/InWallDetection"]
+rotation = 1.5708
+target_position = Vector2(575, 0)
 
 [node name="WalkingSFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = 20.0
